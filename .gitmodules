@@ -1,0 +1,3 @@
+[submodule "gwt-qrscanner"]
+	path = gwt-qrscanner
+	url = git@github.com:jbialobr/gwt-qrscanner.git
