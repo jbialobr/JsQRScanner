@@ -18,9 +18,12 @@
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
   <!-- Other module inherits                                      -->
+  <inherits name="com.google.QR" />  
+  <inherits name='org.timepedia.exporter.Exporter'/>
+  <set-property name="export" value="yes"/>
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='jb.client.JsQRScanner'/>
+  <entry-point class='jb.client.JsQRScannerEntryPoint'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
