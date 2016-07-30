@@ -9,7 +9,7 @@
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>JsQRScanner.html</welcome-file>
+    <welcome-file>Index.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
