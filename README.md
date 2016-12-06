@@ -50,37 +50,47 @@ https://jsqrscanner.appspot.com
 # Scanner API
 
 **.appendTo( htmlElement )**
+
 Appends the scanner to the given **htmlElement**
 
 **.removeFrom( htmlElement )**
+
 Removes the scanner from the given **htmlElement**
 Does nothing If the scanner is not a child of **htmlElement**
 
 **.stopScanning()**
+
 Stops the scanner.
 
 **.resumeScanning()**
+
 Resumes the scanner previously stopped scanner.
 
 **.setScanInterval( scanIntervalMilliseconds )**
+
 Sets the interval at which the scanner attempts to decode a qr code.
 
 **.getScanInterval()**
+
 Returns the interval at which the scanner attempts to decode a qr code.
 The interval is returned in milliseconds.
 
 **.setSnapImageMaxSize( snapImageMaxSizeInPixels )**
+
 Sets the maximum size of images captured from the webcam.
 The limit is applied to both width and height. The ratio of the image is preserved
 while resizing. Smaller sizes, like 300px can be set to increase performance on
 mobile devices.
 
 **.getSnapImageMaxSize()**
+
 Returns the SnapImageMaxSize in pixels.
 
 **.isActive()**
+
 Returns false if scanner was stoped, true otherwise.
 
 **.isScanning()**
+
 Returns true if scanner is actively scanning.
 That is the scanner is active and is attached to the DOM.
