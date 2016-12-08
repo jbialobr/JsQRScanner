@@ -35,7 +35,7 @@ https://jsqrscanner.appspot.com
         //create a new scanner passing to it a callback function that will be invoked when
         //the scanner succesfully scan a QR code
         var jbScanner = new JsQRScanner(onQRCodeScanned);
-        //reduce the size of analyzed image to increase performance on mobile devices
+        //reduce the size of analyzed images to increase performance on mobile devices
         jbScanner.setSnapImageMaxSize(300);
     	var scannerParentElement = document.getElementById("scanner");
     	if(scannerParentElement)
@@ -64,7 +64,7 @@ Stops the scanner.
 
 **.resumeScanning()**
 
-Resumes the scanner previously stopped scanner.
+Resumes the previously stopped scanner.
 
 **.setScanInterval( scanIntervalMilliseconds )**
 
