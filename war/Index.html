@@ -62,6 +62,17 @@
             </textarea>
           </div>
         </div>
+        <div class="form-field form-field-memo">
+          <div class="form-field-caption-panel">
+            <div class="gwt-Label form-field-caption">
+              Scanned text history
+            </div>
+          </div>
+          <div class="FlexPanel form-field-input-panel">
+            <textarea id="scannedTextMemoHist" class="textInput form-memo form-field-input textInput-readonly" value="" rows="6" readonly>
+            </textarea>
+          </div>
+        </div>
       </div>
       <br>
       <a style="font-weight: bold;" href="https://github.com/jbialobr/JsQRScanner">The source code is hosted on GitHub</a>
@@ -73,6 +84,11 @@
     	if(scannedTextMemo)
     	{
     		scannedTextMemo.value = scannedText;
+    	}
+    	var scannedTextMemoHist = document.getElementById("scannedTextMemoHist");
+    	if(scannedTextMemoHist)
+    	{
+    		scannedTextMemoHist.value = scannedTextMemoHist.value + '\n' + scannedText;
     	}
     }
   
