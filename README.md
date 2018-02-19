@@ -14,11 +14,11 @@ https://jsqrscanner.appspot.com
 1) Place all the files from the [js](https://github.com/jbialobr/JsQRScanner/blob/master/war/js/) directory on your server.
 
 2) Add the [js script](https://github.com/jbialobr/JsQRScanner/blob/master/war/js/jsqrscanner.nocache.js) into your page.
-```
+```html
 <script type="text/javascript" src="/js/jsqrscanner.nocache.js"></script>
 ```
 3) Create a scanner control and append it to the DOM.
-```
+```js
   <script type="text/javascript">
     function onQRCodeScanned(scannedText)
     {
