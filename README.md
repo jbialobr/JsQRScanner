@@ -7,7 +7,7 @@ The export of the public api is made with the [gwt-exporter](https://github.com/
 
 # Live demo
 
-https://jsqrscanner.appspot.com
+https://jbialobr.github.io/JsQRScanner/
 
 # How to use
 

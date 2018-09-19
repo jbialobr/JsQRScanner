@@ -3,7 +3,7 @@ var __gwtModuleFunction = $wnd.jsqrscanner;
 var $sendStats = __gwtModuleFunction.__sendStats;
 $sendStats('moduleStartup', 'moduleEvalStart');
 var $gwt_version = "2.7.0";
-var $strongName = '2AD59A2E19C7933A1AE1C2E10B972B3A';
+var $strongName = 'AC4B4C973788FFBB55EF8564BD600E25';
 var $gwt = {};
 var $doc = $wnd.document;
 var $moduleName, $moduleBase;
@@ -22,7 +22,7 @@ var $stats = $wnd.__gwtStatsEvent ? function(a) {
 return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);
 } : null;
 var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;
-var $intern_0 = 2147483647, $intern_1 = {33:1, 34:1, 31:1, 30:1, 35:1, 25:1, 20:1}, $intern_2 = {3:1, 5:1}, $intern_3 = {3:1, 8:1}, $intern_4 = {3:1, 10:1, 8:1}, $intern_5 = 4194303, $intern_6 = 1048575, $intern_7 = 4194304, $intern_8 = 17592186044416, $intern_9 = -9223372036854775808, $intern_10 = 524288, $intern_11 = 65536, $intern_12 = 131072, $intern_13 = 1048576, $intern_14 = 8388608, $intern_15 = 16777216, $intern_16 = 33554432, $intern_17 = 67108864, $intern_18 = {3:1}, $intern_19 = {3:1, 22:1, 5:1}, $intern_20 = {7:1, 3:1}, $intern_21 = {14:1, 3:1, 19:1, 13:1}, $intern_22 = 0.20000000298023224, $intern_23 = {40:1}, $intern_24 = {17:1}, $intern_25 = {3:1, 51:1};
+var $intern_0 = 2147483647, $intern_1 = {33:1, 34:1, 31:1, 30:1, 35:1, 25:1, 20:1}, $intern_2 = {3:1, 5:1}, $intern_3 = {3:1, 8:1}, $intern_4 = {3:1, 10:1, 8:1}, $intern_5 = 65535, $intern_6 = 4194303, $intern_7 = 1048575, $intern_8 = 4194304, $intern_9 = 17592186044416, $intern_10 = -9223372036854775808, $intern_11 = 524288, $intern_12 = 65536, $intern_13 = 1048576, $intern_14 = 8388608, $intern_15 = 16777216, $intern_16 = 33554432, $intern_17 = 67108864, $intern_18 = {3:1}, $intern_19 = {3:1, 22:1, 5:1}, $intern_20 = {7:1, 3:1}, $intern_21 = {14:1, 3:1, 19:1, 13:1}, $intern_22 = 0.20000000298023224, $intern_23 = {40:1}, $intern_24 = {17:1}, $intern_25 = {3:1, 51:1};
 var _, initFnList_0, prototypesByTypeId_0 = {}, permutationId = -1;
 function typeMarkerFn(){
 }
@@ -409,7 +409,7 @@ _.toString$ = function toString_1(){
   if (!this.element) {
     return '(null handle)';
   }
-  return $toString(($clinit_DOM() , this.element));
+  return ($clinit_DOM() , this.element).outerHTML;
 }
 ;
 var Lcom_google_gwt_user_client_ui_UIObject_2_classLit = createForClass('com.google.gwt.user.client.ui', 'UIObject', 25);
@@ -490,8 +490,8 @@ _.onBrowserEvent = function onBrowserEvent(event_0){
   switch ($clinit_DOM() , $eventGetTypeInt(event_0.type)) {
     case 16:
     case 32:
-      related = $eventGetRelatedTarget(event_0);
-      if (!!related && $isOrHasChild(this.element, related)) {
+      related = event_0.relatedTarget;
+      if (!!related && isOrHasChildImpl(this.element, related)) {
         return;
       }
 
@@ -509,7 +509,7 @@ var Lcom_google_gwt_user_client_ui_Widget_2_classLit = createForClass('com.googl
 function $onAttach_0(this$static){
   var tabIndex;
   $onAttach(this$static);
-  tabIndex = ($clinit_DOM() , this$static.element).tabIndex;
+  tabIndex = $getTabIndex(($clinit_DOM() , this$static.element));
   -1 == tabIndex && (this$static.element.tabIndex = 0 , undefined);
 }
 
@@ -1020,32 +1020,30 @@ function $setWidth(this$static, width_0){
   this$static.width = width_0;
 }
 
-function $eventGetRelatedTarget(evt){
-  var relatedTarget = evt.relatedTarget;
-  if (!relatedTarget) {
-    return null;
-  }
-  try {
-    var nodeName = relatedTarget.nodeName;
-    return relatedTarget;
-  }
-   catch (e) {
-    return null;
-  }
+function $eventGetCurrentTarget(event_0){
+  return event_0.currentTarget || $wnd;
 }
 
-function $isOrHasChild(parent_0, child){
-  return parent_0 === child || !!(parent_0.compareDocumentPosition(child) & 16);
+function $getTabIndex(elem){
+  return elem.tabIndex < $intern_5?elem.tabIndex:-(elem.tabIndex % $intern_5) - 1;
 }
 
-function $toString(elem){
-  var doc = elem.ownerDocument;
-  var temp = elem.cloneNode(true);
-  var tempDiv = doc.createElement('DIV');
-  tempDiv.appendChild(temp);
-  outer = tempDiv.innerHTML;
-  temp.innerHTML = '';
-  return outer;
+function isOrHasChildImpl(parent_0, child){
+  if (parent_0.nodeType != 1 && parent_0.nodeType != 9) {
+    return parent_0 == child;
+  }
+  if (child.nodeType != 1) {
+    child = child.parentNode;
+    if (!child) {
+      return false;
+    }
+  }
+  if (parent_0.nodeType == 9) {
+    return parent_0 === child || parent_0.body && parent_0.body.contains(child);
+  }
+   else {
+    return parent_0 === child || parent_0.contains(child);
+  }
 }
 
 function fireNativeEvent(){
@@ -1245,9 +1243,9 @@ function wrap(e){
 
 function create(value_0){
   var a0, a1, a2;
-  a0 = value_0 & $intern_5;
-  a1 = value_0 >> 22 & $intern_5;
-  a2 = value_0 < 0?$intern_6:0;
+  a0 = value_0 & $intern_6;
+  a1 = value_0 >> 22 & $intern_6;
+  a2 = value_0 < 0?$intern_7:0;
   return create0(a0, a1, a2);
 }
 
@@ -1256,7 +1254,7 @@ function create0(l, m, h){
 }
 
 function toDoubleHelper(a){
-  return a.l + a.m * $intern_7 + a.h * $intern_8;
+  return a.l + a.m * $intern_8 + a.h * $intern_9;
 }
 
 function and(a, b){
@@ -1272,7 +1270,7 @@ function fromDouble(value_0){
   if (isNaN_0(value_0)) {
     return $clinit_LongLib$Const() , ZERO;
   }
-  if (value_0 < $intern_9) {
+  if (value_0 < $intern_10) {
     return $clinit_LongLib$Const() , MIN_VALUE;
   }
   if (value_0 >= 9223372036854775807) {
@@ -1284,18 +1282,18 @@ function fromDouble(value_0){
     value_0 = -value_0;
   }
   a2 = 0;
-  if (value_0 >= $intern_8) {
-    a2 = round_int(value_0 / $intern_8);
-    value_0 -= a2 * $intern_8;
+  if (value_0 >= $intern_9) {
+    a2 = round_int(value_0 / $intern_9);
+    value_0 -= a2 * $intern_9;
   }
   a1 = 0;
-  if (value_0 >= $intern_7) {
-    a1 = round_int(value_0 / $intern_7);
-    value_0 -= a1 * $intern_7;
+  if (value_0 >= $intern_8) {
+    a1 = round_int(value_0 / $intern_8);
+    value_0 -= a1 * $intern_8;
   }
   a0 = round_int(value_0);
   result = create0(a0, a1, a2);
-  negative && (neg0 = ~result.l + 1 & $intern_5 , neg1 = ~result.m + (neg0 == 0?1:0) & $intern_5 , neg2 = ~result.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_6 , result.l = neg0 , result.m = neg1 , result.h = neg2 , undefined);
+  negative && (neg0 = ~result.l + 1 & $intern_6 , neg1 = ~result.m + (neg0 == 0?1:0) & $intern_6 , neg2 = ~result.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_7 , result.l = neg0 , result.m = neg1 , result.h = neg2 , undefined);
   return result;
 }
 
@@ -1340,14 +1338,14 @@ function shl(a, n){
     res1 = 0;
     res2 = a.l << n - 44;
   }
-  return {l:res0 & $intern_5, m:res1 & $intern_5, h:res2 & $intern_6};
+  return {l:res0 & $intern_6, m:res1 & $intern_6, h:res2 & $intern_7};
 }
 
 function shr(a, n){
   var a2, negative, res0, res1, res2;
   n &= 63;
   a2 = a.h;
-  negative = (a2 & $intern_10) != 0;
+  negative = (a2 & $intern_11) != 0;
   negative && (a2 |= -1048576);
   if (n < 22) {
     res2 = a2 >> n;
@@ -1355,16 +1353,16 @@ function shr(a, n){
     res0 = a.l >> n | a.m << 22 - n;
   }
    else if (n < 44) {
-    res2 = negative?$intern_6:0;
+    res2 = negative?$intern_7:0;
     res1 = a2 >> n - 22;
     res0 = a.m >> n - 22 | a2 << 44 - n;
   }
    else {
-    res2 = negative?$intern_6:0;
-    res1 = negative?$intern_5:0;
+    res2 = negative?$intern_7:0;
+    res1 = negative?$intern_6:0;
     res0 = a2 >> n - 44;
   }
-  return {l:res0 & $intern_5, m:res1 & $intern_5, h:res2 & $intern_6};
+  return {l:res0 & $intern_6, m:res1 & $intern_6, h:res2 & $intern_7};
 }
 
 function sub_0(a, b){
@@ -1372,18 +1370,18 @@ function sub_0(a, b){
   sum0 = a.l - b.l;
   sum1 = a.m - b.m + (sum0 >> 22);
   sum2 = a.h - b.h + (sum1 >> 22);
-  return {l:sum0 & $intern_5, m:sum1 & $intern_5, h:sum2 & $intern_6};
+  return {l:sum0 & $intern_6, m:sum1 & $intern_6, h:sum2 & $intern_7};
 }
 
 function toDouble(a){
   var neg0, neg1, neg2;
   if (eq(a, ($clinit_LongLib$Const() , MIN_VALUE))) {
-    return $intern_9;
+    return $intern_10;
   }
   if (!gte(a, ZERO)) {
-    return -toDoubleHelper((neg0 = ~a.l + 1 & $intern_5 , neg1 = ~a.m + (neg0 == 0?1:0) & $intern_5 , neg2 = ~a.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_6 , create0(neg0, neg1, neg2)));
+    return -toDoubleHelper((neg0 = ~a.l + 1 & $intern_6 , neg1 = ~a.m + (neg0 == 0?1:0) & $intern_6 , neg2 = ~a.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_7 , create0(neg0, neg1, neg2)));
   }
-  return a.l + a.m * $intern_7 + a.h * $intern_8;
+  return a.l + a.m * $intern_8 + a.h * $intern_9;
 }
 
 function toInt(a){
@@ -1393,8 +1391,8 @@ function toInt(a){
 var boxedValues;
 function $clinit_LongLib$Const(){
   $clinit_LongLib$Const = emptyMethod;
-  MAX_VALUE = create0($intern_5, $intern_5, 524287);
-  MIN_VALUE = create0(0, 0, $intern_10);
+  MAX_VALUE = create0($intern_6, $intern_6, 524287);
+  MIN_VALUE = create0(0, 0, $intern_11);
   fromInt(1);
   fromInt(2);
   ZERO = fromInt(0);
@@ -1458,7 +1456,7 @@ defineClass(117, 176, {}, Video$VideoElementSupportDetectedMaybe);
 var Lcom_google_gwt_media_client_Video$VideoElementSupportDetectedMaybe_2_classLit = createForClass('com.google.gwt.media.client', 'Video/VideoElementSupportDetectedMaybe', 117);
 function $clinit_DOM(){
   $clinit_DOM = emptyMethod;
-  $clinit_DOMImplMozilla();
+  $clinit_DOMImplStandard();
 }
 
 function dispatchEvent_0(evt, elem, listener){
@@ -1574,20 +1572,20 @@ function $eventGetTypeInt(eventType){
     case 'scroll':
       return 16384;
     case 'error':
-      return $intern_11;
+      return $intern_12;
     case 'DOMMouseScroll':
     case 'mousewheel':
-      return $intern_12;
+      return 131072;
     case 'contextmenu':
       return 262144;
     case 'paste':
-      return $intern_10;
+      return $intern_11;
     case 'touchstart':
       return $intern_13;
     case 'touchmove':
       return 2097152;
     case 'touchend':
-      return $intern_7;
+      return $intern_8;
     case 'touchcancel':
       return $intern_14;
     case 'gesturestart':
@@ -1603,7 +1601,6 @@ function $eventGetTypeInt(eventType){
 function $maybeInitializeEventSystem(){
   if (!eventSystemIsInitialized) {
     $initEventSystem();
-    $initSyntheticMouseUpEvents();
     eventSystemIsInitialized = true;
   }
 }
@@ -1644,6 +1641,11 @@ function $initEventSystem(){
   );
 }
 
+function $sinkEvents(elem, bits){
+  $maybeInitializeEventSystem();
+  $sinkEventsImpl(elem, bits);
+}
+
 function $sinkEventsImpl(elem, bits){
   var chMask = (elem.__eventBits || 0) ^ bits;
   elem.__eventBits = bits;
@@ -1665,13 +1667,13 @@ function $sinkEventsImpl(elem, bits){
   chMask & 8192 && (elem.onlosecapture = bits & 8192?dispatchEvent_1:null);
   chMask & 16384 && (elem.onscroll = bits & 16384?dispatchEvent_1:null);
   chMask & 32768 && (elem.onload = bits & 32768?dispatchUnhandledEvent:null);
-  chMask & $intern_11 && (elem.onerror = bits & $intern_11?dispatchEvent_1:null);
-  chMask & $intern_12 && (elem.onmousewheel = bits & $intern_12?dispatchEvent_1:null);
+  chMask & $intern_12 && (elem.onerror = bits & $intern_12?dispatchEvent_1:null);
+  chMask & 131072 && (elem.onmousewheel = bits & 131072?dispatchEvent_1:null);
   chMask & 262144 && (elem.oncontextmenu = bits & 262144?dispatchEvent_1:null);
-  chMask & $intern_10 && (elem.onpaste = bits & $intern_10?dispatchEvent_1:null);
+  chMask & $intern_11 && (elem.onpaste = bits & $intern_11?dispatchEvent_1:null);
   chMask & $intern_13 && (elem.ontouchstart = bits & $intern_13?dispatchEvent_1:null);
   chMask & 2097152 && (elem.ontouchmove = bits & 2097152?dispatchEvent_1:null);
-  chMask & $intern_7 && (elem.ontouchend = bits & $intern_7?dispatchEvent_1:null);
+  chMask & $intern_8 && (elem.ontouchend = bits & $intern_8?dispatchEvent_1:null);
   chMask & $intern_14 && (elem.ontouchcancel = bits & $intern_14?dispatchEvent_1:null);
   chMask & $intern_15 && (elem.ongesturestart = bits & $intern_15?dispatchEvent_1:null);
   chMask & $intern_16 && (elem.ongesturechange = bits & $intern_16?dispatchEvent_1:null);
@@ -1683,7 +1685,6 @@ function dispatchCapturedEvent(evt){
 }
 
 function dispatchCapturedMouseEvent(evt){
-  $clinit_DOMImplStandard();
   $clinit_DOM();
   return;
 }
@@ -1704,47 +1705,21 @@ function dispatchEvent_2(evt){
 
 function dispatchUnhandledEvent_0(evt){
   var element;
-  element = evt.currentTarget;
+  element = $eventGetCurrentTarget(evt);
   element['__gwtLastUnhandledEvent'] = evt.type;
   dispatchEvent_2(evt);
 }
 
 function getFirstAncestorWithListener(evt){
   var curElem;
-  curElem = evt.currentTarget;
+  curElem = $eventGetCurrentTarget(evt);
   while (!!curElem && !getEventListener(curElem)) {
     curElem = curElem.parentNode;
   }
   return curElem;
 }
 
-var bitlessEventDispatchers, captureElem, captureEventDispatchers, dispatchEvent_1, dispatchUnhandledEvent;
-function $clinit_DOMImplMozilla(){
-  $clinit_DOMImplMozilla = emptyMethod;
-  $clinit_DOMImplStandard();
-  captureEventDispatchers['DOMMouseScroll'] = dispatchCapturedMouseEvent;
-}
-
-function $initSyntheticMouseUpEvents(){
-  $wnd.addEventListener('mouseout', $entry(function(evt){
-    var cap = ($clinit_DOMImplStandard() , captureElem);
-    if (cap && !evt.relatedTarget) {
-      if ('html' == evt.target.tagName.toLowerCase()) {
-        var muEvent = $doc.createEvent('MouseEvents');
-        muEvent.initMouseEvent('mouseup', true, true, $wnd, 0, evt.screenX, evt.screenY, evt.clientX, evt.clientY, evt.ctrlKey, evt.altKey, evt.shiftKey, evt.metaKey, evt.button, null);
-        cap.dispatchEvent(muEvent);
-      }
-    }
-  }
-  ), true);
-}
-
-function $sinkEvents(elem, bits){
-  $maybeInitializeEventSystem();
-  $sinkEventsImpl(elem, bits);
-  bits & $intern_12 && elem.addEventListener('DOMMouseScroll', ($clinit_DOMImplStandard() , dispatchEvent_1), false);
-}
-
+var bitlessEventDispatchers, captureEventDispatchers, dispatchEvent_1, dispatchUnhandledEvent;
 function foreach_0(map_0, fn){
   for (var e in map_0) {
     map_0.hasOwnProperty(e) && fn(e, map_0[e]);
@@ -1963,7 +1938,7 @@ var Lcom_google_gwt_user_client_ui_WidgetCollection$WidgetIterator_2_classLit = 
 function assertCompileTimeUserAgent(){
   var runtimeValue;
   runtimeValue = $getRuntimeValue();
-  if (!$equals('gecko1_8', runtimeValue)) {
+  if (!$equals('ie9', runtimeValue)) {
     throw new UserAgentAsserter$UserAgentAssertionError(runtimeValue);
   }
 }
@@ -1977,7 +1952,7 @@ var Ljava_lang_Error_2_classLit = createForClass('java.lang', 'Error', 58);
 defineClass(18, 58, $intern_3);
 var Ljava_lang_AssertionError_2_classLit = createForClass('java.lang', 'AssertionError', 18);
 function UserAgentAsserter$UserAgentAssertionError(runtimeValue){
-  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (gecko1_8) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (gecko1_8) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (gecko1_8) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
+  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
 }
 
 defineClass(80, 18, $intern_3, UserAgentAsserter$UserAgentAssertionError);
@@ -2022,7 +1997,7 @@ function BinaryBitmap(binarizer){
 defineClass(124, 1, {}, BinaryBitmap);
 _.toString$ = function toString_3(){
   try {
-    return $toString_0((!this.matrix && (this.matrix = $getBlackMatrix_0(this.binarizer)) , this.matrix));
+    return $toString((!this.matrix && (this.matrix = $getBlackMatrix_0(this.binarizer)) , this.matrix));
   }
    catch ($e0) {
     $e0 = wrap($e0);
@@ -2295,7 +2270,7 @@ function $setRegion(this$static, left, top_0, width_0, height){
   }
 }
 
-function $toString_0(this$static){
+function $toString(this$static){
   var result, x_0, y_0;
   result = new StringBuilder;
   for (y_0 = 0; y_0 < this$static.height_0; y_0++) {
@@ -2342,7 +2317,7 @@ _.hashCode$ = function hashCode_3(){
 }
 ;
 _.toString$ = function toString_8(){
-  return $toString_0(this);
+  return $toString(this);
 }
 ;
 _.height_0 = 0;
@@ -5305,7 +5280,12 @@ function $setWebcam(videoElement, scanner){
   function success(stream){
     scanner.videoStream = stream;
     var v = videoElement;
-    v.src = $wnd.URL.createObjectURL(stream);
+    try {
+      v.srcObject = stream;
+    }
+     catch (error) {
+      v.src = $wnd.URL.createObjectURL(stream);
+    }
     scanner.videoAttached();
   }
 
@@ -5419,13 +5399,13 @@ defineClass(46, 15, $intern_4, ArrayStoreException, ArrayStoreException_0);
 var Ljava_lang_ArrayStoreException_2_classLit = createForClass('java.lang', 'ArrayStoreException', 46);
 function toChars(codePoint, dst, dstIndex){
   checkCriticalArgument(codePoint >= 0 && codePoint <= 1114111);
-  if (codePoint >= $intern_11) {
-    dst[dstIndex++] = 55296 + (codePoint - $intern_11 >> 10 & 1023) & 65535;
-    dst[dstIndex] = 56320 + (codePoint - $intern_11 & 1023) & 65535;
+  if (codePoint >= $intern_12) {
+    dst[dstIndex++] = 55296 + (codePoint - $intern_12 >> 10 & 1023) & $intern_5;
+    dst[dstIndex] = 56320 + (codePoint - $intern_12 & 1023) & $intern_5;
     return 2;
   }
    else {
-    dst[dstIndex] = codePoint & 65535;
+    dst[dstIndex] = codePoint & $intern_5;
     return 1;
   }
 }
@@ -5440,7 +5420,7 @@ defineClass(65, 1, {3:1, 65:1});
 var Ljava_lang_Number_2_classLit = createForClass('java.lang', 'Number', 65);
 function $clinit_Double(){
   $clinit_Double = emptyMethod;
-  powers = initValues(getClassLiteralForArray(D_classLit, 1), $intern_18, 0, 7, [1.3407807929942597E154, 1.157920892373162E77, 3.4028236692093846E38, 1.8446744073709552E19, 4294967296, $intern_11, 256, 16, 4, 2]);
+  powers = initValues(getClassLiteralForArray(D_classLit, 1), $intern_18, 0, 7, [1.3407807929942597E154, 1.157920892373162E77, 3.4028236692093846E38, 1.8446744073709552E19, 4294967296, $intern_12, 256, 16, 4, 2]);
   invPowers = initValues(getClassLiteralForArray(D_classLit, 1), $intern_18, 0, 7, [7.458340731200207E-155, 8.636168555094445E-78, 2.9387358770557188E-39, 5.421010862427522E-20, 2.3283064365386963E-10, 1.52587890625E-5, 0.00390625, 0.0625, 0.25, 0.5]);
 }
 
@@ -5452,7 +5432,7 @@ function doubleToLongBits(value_0){
   }
   negative = false;
   if (value_0 == 0) {
-    return 1 / value_0 == -Infinity?{l:0, m:0, h:$intern_10}:{l:0, m:0, h:0};
+    return 1 / value_0 == -Infinity?{l:0, m:0, h:$intern_11}:{l:0, m:0, h:0};
   }
   if (value_0 < 0) {
     negative = true;
@@ -5517,7 +5497,7 @@ function floatToIntBits(value_0){
   }
   l = doubleToLongBits(value_0);
   exp_0 = toInt(sub_0(and(shr(l, 52), {l:2047, m:0, h:0}), {l:1023, m:0, h:0}));
-  mantissa = toInt(shr(and(l, {l:$intern_5, m:$intern_5, h:255}), 29));
+  mantissa = toInt(shr(and(l, {l:$intern_6, m:$intern_6, h:255}), 29));
   if (exp_0 <= -127) {
     mantissa = ($intern_14 | mantissa) >> -127 - exp_0 + 1;
     exp_0 = -127;
@@ -5749,7 +5729,7 @@ function latin1ToString(bytes, len){
   var chars, i;
   chars = initDim(C_classLit, $intern_18, 0, len, 7, 1);
   for (i = 0; i < len; ++i) {
-    chars[i] = bytes[i] & 255 & 65535;
+    chars[i] = bytes[i] & 255 & $intern_5;
   }
   return __valueOf(chars, 0, chars.length);
 }
@@ -5954,14 +5934,14 @@ function $containsAll(this$static, c){
   checkNotNull(c);
   for (e$iterator = c.iterator(); e$iterator.hasNext();) {
     e = e$iterator.next();
-    if (!this$static.contains(e)) {
+    if (!this$static.contains_0(e)) {
       return false;
     }
   }
   return true;
 }
 
-function $toString_1(this$static){
+function $toString_0(this$static){
   var comma, e, e$iterator, sb;
   sb = new StringBuilder_0('[');
   comma = false;
@@ -5975,12 +5955,12 @@ function $toString_1(this$static){
 }
 
 defineClass(169, 1, {});
-_.contains = function contains(o){
+_.contains_0 = function contains(o){
   return $advanceToFind(this, o);
 }
 ;
 _.toString$ = function toString_15(){
-  return $toString_1(this);
+  return $toString_0(this);
 }
 ;
 var Ljava_util_AbstractCollection_2_classLit = createForClass('java.util', 'AbstractCollection', 169);
@@ -6010,7 +5990,7 @@ function $implFindEntry(this$static, key){
   return null;
 }
 
-function $toString_2(this$static, o){
+function $toString_1(this$static, o){
   return o === this$static?'(this Map)':'' + o;
 }
 
@@ -6063,9 +6043,9 @@ _.toString$ = function toString_16(){
   for (entry$iterator = this.entrySet().iterator(); entry$iterator.hasNext();) {
     entry = dynamicCast(entry$iterator.next(), 17);
     comma?(sb.string += ', ' , sb):(comma = true);
-    $append_2(sb, $toString_2(this, entry.getKey()));
+    $append_2(sb, $toString_1(this, entry.getKey()));
     sb.string += '=';
-    $append_2(sb, $toString_2(this, entry.getValue()));
+    $append_2(sb, $toString_1(this, entry.getValue()));
   }
   sb.string += '}';
   return sb.string;
@@ -6154,7 +6134,7 @@ function AbstractHashMap$EntrySet(this$0){
 }
 
 defineClass(67, 170, $intern_23, AbstractHashMap$EntrySet);
-_.contains = function contains_0(o){
+_.contains_0 = function contains_0(o){
   return $contains(this, o);
 }
 ;
@@ -6316,7 +6296,7 @@ function AbstractMap$1(this$0){
 }
 
 defineClass(52, 170, $intern_23, AbstractMap$1);
-_.contains = function contains_1(key){
+_.contains_0 = function contains_1(key){
   return $containsKey(this.this$01, key);
 }
 ;
@@ -6464,7 +6444,7 @@ _.add_0 = function add_0(o){
   return $add_2(this, o);
 }
 ;
-_.contains = function contains_2(o){
+_.contains_0 = function contains_2(o){
   return $indexOf_0(this, o, 0) != -1;
 }
 ;
@@ -6689,7 +6669,7 @@ function EnumMap$EntrySet(this$0){
 }
 
 defineClass(139, 170, $intern_23, EnumMap$EntrySet);
-_.contains = function contains_3(o){
+_.contains_0 = function contains_3(o){
   return $contains_0(this, o);
 }
 ;
@@ -6765,7 +6745,7 @@ function EnumSet$EnumSetImpl(all, set_0){
 }
 
 defineClass(152, 178, $intern_23, EnumSet$EnumSetImpl);
-_.contains = function contains_4(o){
+_.contains_0 = function contains_4(o){
   return $contains_1(this, o);
 }
 ;
@@ -6849,7 +6829,7 @@ function HashSet(){
 }
 
 defineClass(77, 170, {3:1, 40:1}, HashSet);
-_.contains = function contains_5(o){
+_.contains_0 = function contains_5(o){
   return $contains_2(this, o);
 }
 ;
@@ -6862,7 +6842,7 @@ _.size_1 = function size_10(){
 }
 ;
 _.toString$ = function toString_19(){
-  return $toString_1(new AbstractMap$1(this.map_0));
+  return $toString_0(new AbstractMap$1(this.map_0));
 }
 ;
 var Ljava_util_HashSet_2_classLit = createForClass('java.util', 'HashSet', 77);
@@ -7519,7 +7499,7 @@ var I_classLit = createForPrimitive('int', 'I'), Ljava_lang_StackTraceElement_2_
 var $entry = registerEntry();
 var gwtOnLoad = gwtOnLoad = gwtOnLoad_0;
 addInitFunctions(init);
-setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'gecko1_8']]]);
+setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie9']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');
 gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);
 $sendStats('moduleStartup', 'end');
