@@ -3,7 +3,7 @@ var __gwtModuleFunction = $wnd.jsqrscanner;
 var $sendStats = __gwtModuleFunction.__sendStats;
 $sendStats('moduleStartup', 'moduleEvalStart');
 var $gwt_version = "2.7.0";
-var $strongName = '1C2CD1CFE4C7C9D774D98ACB8F069F9C';
+var $strongName = 'F0879322278FBE3F622BCA3E5F9EFC31';
 var $gwt = {};
 var $doc = $wnd.document;
 var $moduleName, $moduleBase;
@@ -5045,8 +5045,15 @@ function $setWebcam(videoElement, scanner){
   function success(stream){
     scanner.videoStream = stream;
     var v = videoElement;
+    function removeControls(){
+      v.removeAttribute('controls');
+    }
+
     try {
       v.srcObject = stream;
+      v.setAttribute('playsinline', true);
+      v.setAttribute('controls', true);
+      setTimeout(removeControls);
     }
      catch (ex) {
       v.src = $wnd.URL.createObjectURL(stream);

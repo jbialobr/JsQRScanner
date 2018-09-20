@@ -3,7 +3,7 @@ var __gwtModuleFunction = $wnd.jsqrscanner;
 var $sendStats = __gwtModuleFunction.__sendStats;
 $sendStats('moduleStartup', 'moduleEvalStart');
 var $gwt_version = "2.7.0";
-var $strongName = 'A159D0FAB3BD246277006A15B351EE69';
+var $strongName = 'B1F2ACB053147E133D7B1631DDD167E8';
 var $gwt = {};
 var $doc = $wnd.document;
 var $moduleName, $moduleBase;
@@ -1938,7 +1938,7 @@ var Lcom_google_gwt_user_client_ui_WidgetCollection$WidgetIterator_2_classLit = 
 function assertCompileTimeUserAgent(){
   var runtimeValue;
   runtimeValue = $getRuntimeValue();
-  if (!$equals('ie9', runtimeValue)) {
+  if (!$equals('ie10', runtimeValue)) {
     throw new UserAgentAsserter$UserAgentAssertionError(runtimeValue);
   }
 }
@@ -1952,7 +1952,7 @@ var Ljava_lang_Error_2_classLit = createForClass('java.lang', 'Error', 58);
 defineClass(18, 58, $intern_3);
 var Ljava_lang_AssertionError_2_classLit = createForClass('java.lang', 'AssertionError', 18);
 function UserAgentAsserter$UserAgentAssertionError(runtimeValue){
-  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
+  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
 }
 
 defineClass(80, 18, $intern_3, UserAgentAsserter$UserAgentAssertionError);
@@ -5296,8 +5296,15 @@ function $setWebcam(videoElement, scanner){
   function success(stream){
     scanner.videoStream = stream;
     var v = videoElement;
+    function removeControls(){
+      v.removeAttribute('controls');
+    }
+
     try {
       v.srcObject = stream;
+      v.setAttribute('playsinline', true);
+      v.setAttribute('controls', true);
+      setTimeout(removeControls);
     }
      catch (ex) {
       v.src = $wnd.URL.createObjectURL(stream);
@@ -7520,7 +7527,7 @@ var I_classLit = createForPrimitive('int', 'I'), Ljava_lang_StackTraceElement_2_
 var $entry = registerEntry();
 var gwtOnLoad = gwtOnLoad = gwtOnLoad_0;
 addInitFunctions(init);
-setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie9']]]);
+setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie10']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');
 gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);
 $sendStats('moduleStartup', 'end');
