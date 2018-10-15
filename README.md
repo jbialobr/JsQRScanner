@@ -9,6 +9,8 @@ The export of the public api is made with the [gwt-exporter](https://github.com/
 
 https://jbialobr.github.io/JsQRScanner/
 
+[Treasure Hunt Game Creator using QR codes to encode clues](https://treasurehuntqr.appspot.com/treasurehunts/play/5657382461898752?at=106253815718623556511956012583&au=5629499534213120)
+
 # How to use
 
 1) Place all the files from the [js](https://github.com/jbialobr/JsQRScanner/blob/master/war/js/) directory on your server.
