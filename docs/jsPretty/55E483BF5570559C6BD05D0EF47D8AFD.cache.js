@@ -3,7 +3,7 @@ var __gwtModuleFunction = $wnd.jsqrscanner;
 var $sendStats = __gwtModuleFunction.__sendStats;
 $sendStats('moduleStartup', 'moduleEvalStart');
 var $gwt_version = "2.7.0";
-var $strongName = '61FDF3EE355B5CFDDC3880B5ED22C0EB';
+var $strongName = '55E483BF5570559C6BD05D0EF47D8AFD';
 var $gwt = {};
 var $doc = $wnd.document;
 var $moduleName, $moduleBase;
@@ -1938,7 +1938,7 @@ var Lcom_google_gwt_user_client_ui_WidgetCollection$WidgetIterator_2_classLit = 
 function assertCompileTimeUserAgent(){
   var runtimeValue;
   runtimeValue = $getRuntimeValue();
-  if (!$equals('ie9', runtimeValue)) {
+  if (!$equals('ie10', runtimeValue)) {
     throw new UserAgentAsserter$UserAgentAssertionError(runtimeValue);
   }
 }
@@ -1952,7 +1952,7 @@ var Ljava_lang_Error_2_classLit = createForClass('java.lang', 'Error', 58);
 defineClass(18, 58, $intern_3);
 var Ljava_lang_AssertionError_2_classLit = createForClass('java.lang', 'AssertionError', 18);
 function UserAgentAsserter$UserAgentAssertionError(runtimeValue){
-  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
+  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
 }
 
 defineClass(80, 18, $intern_3, UserAgentAsserter$UserAgentAssertionError);
@@ -5317,6 +5317,11 @@ function $setWebcam(videoElement, scanner){
     scanner.reportError(msg);
   }
 
+  var vsp = scanner.videoStreamProvider;
+  if (vsp) {
+    vsp().then(success)['catch'](error);
+    return;
+  }
   var n = $wnd.navigator;
   function sourceSelected(videoSource){
     var constraints = {audio:false, video:{optional:[{sourceId:videoSource}]}};
@@ -5345,7 +5350,7 @@ function $stopWebcam(scanner){
   }
 }
 
-function ScannerWidget(callback){
+function ScannerWidget(callback, videoStreamProvider){
   this.children = new WidgetCollection;
   $setElement(this, ($clinit_DOM() , $doc.createElement('div')));
   this.video = createIfSupported_0();
@@ -5356,6 +5361,7 @@ function ScannerWidget(callback){
   this.snapImageMaxSize = -1;
   this.active = true;
   this.callback = callback;
+  this.videoStreamProvider = videoStreamProvider;
   $add_2(this.readers, this.qrReader);
   this.scanTimer = new ScannerWidget$1(this);
   $add_0(this, this.video);
@@ -7323,8 +7329,8 @@ function $removeFrom(this$static, htmlElement){
   $stopWebcam(this$static);
 }
 
-function JSScannerWidget(onSuccess){
-  ScannerWidget.call(this, new ScannerCallback(onSuccess));
+function JSScannerWidget(onSuccess, provideVideoStream){
+  ScannerWidget.call(this, new ScannerCallback(onSuccess), provideVideoStream);
 }
 
 function addTo(htmlElement, scannerElement){
@@ -7337,8 +7343,8 @@ function removeFrom(htmlElement, scannerElement){
 
 defineClass(105, 104, $intern_1, JSScannerWidget);
 var Ljb_client_JSScannerWidget_2_classLit = createForClass('jb.client', 'JSScannerWidget', 105);
-function JsQRScanner(onSuccess){
-  this.scanner = new JSScannerWidget(onSuccess);
+function JsQRScanner(onSuccess, provideVideoStream){
+  this.scanner = new JSScannerWidget(onSuccess, provideVideoStream);
 }
 
 defineClass(61, 1, {61:1}, JsQRScanner);
@@ -7397,7 +7403,7 @@ function $export0_0(this$static){
   var __0, __ = this$static;
   $wnd.JsQRScanner = $entry(function(){
     var g, j = this, a = arguments;
-    a.length == 1 && __.isAssignable(a[0])?(g = a[0]):a.length == 1 && (g = ___create(a[0] == null?null:a[0].constructor == $wnd.AsyncQRCallback?a[0].g:new AsyncQRCallback_ExporterImpl_0(a[0])));
+    a.length == 1 && __.isAssignable(a[0])?(g = a[0]):a.length == 2 && (g = ___create(a[0] == null?null:a[0].constructor == $wnd.AsyncQRCallback?a[0].g:new AsyncQRCallback_ExporterImpl_0(a[0]), a[1]));
     j.g = g;
     setWrapper(g, j);
     return j;
@@ -7453,8 +7459,8 @@ function JsQRScanner_ExporterImpl(){
   $export_0(this);
 }
 
-function ___create(a0){
-  return new JsQRScanner(a0);
+function ___create(a0, a1){
+  return new JsQRScanner(a0, a1);
 }
 
 defineClass(102, 1, {}, JsQRScanner_ExporterImpl);
@@ -7527,7 +7533,7 @@ var I_classLit = createForPrimitive('int', 'I'), Ljava_lang_StackTraceElement_2_
 var $entry = registerEntry();
 var gwtOnLoad = gwtOnLoad = gwtOnLoad_0;
 addInitFunctions(init);
-setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie9']]]);
+setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie10']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');
 gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);
 $sendStats('moduleStartup', 'end');
