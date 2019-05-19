@@ -16,9 +16,9 @@ implements Exportable
 {   
     private JSScannerWidget scanner;
     
-    public JsQRScanner(AsyncQRCallback onSuccess)
+    public JsQRScanner(AsyncQRCallback onSuccess, JavaScriptObject provideVideoStream)
     {
-        scanner = new JSScannerWidget(onSuccess);
+        scanner = new JSScannerWidget(onSuccess, provideVideoStream);
     }
      
     public void appendTo(JavaScriptObject htmlElement)
@@ -74,9 +74,9 @@ implements Exportable
 
 class JSScannerWidget extends ScannerWidget
 {
-    public JSScannerWidget(AsyncQRCallback onSuccess)
+    public JSScannerWidget(AsyncQRCallback onSuccess, JavaScriptObject provideVideoStream)
     {
-        super(new ScannerCallback(onSuccess));
+        super(new ScannerCallback(onSuccess), provideVideoStream);
     }
     
     public void appendTo(JavaScriptObject htmlElement)
