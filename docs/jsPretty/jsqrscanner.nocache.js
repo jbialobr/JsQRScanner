@@ -63,9 +63,7 @@ function jsqrscanner(){
       return;
     }
     var scriptFrame = $doc_0.createElement('iframe');
-    var doctype = document.compatMode == 'CSS1Compat'?'<!doctype html>':'';
-    var frameHtml = doctype + '<html><head><\/head><body><\/body><\/html>';	
-    scriptFrame.src = 'javascript:'+frameHtml;
+    scriptFrame.src = 'javascript:""';
     scriptFrame.id = 'jsqrscanner';
     scriptFrame.style.cssText = 'position:absolute; width:0; height:0; border:none; left: -1000px;' + ' top: -1000px;';
     scriptFrame.tabIndex = -1;
@@ -74,6 +72,10 @@ function jsqrscanner(){
     if (!frameDoc) {
       frameDoc = scriptFrame.contentWindow.document;
     }
+    frameDoc.open();
+    var doctype = document.compatMode == 'CSS1Compat'?'<!doctype html>':'';
+    frameDoc.write(doctype + '<html><head><\/head><body><\/body><\/html>');
+    frameDoc.close();
   }
 
   function installScript(filename){
