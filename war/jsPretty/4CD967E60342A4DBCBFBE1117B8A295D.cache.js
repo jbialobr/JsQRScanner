@@ -3,7 +3,7 @@ var __gwtModuleFunction = $wnd.jsqrscanner;
 var $sendStats = __gwtModuleFunction.__sendStats;
 $sendStats('moduleStartup', 'moduleEvalStart');
 var $gwt_version = "2.7.0";
-var $strongName = '18632C0960658CACFFBC13B07EDE605E';
+var $strongName = '4CD967E60342A4DBCBFBE1117B8A295D';
 var $gwt = {};
 var $doc = $wnd.document;
 var $moduleName, $moduleBase;
@@ -22,7 +22,7 @@ var $stats = $wnd.__gwtStatsEvent ? function(a) {
 return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);
 } : null;
 var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;
-var $intern_0 = 2147483647, $intern_1 = {33:1, 34:1, 31:1, 30:1, 35:1, 25:1, 20:1}, $intern_2 = {3:1, 5:1}, $intern_3 = {3:1, 8:1}, $intern_4 = {3:1, 10:1, 8:1}, $intern_5 = 4194303, $intern_6 = 1048575, $intern_7 = 4194304, $intern_8 = 17592186044416, $intern_9 = -9223372036854775808, $intern_10 = 524288, $intern_11 = 65536, $intern_12 = 131072, $intern_13 = 1048576, $intern_14 = 8388608, $intern_15 = 16777216, $intern_16 = 33554432, $intern_17 = 67108864, $intern_18 = {3:1}, $intern_19 = {3:1, 22:1, 5:1}, $intern_20 = {7:1, 3:1}, $intern_21 = {14:1, 3:1, 19:1, 13:1}, $intern_22 = 0.20000000298023224, $intern_23 = {40:1}, $intern_24 = {17:1}, $intern_25 = {3:1, 51:1};
+var $intern_0 = 2147483647, $intern_1 = {33:1, 34:1, 31:1, 30:1, 35:1, 25:1, 20:1}, $intern_2 = {3:1, 5:1}, $intern_3 = {3:1, 8:1}, $intern_4 = {3:1, 10:1, 8:1}, $intern_5 = 4194303, $intern_6 = 1048575, $intern_7 = 4194304, $intern_8 = 17592186044416, $intern_9 = -9223372036854775808, $intern_10 = 524288, $intern_11 = 65536, $intern_12 = 1048576, $intern_13 = 8388608, $intern_14 = 16777216, $intern_15 = 33554432, $intern_16 = 67108864, $intern_17 = {3:1}, $intern_18 = {3:1, 22:1, 5:1}, $intern_19 = {7:1, 3:1}, $intern_20 = {14:1, 3:1, 19:1, 13:1}, $intern_21 = 0.20000000298023224, $intern_22 = {40:1}, $intern_23 = {17:1}, $intern_24 = {3:1, 52:1};
 var _, initFnList_0, prototypesByTypeId_0 = {}, permutationId = -1;
 function typeMarkerFn(){
 }
@@ -409,7 +409,7 @@ _.toString$ = function toString_1(){
   if (!this.element) {
     return '(null handle)';
   }
-  return $toString(($clinit_DOM() , this.element));
+  return ($clinit_DOM() , this.element).outerHTML;
 }
 ;
 var Lcom_google_gwt_user_client_ui_UIObject_2_classLit = createForClass('com.google.gwt.user.client.ui', 'UIObject', 25);
@@ -490,7 +490,7 @@ _.onBrowserEvent = function onBrowserEvent(event_0){
   switch ($clinit_DOM() , $eventGetTypeInt(event_0.type)) {
     case 16:
     case 32:
-      related = $eventGetRelatedTarget(event_0);
+      related = event_0.relatedTarget;
       if (!!related && $isOrHasChild(this.element, related)) {
         return;
       }
@@ -509,7 +509,7 @@ var Lcom_google_gwt_user_client_ui_Widget_2_classLit = createForClass('com.googl
 function $onAttach_0(this$static){
   var tabIndex;
   $onAttach(this$static);
-  tabIndex = ($clinit_DOM() , this$static.element).tabIndex;
+  tabIndex = $getTabIndex(($clinit_DOM() , this$static.element));
   -1 == tabIndex && (this$static.element.tabIndex = 0 , undefined);
 }
 
@@ -1020,32 +1020,16 @@ function $setWidth(this$static, width_0){
   this$static.width = width_0;
 }
 
-function $eventGetRelatedTarget(evt){
-  var relatedTarget = evt.relatedTarget;
-  if (!relatedTarget) {
-    return null;
-  }
-  try {
-    var nodeName = relatedTarget.nodeName;
-    return relatedTarget;
-  }
-   catch (e) {
-    return null;
-  }
-}
-
 function $isOrHasChild(parent_0, child){
-  return parent_0 === child || !!(parent_0.compareDocumentPosition(child) & 16);
+  return parent_0.contains(child);
 }
 
-function $toString(elem){
-  var doc = elem.ownerDocument;
-  var temp = elem.cloneNode(true);
-  var tempDiv = doc.createElement('DIV');
-  tempDiv.appendChild(temp);
-  outer = tempDiv.innerHTML;
-  temp.innerHTML = '';
-  return outer;
+function $eventGetCurrentTarget(event_0){
+  return event_0.currentTarget || $wnd;
+}
+
+function $getTabIndex(elem){
+  return typeof elem.tabIndex != 'undefined'?elem.tabIndex:-1;
 }
 
 function fireNativeEvent(){
@@ -1458,7 +1442,7 @@ defineClass(117, 176, {}, Video$VideoElementSupportDetectedMaybe);
 var Lcom_google_gwt_media_client_Video$VideoElementSupportDetectedMaybe_2_classLit = createForClass('com.google.gwt.media.client', 'Video/VideoElementSupportDetectedMaybe', 117);
 function $clinit_DOM(){
   $clinit_DOM = emptyMethod;
-  $clinit_DOMImplMozilla();
+  $clinit_DOMImplStandard();
 }
 
 function dispatchEvent_0(evt, elem, listener){
@@ -1577,25 +1561,25 @@ function $eventGetTypeInt(eventType){
       return $intern_11;
     case 'DOMMouseScroll':
     case 'mousewheel':
-      return $intern_12;
+      return 131072;
     case 'contextmenu':
       return 262144;
     case 'paste':
       return $intern_10;
     case 'touchstart':
-      return $intern_13;
+      return $intern_12;
     case 'touchmove':
       return 2097152;
     case 'touchend':
       return $intern_7;
     case 'touchcancel':
-      return $intern_14;
+      return $intern_13;
     case 'gesturestart':
-      return $intern_15;
+      return $intern_14;
     case 'gesturechange':
-      return $intern_16;
+      return $intern_15;
     case 'gestureend':
-      return $intern_17;
+      return $intern_16;
     default:return -1;
   }
 }
@@ -1603,7 +1587,6 @@ function $eventGetTypeInt(eventType){
 function $maybeInitializeEventSystem(){
   if (!eventSystemIsInitialized) {
     $initEventSystem();
-    $initSyntheticMouseUpEvents();
     eventSystemIsInitialized = true;
   }
 }
@@ -1644,6 +1627,11 @@ function $initEventSystem(){
   );
 }
 
+function $sinkEvents(elem, bits){
+  $maybeInitializeEventSystem();
+  $sinkEventsImpl(elem, bits);
+}
+
 function $sinkEventsImpl(elem, bits){
   var chMask = (elem.__eventBits || 0) ^ bits;
   elem.__eventBits = bits;
@@ -1666,16 +1654,16 @@ function $sinkEventsImpl(elem, bits){
   chMask & 16384 && (elem.onscroll = bits & 16384?dispatchEvent_1:null);
   chMask & 32768 && (elem.onload = bits & 32768?dispatchUnhandledEvent:null);
   chMask & $intern_11 && (elem.onerror = bits & $intern_11?dispatchEvent_1:null);
-  chMask & $intern_12 && (elem.onmousewheel = bits & $intern_12?dispatchEvent_1:null);
+  chMask & 131072 && (elem.onmousewheel = bits & 131072?dispatchEvent_1:null);
   chMask & 262144 && (elem.oncontextmenu = bits & 262144?dispatchEvent_1:null);
   chMask & $intern_10 && (elem.onpaste = bits & $intern_10?dispatchEvent_1:null);
-  chMask & $intern_13 && (elem.ontouchstart = bits & $intern_13?dispatchEvent_1:null);
+  chMask & $intern_12 && (elem.ontouchstart = bits & $intern_12?dispatchEvent_1:null);
   chMask & 2097152 && (elem.ontouchmove = bits & 2097152?dispatchEvent_1:null);
   chMask & $intern_7 && (elem.ontouchend = bits & $intern_7?dispatchEvent_1:null);
-  chMask & $intern_14 && (elem.ontouchcancel = bits & $intern_14?dispatchEvent_1:null);
-  chMask & $intern_15 && (elem.ongesturestart = bits & $intern_15?dispatchEvent_1:null);
-  chMask & $intern_16 && (elem.ongesturechange = bits & $intern_16?dispatchEvent_1:null);
-  chMask & $intern_17 && (elem.ongestureend = bits & $intern_17?dispatchEvent_1:null);
+  chMask & $intern_13 && (elem.ontouchcancel = bits & $intern_13?dispatchEvent_1:null);
+  chMask & $intern_14 && (elem.ongesturestart = bits & $intern_14?dispatchEvent_1:null);
+  chMask & $intern_15 && (elem.ongesturechange = bits & $intern_15?dispatchEvent_1:null);
+  chMask & $intern_16 && (elem.ongestureend = bits & $intern_16?dispatchEvent_1:null);
 }
 
 function dispatchCapturedEvent(evt){
@@ -1683,7 +1671,6 @@ function dispatchCapturedEvent(evt){
 }
 
 function dispatchCapturedMouseEvent(evt){
-  $clinit_DOMImplStandard();
   $clinit_DOM();
   return;
 }
@@ -1704,47 +1691,21 @@ function dispatchEvent_2(evt){
 
 function dispatchUnhandledEvent_0(evt){
   var element;
-  element = evt.currentTarget;
+  element = $eventGetCurrentTarget(evt);
   element['__gwtLastUnhandledEvent'] = evt.type;
   dispatchEvent_2(evt);
 }
 
 function getFirstAncestorWithListener(evt){
   var curElem;
-  curElem = evt.currentTarget;
+  curElem = $eventGetCurrentTarget(evt);
   while (!!curElem && !getEventListener(curElem)) {
     curElem = curElem.parentNode;
   }
   return curElem;
 }
 
-var bitlessEventDispatchers, captureElem, captureEventDispatchers, dispatchEvent_1, dispatchUnhandledEvent;
-function $clinit_DOMImplMozilla(){
-  $clinit_DOMImplMozilla = emptyMethod;
-  $clinit_DOMImplStandard();
-  captureEventDispatchers['DOMMouseScroll'] = dispatchCapturedMouseEvent;
-}
-
-function $initSyntheticMouseUpEvents(){
-  $wnd.addEventListener('mouseout', $entry(function(evt){
-    var cap = ($clinit_DOMImplStandard() , captureElem);
-    if (cap && !evt.relatedTarget) {
-      if ('html' == evt.target.tagName.toLowerCase()) {
-        var muEvent = $doc.createEvent('MouseEvents');
-        muEvent.initMouseEvent('mouseup', true, true, $wnd, 0, evt.screenX, evt.screenY, evt.clientX, evt.clientY, evt.ctrlKey, evt.altKey, evt.shiftKey, evt.metaKey, evt.button, null);
-        cap.dispatchEvent(muEvent);
-      }
-    }
-  }
-  ), true);
-}
-
-function $sinkEvents(elem, bits){
-  $maybeInitializeEventSystem();
-  $sinkEventsImpl(elem, bits);
-  bits & $intern_12 && elem.addEventListener('DOMMouseScroll', ($clinit_DOMImplStandard() , dispatchEvent_1), false);
-}
-
+var bitlessEventDispatchers, captureEventDispatchers, dispatchEvent_1, dispatchUnhandledEvent;
 function foreach_0(map_0, fn){
   for (var e in map_0) {
     map_0.hasOwnProperty(e) && fn(e, map_0[e]);
@@ -1963,7 +1924,7 @@ var Lcom_google_gwt_user_client_ui_WidgetCollection$WidgetIterator_2_classLit = 
 function assertCompileTimeUserAgent(){
   var runtimeValue;
   runtimeValue = $getRuntimeValue();
-  if (!$equals('gecko1_8', runtimeValue)) {
+  if (!$equals('safari', runtimeValue)) {
     throw new UserAgentAsserter$UserAgentAssertionError(runtimeValue);
   }
 }
@@ -1972,12 +1933,12 @@ function Error_0(message){
   Throwable.call(this, message);
 }
 
-defineClass(58, 8, $intern_3);
-var Ljava_lang_Error_2_classLit = createForClass('java.lang', 'Error', 58);
-defineClass(18, 58, $intern_3);
+defineClass(59, 8, $intern_3);
+var Ljava_lang_Error_2_classLit = createForClass('java.lang', 'Error', 59);
+defineClass(18, 59, $intern_3);
 var Ljava_lang_AssertionError_2_classLit = createForClass('java.lang', 'AssertionError', 18);
 function UserAgentAsserter$UserAgentAssertionError(runtimeValue){
-  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (gecko1_8) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (gecko1_8) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (gecko1_8) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
+  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (safari) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (safari) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (safari) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
 }
 
 defineClass(80, 18, $intern_3, UserAgentAsserter$UserAgentAssertionError);
@@ -2022,11 +1983,11 @@ function BinaryBitmap(binarizer){
 defineClass(124, 1, {}, BinaryBitmap);
 _.toString$ = function toString_3(){
   try {
-    return $toString_0((!this.matrix && (this.matrix = $getBlackMatrix_0(this.binarizer)) , this.matrix));
+    return $toString((!this.matrix && (this.matrix = $getBlackMatrix_0(this.binarizer)) , this.matrix));
   }
    catch ($e0) {
     $e0 = wrap($e0);
-    if (instanceOf($e0, 53)) {
+    if (instanceOf($e0, 54)) {
       return '';
     }
      else 
@@ -2063,9 +2024,9 @@ function ChecksumException(){
   ReaderException.call(this);
 }
 
-defineClass(54, 64, {54:1, 3:1, 10:1, 8:1}, ChecksumException);
+defineClass(55, 64, {55:1, 3:1, 10:1, 8:1}, ChecksumException);
 var INSTANCE_0;
-var Lcom_google_zxing_ChecksumException_2_classLit = createForClass('com.google.zxing', 'ChecksumException', 54);
+var Lcom_google_zxing_ChecksumException_2_classLit = createForClass('com.google.zxing', 'ChecksumException', 55);
 function $clinit_FormatException(){
   $clinit_FormatException = emptyMethod;
   $clinit_ReaderException();
@@ -2077,13 +2038,13 @@ function FormatException(){
   ReaderException.call(this);
 }
 
-defineClass(55, 64, {55:1, 3:1, 10:1, 8:1}, FormatException);
+defineClass(56, 64, {56:1, 3:1, 10:1, 8:1}, FormatException);
 var INSTANCE_1;
-var Lcom_google_zxing_FormatException_2_classLit = createForClass('com.google.zxing', 'FormatException', 55);
+var Lcom_google_zxing_FormatException_2_classLit = createForClass('com.google.zxing', 'FormatException', 56);
 defineClass(125, 1, {});
 _.toString$ = function toString_4(){
   var c, luminance, result, row, x_0, y_0;
-  row = initDim(B_classLit, $intern_18, 0, this.width_0, 7, 1);
+  row = initDim(B_classLit, $intern_17, 0, this.width_0, 7, 1);
   result = new StringBuilder;
   for (y_0 = 0; y_0 < this.height_0; y_0++) {
     row = $getRow(this, y_0, row);
@@ -2111,9 +2072,9 @@ function NotFoundException(){
   ReaderException.call(this);
 }
 
-defineClass(53, 64, {53:1, 3:1, 10:1, 8:1}, NotFoundException);
+defineClass(54, 64, {54:1, 3:1, 10:1, 8:1}, NotFoundException);
 var INSTANCE_2;
-var Lcom_google_zxing_NotFoundException_2_classLit = createForClass('com.google.zxing', 'NotFoundException', 53);
+var Lcom_google_zxing_NotFoundException_2_classLit = createForClass('com.google.zxing', 'NotFoundException', 54);
 function $putMetadata(this$static, type_0, value_0){
   !this$static.resultMetadata && (this$static.resultMetadata = new EnumMap(Lcom_google_zxing_ResultMetadataType_2_classLit));
   $put_1(this$static.resultMetadata, type_0, value_0);
@@ -2183,7 +2144,7 @@ function ResultMetadataType(enum$name, enum$ordinal){
 
 function values_0(){
   $clinit_ResultMetadataType();
-  return initValues(getClassLiteralForArray(Lcom_google_zxing_ResultMetadataType_2_classLit, 1), $intern_19, 21, 0, [OTHER, ORIENTATION, BYTE_SEGMENTS, ERROR_CORRECTION_LEVEL, ISSUE_NUMBER, SUGGESTED_PRICE, POSSIBLE_COUNTRY, UPC_EAN_EXTENSION, PDF417_EXTRA_METADATA, STRUCTURED_APPEND_SEQUENCE, STRUCTURED_APPEND_PARITY]);
+  return initValues(getClassLiteralForArray(Lcom_google_zxing_ResultMetadataType_2_classLit, 1), $intern_18, 21, 0, [OTHER, ORIENTATION, BYTE_SEGMENTS, ERROR_CORRECTION_LEVEL, ISSUE_NUMBER, SUGGESTED_PRICE, POSSIBLE_COUNTRY, UPC_EAN_EXTENSION, PDF417_EXTRA_METADATA, STRUCTURED_APPEND_SEQUENCE, STRUCTURED_APPEND_PARITY]);
 }
 
 defineClass(21, 13, {21:1, 3:1, 19:1, 13:1}, ResultMetadataType);
@@ -2295,7 +2256,7 @@ function $setRegion(this$static, left, top_0, width_0, height){
   }
 }
 
-function $toString_0(this$static){
+function $toString(this$static){
   var result, x_0, y_0;
   result = new StringBuilder;
   for (y_0 = 0; y_0 < this$static.height_0; y_0++) {
@@ -2318,7 +2279,7 @@ function BitMatrix_0(width_0, height){
   this.width_0 = width_0;
   this.height_0 = height;
   this.rowSize = ~~((width_0 + 31) / 32);
-  this.bits = initDim(I_classLit, $intern_20, 0, this.rowSize * height, 7, 1);
+  this.bits = initDim(I_classLit, $intern_19, 0, this.rowSize * height, 7, 1);
 }
 
 defineClass(32, 1, {32:1}, BitMatrix, BitMatrix_0);
@@ -2342,7 +2303,7 @@ _.hashCode$ = function hashCode_3(){
 }
 ;
 _.toString$ = function toString_8(){
-  return $toString_0(this);
+  return $toString(this);
 }
 ;
 _.height_0 = 0;
@@ -2395,8 +2356,8 @@ var Lcom_google_zxing_common_BitSource_2_classLit = createForClass('com.google.z
 function $clinit_CharacterSetECI(){
   $clinit_CharacterSetECI = emptyMethod;
   var eci, eci$array, eci$index, eci$max, name_0, name$array, name$index, name$max, value_0, value$array, value$index, value$max;
-  Cp437 = new CharacterSetECI_1('Cp437', 0, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [0, 2]), initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, []));
-  ISO8859_1 = new CharacterSetECI_1('ISO8859_1', 1, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [1, 3]), initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['ISO-8859-1']));
+  Cp437 = new CharacterSetECI_1('Cp437', 0, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [0, 2]), initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, []));
+  ISO8859_1 = new CharacterSetECI_1('ISO8859_1', 1, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [1, 3]), initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['ISO-8859-1']));
   ISO8859_2 = new CharacterSetECI_0('ISO8859_2', 2, 4, initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['ISO-8859-2']));
   ISO8859_3 = new CharacterSetECI_0('ISO8859_3', 3, 5, initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['ISO-8859-3']));
   ISO8859_4 = new CharacterSetECI_0('ISO8859_4', 4, 6, initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['ISO-8859-4']));
@@ -2418,7 +2379,7 @@ function $clinit_CharacterSetECI(){
   Cp1256 = new CharacterSetECI_0('Cp1256', 20, 24, initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['windows-1256']));
   UnicodeBigUnmarked = new CharacterSetECI_0('UnicodeBigUnmarked', 21, 25, initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['UTF-16BE', 'UnicodeBig']));
   UTF8 = new CharacterSetECI_0('UTF8', 22, 26, initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['UTF-8']));
-  ASCII = new CharacterSetECI_1('ASCII', 23, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [27, 170]), initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['US-ASCII']));
+  ASCII = new CharacterSetECI_1('ASCII', 23, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [27, 170]), initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['US-ASCII']));
   Big5 = new CharacterSetECI;
   GB18030 = new CharacterSetECI_0('GB18030', 25, 29, initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['GB2312', 'EUC_CN', 'GBK']));
   EUC_KR = new CharacterSetECI_0('EUC_KR', 26, 30, initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, ['EUC-KR']));
@@ -2439,12 +2400,12 @@ function $clinit_CharacterSetECI(){
 }
 
 function CharacterSetECI(){
-  CharacterSetECI_1.call(this, 'Big5', 24, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [28]), initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, []));
+  CharacterSetECI_1.call(this, 'Big5', 24, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [28]), initValues(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 4, []));
 }
 
 function CharacterSetECI_0(enum$name, enum$ordinal, value_0, otherEncodingNames){
   Enum.call(this, enum$name, enum$ordinal);
-  this.values = initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [value_0]);
+  this.values = initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [value_0]);
   this.otherEncodingNames = otherEncodingNames;
 }
 
@@ -2464,7 +2425,7 @@ function getCharacterSetECIByValue(value_0){
 
 function values_1(){
   $clinit_CharacterSetECI();
-  return initValues(getClassLiteralForArray(Lcom_google_zxing_common_CharacterSetECI_2_classLit, 1), $intern_19, 11, 0, [Cp437, ISO8859_1, ISO8859_2, ISO8859_3, ISO8859_4, ISO8859_5, ISO8859_6, ISO8859_7, ISO8859_8, ISO8859_9, ISO8859_10, ISO8859_11, ISO8859_13, ISO8859_14, ISO8859_15, ISO8859_16, SJIS, Cp1250, Cp1251, Cp1252, Cp1256, UnicodeBigUnmarked, UTF8, ASCII, Big5, GB18030, EUC_KR]);
+  return initValues(getClassLiteralForArray(Lcom_google_zxing_common_CharacterSetECI_2_classLit, 1), $intern_18, 11, 0, [Cp437, ISO8859_1, ISO8859_2, ISO8859_3, ISO8859_4, ISO8859_5, ISO8859_6, ISO8859_7, ISO8859_8, ISO8859_9, ISO8859_10, ISO8859_11, ISO8859_13, ISO8859_14, ISO8859_15, ISO8859_16, SJIS, Cp1250, Cp1251, Cp1252, Cp1256, UnicodeBigUnmarked, UTF8, ASCII, Big5, GB18030, EUC_KR]);
 }
 
 defineClass(11, 13, {11:1, 3:1, 19:1, 13:1}, CharacterSetECI, CharacterSetECI_0, CharacterSetECI_1);
@@ -2548,7 +2509,7 @@ function $sampleGrid(image, dimensionX, dimensionY, transform){
     throw $clinit_NotFoundException() , $clinit_NotFoundException() , INSTANCE_2;
   }
   bits = new BitMatrix_0(dimensionX, dimensionY);
-  points = initDim(F_classLit, $intern_18, 0, 2 * dimensionX, 7, 1);
+  points = initDim(F_classLit, $intern_17, 0, 2 * dimensionX, 7, 1);
   for (y_0 = 0; y_0 < dimensionY; y_0++) {
     max_0 = points.length;
     iValue = y_0 + 0.5;
@@ -2574,7 +2535,7 @@ defineClass(130, 1, {}, DetectorResult);
 var Lcom_google_zxing_common_DetectorResult_2_classLit = createForClass('com.google.zxing.common', 'DetectorResult', 130);
 function $clinit_GlobalHistogramBinarizer(){
   $clinit_GlobalHistogramBinarizer = emptyMethod;
-  EMPTY = initDim(B_classLit, $intern_18, 0, 0, 7, 1);
+  EMPTY = initDim(B_classLit, $intern_17, 0, 0, 7, 1);
 }
 
 function $getBlackMatrix(this$static){
@@ -2608,7 +2569,7 @@ function $getBlackMatrix(this$static){
 
 function $initArrays(this$static, luminanceSize){
   var x_0;
-  this$static.luminances.length < luminanceSize && (this$static.luminances = initDim(B_classLit, $intern_18, 0, luminanceSize, 7, 1));
+  this$static.luminances.length < luminanceSize && (this$static.luminances = initDim(B_classLit, $intern_17, 0, luminanceSize, 7, 1));
   for (x_0 = 0; x_0 < 32; x_0++) {
     this$static.buckets[x_0] = 0;
   }
@@ -2690,12 +2651,12 @@ function HybridBinarizer(source){
   $clinit_GlobalHistogramBinarizer();
   this.source = source;
   this.luminances = EMPTY;
-  this.buckets = initDim(I_classLit, $intern_20, 0, 32, 7, 1);
+  this.buckets = initDim(I_classLit, $intern_19, 0, 32, 7, 1);
 }
 
 function calculateBlackPoints(luminances, subWidth, subHeight, width_0, height){
   var average, averageNeighborBlackPoint, blackPoints, max_0, maxXOffset, maxYOffset, min_0, offset, pixel, sum, x_0, xoffset, xx, xx0, y_0, yoffset, yy;
-  blackPoints = initDims(I_classLit, [$intern_2, $intern_20], [7, 0], 7, [subHeight, subWidth], 2);
+  blackPoints = initDims(I_classLit, [$intern_2, $intern_19], [7, 0], 7, [subHeight, subWidth], 2);
   for (y_0 = 0; y_0 < subHeight; y_0++) {
     yoffset = y_0 << 3;
     maxYOffset = height - 8;
@@ -2833,7 +2794,7 @@ function squareToQuadrilateral(x0, y0, x1, y1, x2, y2, x3, y3){
   }
 }
 
-defineClass(56, 1, {}, PerspectiveTransform);
+defineClass(57, 1, {}, PerspectiveTransform);
 _.a11 = 0;
 _.a12 = 0;
 _.a13 = 0;
@@ -2843,7 +2804,7 @@ _.a23 = 0;
 _.a31 = 0;
 _.a32 = 0;
 _.a33 = 0;
-var Lcom_google_zxing_common_PerspectiveTransform_2_classLit = createForClass('com.google.zxing.common', 'PerspectiveTransform', 56);
+var Lcom_google_zxing_common_PerspectiveTransform_2_classLit = createForClass('com.google.zxing.common', 'PerspectiveTransform', 57);
 function guessEncoding(bytes){
   var canBeISO88591, canBeShiftJIS, canBeUTF8, i, isoHighOther, length_0, sjisBytesLeft, sjisCurDoubleBytesWordLength, sjisCurKatakanaWordLength, sjisKatakanaChars, sjisMaxDoubleBytesWordLength, sjisMaxKatakanaWordLength, utf2BytesChars, utf3BytesChars, utf4BytesChars, utf8BytesLeft, utf8bom, value_0;
   length_0 = bytes.length;
@@ -2975,7 +2936,7 @@ function $buildMonomial(this$static, degree, coefficient){
   if (coefficient == 0) {
     return this$static.zero;
   }
-  coefficients = initDim(I_classLit, $intern_20, 0, degree + 1, 7, 1);
+  coefficients = initDim(I_classLit, $intern_19, 0, degree + 1, 7, 1);
   coefficients[0] = coefficient;
   return new GenericGFPoly(this$static, coefficients);
 }
@@ -3010,8 +2971,8 @@ function GenericGF(primitive, size_0, b){
   this.primitive = primitive;
   this.size_0 = size_0;
   this.generatorBase = b;
-  this.expTable = initDim(I_classLit, $intern_20, 0, size_0, 7, 1);
-  this.logTable = initDim(I_classLit, $intern_20, 0, size_0, 7, 1);
+  this.expTable = initDim(I_classLit, $intern_19, 0, size_0, 7, 1);
+  this.logTable = initDim(I_classLit, $intern_19, 0, size_0, 7, 1);
   x_0 = 1;
   for (i0 = 0; i0 < size_0; i0++) {
     this.expTable[i0] = x_0;
@@ -3024,8 +2985,8 @@ function GenericGF(primitive, size_0, b){
   for (i = 0; i < size_0 - 1; i++) {
     this.logTable[this.expTable[i]] = i;
   }
-  this.zero = new GenericGFPoly(this, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [0]));
-  this.one = new GenericGFPoly(this, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [1]));
+  this.zero = new GenericGFPoly(this, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [0]));
+  this.one = new GenericGFPoly(this, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [1]));
 }
 
 defineClass(44, 1, {}, GenericGF);
@@ -3056,7 +3017,7 @@ function $addOrSubtract(this$static, other){
     smallerCoefficients = largerCoefficients;
     largerCoefficients = temp;
   }
-  sumDiff = initDim(I_classLit, $intern_20, 0, largerCoefficients.length, 7, 1);
+  sumDiff = initDim(I_classLit, $intern_19, 0, largerCoefficients.length, 7, 1);
   lengthDiff = largerCoefficients.length - smallerCoefficients.length;
   arraycopy(largerCoefficients, 0, sumDiff, 0, lengthDiff);
   for (i = lengthDiff; i < largerCoefficients.length; i++) {
@@ -3099,7 +3060,7 @@ function $multiply_0(this$static, scalar){
     return this$static;
   }
   size_0 = this$static.coefficients.length;
-  product = initDim(I_classLit, $intern_20, 0, size_0, 7, 1);
+  product = initDim(I_classLit, $intern_19, 0, size_0, 7, 1);
   for (i = 0; i < size_0; i++) {
     product[i] = $multiply(this$static.field, this$static.coefficients[i], scalar);
   }
@@ -3118,7 +3079,7 @@ function $multiply_1(this$static, other){
   aLength = aCoefficients.length;
   bCoefficients = other.coefficients;
   bLength = bCoefficients.length;
-  product = initDim(I_classLit, $intern_20, 0, aLength + bLength - 1, 7, 1);
+  product = initDim(I_classLit, $intern_19, 0, aLength + bLength - 1, 7, 1);
   for (i = 0; i < aLength; i++) {
     aCoeff = aCoefficients[i];
     for (j = 0; j < bLength; j++) {
@@ -3137,7 +3098,7 @@ function $multiplyByMonomial(this$static, degree, coefficient){
     return this$static.field.zero;
   }
   size_0 = this$static.coefficients.length;
-  product = initDim(I_classLit, $intern_20, 0, size_0 + degree, 7, 1);
+  product = initDim(I_classLit, $intern_19, 0, size_0 + degree, 7, 1);
   for (i = 0; i < size_0; i++) {
     product[i] = $multiply(this$static.field, this$static.coefficients[i], coefficient);
   }
@@ -3157,10 +3118,10 @@ function GenericGFPoly(field, coefficients){
       ++firstNonZero;
     }
     if (firstNonZero == coefficientsLength) {
-      this.coefficients = initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [0]);
+      this.coefficients = initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [0]);
     }
      else {
-      this.coefficients = initDim(I_classLit, $intern_20, 0, coefficientsLength - firstNonZero, 7, 1);
+      this.coefficients = initDim(I_classLit, $intern_19, 0, coefficientsLength - firstNonZero, 7, 1);
       arraycopy(coefficients, firstNonZero, this.coefficients, 0, this.coefficients.length);
     }
   }
@@ -3214,7 +3175,7 @@ var Lcom_google_zxing_common_reedsolomon_GenericGFPoly_2_classLit = createForCla
 function $decode(this$static, received, twoS){
   var errorLocations, errorMagnitudes, eval_0, i, i0, noError, omega, poly, position, sigma, sigmaOmega, syndrome, syndromeCoefficients;
   poly = new GenericGFPoly(this$static.field, received);
-  syndromeCoefficients = initDim(I_classLit, $intern_20, 0, twoS, 7, 1);
+  syndromeCoefficients = initDim(I_classLit, $intern_19, 0, twoS, 7, 1);
   noError = true;
   for (i0 = 0; i0 < twoS; i0++) {
     eval_0 = $evaluateAt(poly, $exp(this$static.field, i0 + this$static.field.generatorBase));
@@ -3243,9 +3204,9 @@ function $findErrorLocations(this$static, errorLocator){
   var e, i, numErrors, result;
   numErrors = errorLocator.coefficients.length - 1;
   if (numErrors == 1) {
-    return initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [errorLocator.coefficients[errorLocator.coefficients.length - 1 - 1]]);
+    return initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [errorLocator.coefficients[errorLocator.coefficients.length - 1 - 1]]);
   }
-  result = initDim(I_classLit, $intern_20, 0, numErrors, 7, 1);
+  result = initDim(I_classLit, $intern_19, 0, numErrors, 7, 1);
   e = 0;
   for (i = 1; i < this$static.field.size_0 && e < numErrors; i++) {
     if ($evaluateAt(errorLocator, i) == 0) {
@@ -3262,7 +3223,7 @@ function $findErrorLocations(this$static, errorLocator){
 function $findErrorMagnitudes(this$static, errorEvaluator, errorLocations){
   var denominator, i, j, result, s, term, termPlus1, xiInverse;
   s = errorLocations.length;
-  result = initDim(I_classLit, $intern_20, 0, s, 7, 1);
+  result = initDim(I_classLit, $intern_19, 0, s, 7, 1);
   for (i = 0; i < s; i++) {
     xiInverse = $inverse(this$static.field, errorLocations[i]);
     denominator = 1;
@@ -3381,12 +3342,12 @@ function $readCodewords(this$static){
   var bitsRead, col, count, currentByte, dataMask, dimension, formatInfo, functionPattern, i, j, readingUp, result, resultOffset, version;
   formatInfo = $readFormatInformation(this$static);
   version = $readVersion(this$static);
-  dataMask = ($clinit_DataMask() , initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_19, 14, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]))[formatInfo.dataMask];
+  dataMask = ($clinit_DataMask() , initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_18, 14, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]))[formatInfo.dataMask];
   dimension = this$static.bitMatrix.height_0;
   $unmaskBitMatrix(dataMask, this$static.bitMatrix, dimension);
   functionPattern = $buildFunctionPattern(version);
   readingUp = true;
-  result = initDim(B_classLit, $intern_18, 0, version.totalCodewords, 7, 1);
+  result = initDim(B_classLit, $intern_17, 0, version.totalCodewords, 7, 1);
   resultOffset = 0;
   currentByte = 0;
   bitsRead = 0;
@@ -3487,7 +3448,7 @@ function $remask(this$static){
   if (!this$static.parsedFormatInfo) {
     return;
   }
-  dataMask = ($clinit_DataMask() , initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_19, 14, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]))[this$static.parsedFormatInfo.dataMask];
+  dataMask = ($clinit_DataMask() , initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_18, 14, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]))[this$static.parsedFormatInfo.dataMask];
   dimension = this$static.bitMatrix.height_0;
   $unmaskBitMatrix(dataMask, this$static.bitMatrix, dimension);
 }
@@ -3528,7 +3489,7 @@ function getDataBlocks(rawCodewords, version, ecLevel){
     for (i0 = 0; i0 < ecBlock.count; i0++) {
       numDataCodewords = ecBlock.dataCodewords;
       numBlockCodewords = ecBlocks.ecCodewordsPerBlock + numDataCodewords;
-      result[numResultBlocks++] = new DataBlock(numDataCodewords, initDim(B_classLit, $intern_18, 0, numBlockCodewords, 7, 1));
+      result[numResultBlocks++] = new DataBlock(numDataCodewords, initDim(B_classLit, $intern_17, 0, numBlockCodewords, 7, 1));
     }
   }
   shorterBlocksTotalCodewords = result[0].codewords.length;
@@ -3591,17 +3552,17 @@ function DataMask(enum$name, enum$ordinal){
 
 function values_2(){
   $clinit_DataMask();
-  return initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_19, 14, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]);
+  return initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_18, 14, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]);
 }
 
-defineClass(14, 13, $intern_21);
+defineClass(14, 13, $intern_20);
 var DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111;
 var Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask', 14, values_2);
 function DataMask$1(){
   DataMask.call(this, 'DATA_MASK_000', 0);
 }
 
-defineClass(142, 14, $intern_21, DataMask$1);
+defineClass(142, 14, $intern_20, DataMask$1);
 _.isMasked = function isMasked(i, j){
   return (i + j & 1) == 0;
 }
@@ -3611,7 +3572,7 @@ function DataMask$2(){
   DataMask.call(this, 'DATA_MASK_001', 1);
 }
 
-defineClass(143, 14, $intern_21, DataMask$2);
+defineClass(143, 14, $intern_20, DataMask$2);
 _.isMasked = function isMasked_0(i, j){
   return (i & 1) == 0;
 }
@@ -3621,7 +3582,7 @@ function DataMask$3(){
   DataMask.call(this, 'DATA_MASK_010', 2);
 }
 
-defineClass(144, 14, $intern_21, DataMask$3);
+defineClass(144, 14, $intern_20, DataMask$3);
 _.isMasked = function isMasked_1(i, j){
   return j % 3 == 0;
 }
@@ -3631,7 +3592,7 @@ function DataMask$4(){
   DataMask.call(this, 'DATA_MASK_011', 3);
 }
 
-defineClass(145, 14, $intern_21, DataMask$4);
+defineClass(145, 14, $intern_20, DataMask$4);
 _.isMasked = function isMasked_2(i, j){
   return (i + j) % 3 == 0;
 }
@@ -3641,7 +3602,7 @@ function DataMask$5(){
   DataMask.call(this, 'DATA_MASK_100', 4);
 }
 
-defineClass(146, 14, $intern_21, DataMask$5);
+defineClass(146, 14, $intern_20, DataMask$5);
 _.isMasked = function isMasked_3(i, j){
   return (~~(i / 2) + ~~(j / 3) & 1) == 0;
 }
@@ -3651,7 +3612,7 @@ function DataMask$6(){
   DataMask.call(this, 'DATA_MASK_101', 5);
 }
 
-defineClass(147, 14, $intern_21, DataMask$6);
+defineClass(147, 14, $intern_20, DataMask$6);
 _.isMasked = function isMasked_4(i, j){
   var temp;
   temp = i * j;
@@ -3663,7 +3624,7 @@ function DataMask$7(){
   DataMask.call(this, 'DATA_MASK_110', 6);
 }
 
-defineClass(148, 14, $intern_21, DataMask$7);
+defineClass(148, 14, $intern_20, DataMask$7);
 _.isMasked = function isMasked_5(i, j){
   var temp;
   temp = i * j;
@@ -3675,7 +3636,7 @@ function DataMask$8(){
   DataMask.call(this, 'DATA_MASK_111', 7);
 }
 
-defineClass(149, 14, $intern_21, DataMask$8);
+defineClass(149, 14, $intern_20, DataMask$8);
 _.isMasked = function isMasked_6(i, j){
   return ((i + j & 1) + i * j % 3 & 1) == 0;
 }
@@ -3684,7 +3645,7 @@ var Lcom_google_zxing_qrcode_decoder_DataMask$8_2_classLit = createForEnum('com.
 function $clinit_DecodedBitStreamParser(){
   var charArr;
   $clinit_DecodedBitStreamParser = emptyMethod;
-  ALPHANUMERIC_CHARS = (charArr = initDim(C_classLit, $intern_18, 0, 45, 7, 1) , $getChars(charArr, 0) , charArr);
+  ALPHANUMERIC_CHARS = (charArr = initDim(C_classLit, $intern_17, 0, 45, 7, 1) , $getChars(charArr, 0) , charArr);
 }
 
 function decode(bytes, version, ecLevel){
@@ -3788,7 +3749,7 @@ function decodeByteSegment(bits, result, count, currentCharacterSetECI, byteSegm
   if (8 * count > 8 * (bits.bytes.length - bits.byteOffset) - bits.bitOffset) {
     throw $clinit_FormatException() , $clinit_FormatException() , INSTANCE_1;
   }
-  readBytes = initDim(B_classLit, $intern_18, 0, count, 7, 1);
+  readBytes = initDim(B_classLit, $intern_17, 0, count, 7, 1);
   for (i = 0; i < count; i++) {
     readBytes[i] = narrow_byte($readBits(bits, 8));
   }
@@ -3798,7 +3759,7 @@ function decodeByteSegment(bits, result, count, currentCharacterSetECI, byteSegm
   }
    catch ($e0) {
     $e0 = wrap($e0);
-    if (instanceOf($e0, 50)) {
+    if (instanceOf($e0, 51)) {
       throw $clinit_FormatException() , $clinit_FormatException() , INSTANCE_1;
     }
      else 
@@ -3812,7 +3773,7 @@ function decodeHanziSegment(bits, result, count){
   if (count * 13 > 8 * (bits.bytes.length - bits.byteOffset) - bits.bitOffset) {
     throw $clinit_FormatException() , $clinit_FormatException() , INSTANCE_1;
   }
-  buffer = initDim(B_classLit, $intern_18, 0, 2 * count, 7, 1);
+  buffer = initDim(B_classLit, $intern_17, 0, 2 * count, 7, 1);
   offset = 0;
   while (count > 0) {
     twoBytes = $readBits(bits, 13);
@@ -3828,7 +3789,7 @@ function decodeHanziSegment(bits, result, count){
   }
    catch ($e0) {
     $e0 = wrap($e0);
-    if (instanceOf($e0, 50)) {
+    if (instanceOf($e0, 51)) {
       throw $clinit_FormatException() , $clinit_FormatException() , INSTANCE_1;
     }
      else 
@@ -3841,7 +3802,7 @@ function decodeKanjiSegment(bits, result, count){
   if (count * 13 > 8 * (bits.bytes.length - bits.byteOffset) - bits.bitOffset) {
     throw $clinit_FormatException() , $clinit_FormatException() , INSTANCE_1;
   }
-  buffer = initDim(B_classLit, $intern_18, 0, 2 * count, 7, 1);
+  buffer = initDim(B_classLit, $intern_17, 0, 2 * count, 7, 1);
   offset = 0;
   while (count > 0) {
     twoBytes = $readBits(bits, 13);
@@ -3857,7 +3818,7 @@ function decodeKanjiSegment(bits, result, count){
   }
    catch ($e0) {
     $e0 = wrap($e0);
-    if (instanceOf($e0, 50)) {
+    if (instanceOf($e0, 51)) {
       throw $clinit_FormatException() , $clinit_FormatException() , INSTANCE_1;
     }
      else 
@@ -3931,7 +3892,7 @@ var ALPHANUMERIC_CHARS;
 function $correctErrors(this$static, codewordBytes, numDataCodewords){
   var codewordsInts, i, i0, numCodewords, numECCodewords;
   numCodewords = codewordBytes.length;
-  codewordsInts = initDim(I_classLit, $intern_20, 0, numCodewords, 7, 1);
+  codewordsInts = initDim(I_classLit, $intern_19, 0, numCodewords, 7, 1);
   for (i0 = 0; i0 < numCodewords; i0++) {
     codewordsInts[i0] = codewordBytes[i0] & 255;
   }
@@ -3962,11 +3923,11 @@ function $decode_1(this$static, bits){
   }
    catch ($e0) {
     $e0 = wrap($e0);
-    if (instanceOf($e0, 55)) {
+    if (instanceOf($e0, 56)) {
       e = $e0;
       fe = e;
     }
-     else if (instanceOf($e0, 54)) {
+     else if (instanceOf($e0, 55)) {
       e = $e0;
       ce = e;
     }
@@ -3987,7 +3948,7 @@ function $decode_1(this$static, bits){
   }
    catch ($e1) {
     $e1 = wrap($e1);
-    if (instanceOf($e1, 55) || instanceOf($e1, 54)) {
+    if (instanceOf($e1, 56) || instanceOf($e1, 55)) {
       e = $e1;
       if (fe) {
         throw fe;
@@ -4013,7 +3974,7 @@ function $decode_2(this$static, parser){
     dataBlock = dataBlocks[dataBlock$index0];
     totalBytes += dataBlock.numDataCodewords;
   }
-  resultBytes = initDim(B_classLit, $intern_18, 0, totalBytes, 7, 1);
+  resultBytes = initDim(B_classLit, $intern_17, 0, totalBytes, 7, 1);
   resultOffset = 0;
   for (dataBlock$index = 0 , dataBlock$max = dataBlocks.length; dataBlock$index < dataBlock$max; ++dataBlock$index) {
     dataBlock = dataBlocks[dataBlock$index];
@@ -4039,7 +4000,7 @@ function $clinit_ErrorCorrectionLevel(){
   M = new ErrorCorrectionLevel('M', 1);
   Q = new ErrorCorrectionLevel('Q', 2);
   H = new ErrorCorrectionLevel('H', 3);
-  FOR_BITS = initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_ErrorCorrectionLevel_2_classLit, 1), $intern_19, 39, 0, [M, L, H, Q]);
+  FOR_BITS = initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_ErrorCorrectionLevel_2_classLit, 1), $intern_18, 39, 0, [M, L, H, Q]);
 }
 
 function ErrorCorrectionLevel(enum$name, enum$ordinal){
@@ -4056,7 +4017,7 @@ function forBits(bits){
 
 function values_3(){
   $clinit_ErrorCorrectionLevel();
-  return initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_ErrorCorrectionLevel_2_classLit, 1), $intern_19, 39, 0, [L, M, Q, H]);
+  return initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_ErrorCorrectionLevel_2_classLit, 1), $intern_18, 39, 0, [L, M, Q, H]);
 }
 
 defineClass(39, 13, {39:1, 3:1, 19:1, 13:1}, ErrorCorrectionLevel);
@@ -4064,7 +4025,7 @@ var FOR_BITS, H, L, M, Q;
 var Lcom_google_zxing_qrcode_decoder_ErrorCorrectionLevel_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'ErrorCorrectionLevel', 39, values_3);
 function $clinit_FormatInformation(){
   $clinit_FormatInformation = emptyMethod;
-  FORMAT_INFO_DECODE_LOOKUP = initValues(getClassLiteralForArray(I_classLit, 2), $intern_2, 7, 0, [initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [21522, 0]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [20773, 1]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [24188, 2]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [23371, 3]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [17913, 4]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [16590, 5]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [20375, 6]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [19104, 7]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [30660, 8]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [29427, 9]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [32170, 10]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [30877, 11]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [26159, 12]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [25368, 13]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [27713, 14]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [26998, 15]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [5769, 16]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [5054, 17]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [7399, 18]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6608, 19]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [1890, 20]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [597, 21]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [3340, 22]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [2107, 23]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [13663, 24]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [12392, 25]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [16177, 26]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [14854, 27]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [9396, 28]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [8579, 29]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [11994, 30]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [11245, 31])]);
+  FORMAT_INFO_DECODE_LOOKUP = initValues(getClassLiteralForArray(I_classLit, 2), $intern_2, 7, 0, [initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [21522, 0]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [20773, 1]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [24188, 2]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [23371, 3]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [17913, 4]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [16590, 5]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [20375, 6]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [19104, 7]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [30660, 8]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [29427, 9]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [32170, 10]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [30877, 11]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [26159, 12]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [25368, 13]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [27713, 14]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [26998, 15]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [5769, 16]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [5054, 17]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [7399, 18]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6608, 19]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [1890, 20]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [597, 21]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [3340, 22]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [2107, 23]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [13663, 24]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [12392, 25]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [16177, 26]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [14854, 27]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [9396, 28]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [8579, 29]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [11994, 30]), initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [11245, 31])]);
 }
 
 function FormatInformation(formatInfo){
@@ -4111,13 +4072,13 @@ function doDecodeFormatInformation(maskedFormatInfo1, maskedFormatInfo2){
   return null;
 }
 
-defineClass(48, 1, {48:1}, FormatInformation);
+defineClass(49, 1, {49:1}, FormatInformation);
 _.equals$ = function equals_3(o){
   var other;
-  if (!instanceOf(o, 48)) {
+  if (!instanceOf(o, 49)) {
     return false;
   }
-  other = dynamicCast(o, 48);
+  other = dynamicCast(o, 49);
   return this.errorCorrectionLevel == other.errorCorrectionLevel && this.dataMask == other.dataMask;
 }
 ;
@@ -4127,19 +4088,19 @@ _.hashCode$ = function hashCode_4(){
 ;
 _.dataMask = 0;
 var FORMAT_INFO_DECODE_LOOKUP;
-var Lcom_google_zxing_qrcode_decoder_FormatInformation_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'FormatInformation', 48);
+var Lcom_google_zxing_qrcode_decoder_FormatInformation_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'FormatInformation', 49);
 function $clinit_Mode(){
   $clinit_Mode = emptyMethod;
-  TERMINATOR = new Mode('TERMINATOR', 0, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [0, 0, 0]));
-  NUMERIC = new Mode('NUMERIC', 1, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [10, 12, 14]));
-  ALPHANUMERIC = new Mode('ALPHANUMERIC', 2, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [9, 11, 13]));
-  STRUCTURED_APPEND = new Mode('STRUCTURED_APPEND', 3, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [0, 0, 0]));
-  BYTE = new Mode('BYTE', 4, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [8, 16, 16]));
-  ECI = new Mode('ECI', 5, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [0, 0, 0]));
-  KANJI = new Mode('KANJI', 6, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [8, 10, 12]));
-  FNC1_FIRST_POSITION = new Mode('FNC1_FIRST_POSITION', 7, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [0, 0, 0]));
-  FNC1_SECOND_POSITION = new Mode('FNC1_SECOND_POSITION', 8, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [0, 0, 0]));
-  HANZI = new Mode('HANZI', 9, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [8, 10, 12]));
+  TERMINATOR = new Mode('TERMINATOR', 0, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [0, 0, 0]));
+  NUMERIC = new Mode('NUMERIC', 1, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [10, 12, 14]));
+  ALPHANUMERIC = new Mode('ALPHANUMERIC', 2, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [9, 11, 13]));
+  STRUCTURED_APPEND = new Mode('STRUCTURED_APPEND', 3, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [0, 0, 0]));
+  BYTE = new Mode('BYTE', 4, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [8, 16, 16]));
+  ECI = new Mode('ECI', 5, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [0, 0, 0]));
+  KANJI = new Mode('KANJI', 6, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [8, 10, 12]));
+  FNC1_FIRST_POSITION = new Mode('FNC1_FIRST_POSITION', 7, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [0, 0, 0]));
+  FNC1_SECOND_POSITION = new Mode('FNC1_SECOND_POSITION', 8, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [0, 0, 0]));
+  HANZI = new Mode('HANZI', 9, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [8, 10, 12]));
 }
 
 function $getCharacterCountBits(this$static, version){
@@ -4183,7 +4144,7 @@ function forBits_0(bits){
 
 function values_4(){
   $clinit_Mode();
-  return initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Mode_2_classLit, 1), $intern_19, 23, 0, [TERMINATOR, NUMERIC, ALPHANUMERIC, STRUCTURED_APPEND, BYTE, ECI, KANJI, FNC1_FIRST_POSITION, FNC1_SECOND_POSITION, HANZI]);
+  return initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Mode_2_classLit, 1), $intern_18, 23, 0, [TERMINATOR, NUMERIC, ALPHANUMERIC, STRUCTURED_APPEND, BYTE, ECI, KANJI, FNC1_FIRST_POSITION, FNC1_SECOND_POSITION, HANZI]);
 }
 
 defineClass(23, 13, {23:1, 3:1, 19:1, 13:1}, Mode);
@@ -4208,8 +4169,8 @@ _.mirrored = false;
 var Lcom_google_zxing_qrcode_decoder_QRCodeDecoderMetaData_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'QRCodeDecoderMetaData', 132);
 function $clinit_Version(){
   $clinit_Version = emptyMethod;
-  VERSION_DECODE_INFO = initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [31892, 34236, 39577, 42195, 48118, 51042, 55367, 58893, 63784, 68472, 70749, 76311, 79154, 84390, 87683, 92361, 96236, 102084, 102881, 110507, 110734, 117786, 119615, 126325, 127568, 133589, 136944, 141498, 145311, 150283, 152622, 158308, 161089, 167017]);
-  VERSIONS = initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version_2_classLit, 1), $intern_2, 9, 0, [new Version(1, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, []), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(7, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 19)])), new Version$ECBlocks(10, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 16)])), new Version$ECBlocks(13, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 13)])), new Version$ECBlocks(17, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 9)]))])), new Version(2, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 18]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(10, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 34)])), new Version$ECBlocks(16, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 28)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 22)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 16)]))])), new Version(3, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 22]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(15, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 55)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 44)])), new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 17)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 13)]))])), new Version(4, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 26]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(20, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 80)])), new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 32)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 24)])), new Version$ECBlocks(16, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 9)]))])), new Version(5, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 108)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 43)])), new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 15), new Version$ECB(2, 16)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 11), new Version$ECB(2, 12)]))])), new Version(6, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 34]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 68)])), new Version$ECBlocks(16, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 27)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 19)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 15)]))])), new Version(7, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 22, 38]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(20, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 78)])), new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 31)])), new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(4, 15)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 13), new Version$ECB(1, 14)]))])), new Version(8, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 24, 42]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 97)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 38), new Version$ECB(2, 39)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 18), new Version$ECB(2, 19)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 14), new Version$ECB(2, 15)]))])), new Version(9, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 26, 46]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 116)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 36), new Version$ECB(2, 37)])), new Version$ECBlocks(20, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 16), new Version$ECB(4, 17)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 12), new Version$ECB(4, 13)]))])), new Version(10, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 28, 50]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 68), new Version$ECB(2, 69)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 43), new Version$ECB(1, 44)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 19), new Version$ECB(2, 20)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 15), new Version$ECB(2, 16)]))])), new Version(11, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30, 54]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(20, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 81)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 50), new Version$ECB(4, 51)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 22), new Version$ECB(4, 23)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 12), new Version$ECB(8, 13)]))])), new Version(12, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 32, 58]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 92), new Version$ECB(2, 93)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 36), new Version$ECB(2, 37)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 20), new Version$ECB(6, 21)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 14), new Version$ECB(4, 15)]))])), new Version(13, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 34, 62]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 107)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 37), new Version$ECB(1, 38)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 20), new Version$ECB(4, 21)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 11), new Version$ECB(4, 12)]))])), new Version(14, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 26, 46, 66]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 115), new Version$ECB(1, 116)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 40), new Version$ECB(5, 41)])), new Version$ECBlocks(20, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 16), new Version$ECB(5, 17)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 12), new Version$ECB(5, 13)]))])), new Version(15, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 26, 48, 70]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 87), new Version$ECB(1, 88)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 41), new Version$ECB(5, 42)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 24), new Version$ECB(7, 25)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 12), new Version$ECB(7, 13)]))])), new Version(16, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 26, 50, 74]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 98), new Version$ECB(1, 99)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 45), new Version$ECB(3, 46)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 19), new Version$ECB(2, 20)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 15), new Version$ECB(13, 16)]))])), new Version(17, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30, 54, 78]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 107), new Version$ECB(5, 108)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 46), new Version$ECB(1, 47)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 22), new Version$ECB(15, 23)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(17, 15)]))])), new Version(18, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30, 56, 82]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 120), new Version$ECB(1, 121)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(9, 43), new Version$ECB(4, 44)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 22), new Version$ECB(1, 23)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(19, 15)]))])), new Version(19, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30, 58, 86]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 113), new Version$ECB(4, 114)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 44), new Version$ECB(11, 45)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 21), new Version$ECB(4, 22)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(9, 13), new Version$ECB(16, 14)]))])), new Version(20, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 34, 62, 90]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 107), new Version$ECB(5, 108)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 41), new Version$ECB(13, 42)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 24), new Version$ECB(5, 25)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 15), new Version$ECB(10, 16)]))])), new Version(21, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 28, 50, 72, 94]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 116), new Version$ECB(4, 117)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 42)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 22), new Version$ECB(6, 23)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 16), new Version$ECB(6, 17)]))])), new Version(22, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 26, 50, 74, 98]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 111), new Version$ECB(7, 112)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 46)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 24), new Version$ECB(16, 25)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(34, 13)]))])), new Version(23, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30, 54, 78, 102]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 121), new Version$ECB(5, 122)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 47), new Version$ECB(14, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(16, 15), new Version$ECB(14, 16)]))])), new Version(24, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 28, 54, 80, 106]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 117), new Version$ECB(4, 118)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 45), new Version$ECB(14, 46)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 24), new Version$ECB(16, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(30, 16), new Version$ECB(2, 17)]))])), new Version(25, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 32, 58, 84, 110]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 106), new Version$ECB(4, 107)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 47), new Version$ECB(13, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 24), new Version$ECB(22, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 15), new Version$ECB(13, 16)]))])), new Version(26, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30, 58, 86, 114]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 114), new Version$ECB(2, 115)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 46), new Version$ECB(4, 47)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(28, 22), new Version$ECB(6, 23)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(33, 16), new Version$ECB(4, 17)]))])), new Version(27, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 34, 62, 90, 118]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 122), new Version$ECB(4, 123)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 45), new Version$ECB(3, 46)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 23), new Version$ECB(26, 24)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 15), new Version$ECB(28, 16)]))])), new Version(28, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 26, 50, 74, 98, 122]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 117), new Version$ECB(10, 118)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 45), new Version$ECB(23, 46)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 24), new Version$ECB(31, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 15), new Version$ECB(31, 16)]))])), new Version(29, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30, 54, 78, 102, 126]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 116), new Version$ECB(7, 117)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(21, 45), new Version$ECB(7, 46)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 23), new Version$ECB(37, 24)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 15), new Version$ECB(26, 16)]))])), new Version(30, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 26, 52, 78, 104, 130]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 115), new Version$ECB(10, 116)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 47), new Version$ECB(10, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 24), new Version$ECB(25, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(23, 15), new Version$ECB(25, 16)]))])), new Version(31, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30, 56, 82, 108, 134]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 115), new Version$ECB(3, 116)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 46), new Version$ECB(29, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(42, 24), new Version$ECB(1, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(23, 15), new Version$ECB(28, 16)]))])), new Version(32, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 34, 60, 86, 112, 138]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 115)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 46), new Version$ECB(23, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 24), new Version$ECB(35, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 15), new Version$ECB(35, 16)]))])), new Version(33, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30, 58, 86, 114, 142]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 115), new Version$ECB(1, 116)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(14, 46), new Version$ECB(21, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(29, 24), new Version$ECB(19, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 15), new Version$ECB(46, 16)]))])), new Version(34, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 34, 62, 90, 118, 146]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 115), new Version$ECB(6, 116)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(14, 46), new Version$ECB(23, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(44, 24), new Version$ECB(7, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(59, 16), new Version$ECB(1, 17)]))])), new Version(35, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30, 54, 78, 102, 126, 150]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 121), new Version$ECB(7, 122)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 47), new Version$ECB(26, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(39, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 15), new Version$ECB(41, 16)]))])), new Version(36, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 24, 50, 76, 102, 128, 154]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 121), new Version$ECB(14, 122)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 47), new Version$ECB(34, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(46, 24), new Version$ECB(10, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 15), new Version$ECB(64, 16)]))])), new Version(37, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 28, 54, 80, 106, 132, 158]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 122), new Version$ECB(4, 123)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(29, 46), new Version$ECB(14, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(49, 24), new Version$ECB(10, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(24, 15), new Version$ECB(46, 16)]))])), new Version(38, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 32, 58, 84, 110, 136, 162]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 122), new Version$ECB(18, 123)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 46), new Version$ECB(32, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(48, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(42, 15), new Version$ECB(32, 16)]))])), new Version(39, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 26, 54, 82, 110, 138, 166]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(20, 117), new Version$ECB(4, 118)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(40, 47), new Version$ECB(7, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(43, 24), new Version$ECB(22, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 15), new Version$ECB(67, 16)]))])), new Version(40, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [6, 30, 58, 86, 114, 142, 170]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 118), new Version$ECB(6, 119)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(18, 47), new Version$ECB(31, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(34, 24), new Version$ECB(34, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(20, 15), new Version$ECB(61, 16)]))]))]);
+  VERSION_DECODE_INFO = initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [31892, 34236, 39577, 42195, 48118, 51042, 55367, 58893, 63784, 68472, 70749, 76311, 79154, 84390, 87683, 92361, 96236, 102084, 102881, 110507, 110734, 117786, 119615, 126325, 127568, 133589, 136944, 141498, 145311, 150283, 152622, 158308, 161089, 167017]);
+  VERSIONS = initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version_2_classLit, 1), $intern_2, 9, 0, [new Version(1, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, []), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(7, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 19)])), new Version$ECBlocks(10, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 16)])), new Version$ECBlocks(13, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 13)])), new Version$ECBlocks(17, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 9)]))])), new Version(2, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 18]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(10, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 34)])), new Version$ECBlocks(16, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 28)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 22)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 16)]))])), new Version(3, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 22]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(15, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 55)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 44)])), new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 17)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 13)]))])), new Version(4, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 26]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(20, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 80)])), new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 32)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 24)])), new Version$ECBlocks(16, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 9)]))])), new Version(5, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 108)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 43)])), new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 15), new Version$ECB(2, 16)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 11), new Version$ECB(2, 12)]))])), new Version(6, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 34]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 68)])), new Version$ECBlocks(16, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 27)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 19)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 15)]))])), new Version(7, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 22, 38]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(20, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 78)])), new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 31)])), new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(4, 15)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 13), new Version$ECB(1, 14)]))])), new Version(8, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 24, 42]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 97)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 38), new Version$ECB(2, 39)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 18), new Version$ECB(2, 19)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 14), new Version$ECB(2, 15)]))])), new Version(9, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 26, 46]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 116)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 36), new Version$ECB(2, 37)])), new Version$ECBlocks(20, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 16), new Version$ECB(4, 17)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 12), new Version$ECB(4, 13)]))])), new Version(10, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 28, 50]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(18, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 68), new Version$ECB(2, 69)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 43), new Version$ECB(1, 44)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 19), new Version$ECB(2, 20)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 15), new Version$ECB(2, 16)]))])), new Version(11, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30, 54]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(20, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 81)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 50), new Version$ECB(4, 51)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 22), new Version$ECB(4, 23)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 12), new Version$ECB(8, 13)]))])), new Version(12, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 32, 58]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 92), new Version$ECB(2, 93)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 36), new Version$ECB(2, 37)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 20), new Version$ECB(6, 21)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 14), new Version$ECB(4, 15)]))])), new Version(13, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 34, 62]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 107)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 37), new Version$ECB(1, 38)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 20), new Version$ECB(4, 21)])), new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 11), new Version$ECB(4, 12)]))])), new Version(14, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 26, 46, 66]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 115), new Version$ECB(1, 116)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 40), new Version$ECB(5, 41)])), new Version$ECBlocks(20, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 16), new Version$ECB(5, 17)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 12), new Version$ECB(5, 13)]))])), new Version(15, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 26, 48, 70]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(22, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 87), new Version$ECB(1, 88)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 41), new Version$ECB(5, 42)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 24), new Version$ECB(7, 25)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 12), new Version$ECB(7, 13)]))])), new Version(16, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 26, 50, 74]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 98), new Version$ECB(1, 99)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 45), new Version$ECB(3, 46)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 19), new Version$ECB(2, 20)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 15), new Version$ECB(13, 16)]))])), new Version(17, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30, 54, 78]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 107), new Version$ECB(5, 108)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 46), new Version$ECB(1, 47)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 22), new Version$ECB(15, 23)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(17, 15)]))])), new Version(18, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30, 56, 82]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 120), new Version$ECB(1, 121)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(9, 43), new Version$ECB(4, 44)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 22), new Version$ECB(1, 23)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(19, 15)]))])), new Version(19, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30, 58, 86]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 113), new Version$ECB(4, 114)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 44), new Version$ECB(11, 45)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 21), new Version$ECB(4, 22)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(9, 13), new Version$ECB(16, 14)]))])), new Version(20, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 34, 62, 90]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 107), new Version$ECB(5, 108)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 41), new Version$ECB(13, 42)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 24), new Version$ECB(5, 25)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 15), new Version$ECB(10, 16)]))])), new Version(21, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 28, 50, 72, 94]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 116), new Version$ECB(4, 117)])), new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 42)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 22), new Version$ECB(6, 23)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 16), new Version$ECB(6, 17)]))])), new Version(22, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 26, 50, 74, 98]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 111), new Version$ECB(7, 112)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 46)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 24), new Version$ECB(16, 25)])), new Version$ECBlocks(24, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(34, 13)]))])), new Version(23, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30, 54, 78, 102]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 121), new Version$ECB(5, 122)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 47), new Version$ECB(14, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(16, 15), new Version$ECB(14, 16)]))])), new Version(24, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 28, 54, 80, 106]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 117), new Version$ECB(4, 118)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 45), new Version$ECB(14, 46)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 24), new Version$ECB(16, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(30, 16), new Version$ECB(2, 17)]))])), new Version(25, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 32, 58, 84, 110]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(26, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 106), new Version$ECB(4, 107)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 47), new Version$ECB(13, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 24), new Version$ECB(22, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 15), new Version$ECB(13, 16)]))])), new Version(26, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30, 58, 86, 114]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 114), new Version$ECB(2, 115)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 46), new Version$ECB(4, 47)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(28, 22), new Version$ECB(6, 23)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(33, 16), new Version$ECB(4, 17)]))])), new Version(27, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 34, 62, 90, 118]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 122), new Version$ECB(4, 123)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 45), new Version$ECB(3, 46)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 23), new Version$ECB(26, 24)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 15), new Version$ECB(28, 16)]))])), new Version(28, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 26, 50, 74, 98, 122]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 117), new Version$ECB(10, 118)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 45), new Version$ECB(23, 46)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 24), new Version$ECB(31, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 15), new Version$ECB(31, 16)]))])), new Version(29, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30, 54, 78, 102, 126]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 116), new Version$ECB(7, 117)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(21, 45), new Version$ECB(7, 46)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 23), new Version$ECB(37, 24)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 15), new Version$ECB(26, 16)]))])), new Version(30, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 26, 52, 78, 104, 130]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 115), new Version$ECB(10, 116)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 47), new Version$ECB(10, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 24), new Version$ECB(25, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(23, 15), new Version$ECB(25, 16)]))])), new Version(31, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30, 56, 82, 108, 134]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 115), new Version$ECB(3, 116)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 46), new Version$ECB(29, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(42, 24), new Version$ECB(1, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(23, 15), new Version$ECB(28, 16)]))])), new Version(32, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 34, 60, 86, 112, 138]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 115)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 46), new Version$ECB(23, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 24), new Version$ECB(35, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 15), new Version$ECB(35, 16)]))])), new Version(33, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30, 58, 86, 114, 142]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 115), new Version$ECB(1, 116)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(14, 46), new Version$ECB(21, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(29, 24), new Version$ECB(19, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 15), new Version$ECB(46, 16)]))])), new Version(34, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 34, 62, 90, 118, 146]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 115), new Version$ECB(6, 116)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(14, 46), new Version$ECB(23, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(44, 24), new Version$ECB(7, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(59, 16), new Version$ECB(1, 17)]))])), new Version(35, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30, 54, 78, 102, 126, 150]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 121), new Version$ECB(7, 122)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 47), new Version$ECB(26, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(39, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 15), new Version$ECB(41, 16)]))])), new Version(36, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 24, 50, 76, 102, 128, 154]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 121), new Version$ECB(14, 122)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 47), new Version$ECB(34, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(46, 24), new Version$ECB(10, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 15), new Version$ECB(64, 16)]))])), new Version(37, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 28, 54, 80, 106, 132, 158]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 122), new Version$ECB(4, 123)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(29, 46), new Version$ECB(14, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(49, 24), new Version$ECB(10, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(24, 15), new Version$ECB(46, 16)]))])), new Version(38, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 32, 58, 84, 110, 136, 162]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 122), new Version$ECB(18, 123)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 46), new Version$ECB(32, 47)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(48, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(42, 15), new Version$ECB(32, 16)]))])), new Version(39, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 26, 54, 82, 110, 138, 166]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(20, 117), new Version$ECB(4, 118)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(40, 47), new Version$ECB(7, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(43, 24), new Version$ECB(22, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 15), new Version$ECB(67, 16)]))])), new Version(40, initValues(getClassLiteralForArray(I_classLit, 1), $intern_19, 0, 7, [6, 30, 58, 86, 114, 142, 170]), initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 6, 0, [new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 118), new Version$ECB(6, 119)])), new Version$ECBlocks(28, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(18, 47), new Version$ECB(31, 48)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(34, 24), new Version$ECB(34, 25)])), new Version$ECBlocks(30, initValues(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(20, 15), new Version$ECB(61, 16)]))]))]);
 }
 
 function $buildFunctionPattern(this$static){
@@ -4341,9 +4302,9 @@ function AlignmentPattern(posX, posY, estimatedModuleSize){
   this.estimatedModuleSize = estimatedModuleSize;
 }
 
-defineClass(49, 29, {29:1, 49:1}, AlignmentPattern);
+defineClass(50, 29, {29:1, 50:1}, AlignmentPattern);
 _.estimatedModuleSize = 0;
-var Lcom_google_zxing_qrcode_detector_AlignmentPattern_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'AlignmentPattern', 49);
+var Lcom_google_zxing_qrcode_detector_AlignmentPattern_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'AlignmentPattern', 50);
 function $crossCheckVertical(this$static, startI, centerJ, maxCount, originalStateCountTotal){
   var i, image, maxI, stateCount, stateCountTotal;
   image = this$static.image;
@@ -4395,7 +4356,7 @@ function $find(this$static){
   height = this$static.height_0;
   maxJ = startX + this$static.width_0;
   middleI = this$static.startY + ~~(height / 2);
-  stateCount = initDim(I_classLit, $intern_20, 0, 3, 7, 1);
+  stateCount = initDim(I_classLit, $intern_19, 0, 3, 7, 1);
   for (iGen = 0; iGen < height; iGen++) {
     i = middleI + ((iGen & 1) == 0?~~((iGen + 1) / 2):-~~((iGen + 1) / 2));
     stateCount[0] = 0;
@@ -4443,7 +4404,7 @@ function $find(this$static){
     }
   }
   if (this$static.possibleCenters.array.length != 0) {
-    return dynamicCast($get_1(this$static.possibleCenters, 0), 49);
+    return dynamicCast($get_1(this$static.possibleCenters, 0), 50);
   }
   throw $clinit_NotFoundException() , $clinit_NotFoundException() , INSTANCE_2;
 }
@@ -4468,7 +4429,7 @@ function $handlePossibleCenter(this$static, stateCount, i, j){
   if (!isNaN(centerI)) {
     estimatedModuleSize = (stateCount[0] + stateCount[1] + stateCount[2]) / 3;
     for (center$iterator = new AbstractList$IteratorImpl(this$static.possibleCenters); center$iterator.i < center$iterator.this$01.size_1();) {
-      center = (checkCriticalElement(center$iterator.i < center$iterator.this$01.size_1()) , dynamicCast(center$iterator.this$01.get_1(center$iterator.last = center$iterator.i++), 49));
+      center = (checkCriticalElement(center$iterator.i < center$iterator.this$01.size_1()) , dynamicCast(center$iterator.this$01.get_1(center$iterator.last = center$iterator.i++), 50));
       if ($aboutEquals(center, estimatedModuleSize, centerI, centerJ)) {
         return combinedX = (center.x_0 + centerJ) / 2 , combinedY = (center.y_0 + centerI) / 2 , combinedModuleSize = (center.estimatedModuleSize + estimatedModuleSize) / 2 , new AlignmentPattern(combinedX, combinedY, combinedModuleSize);
       }
@@ -4487,7 +4448,7 @@ function AlignmentPatternFinder(image, startX, startY, width_0, height, moduleSi
   this.width_0 = width_0;
   this.height_0 = height;
   this.moduleSize = moduleSize;
-  this.crossCheckStateCount = initDim(I_classLit, $intern_20, 0, 3, 7, 1);
+  this.crossCheckStateCount = initDim(I_classLit, $intern_19, 0, 3, 7, 1);
 }
 
 defineClass(151, 1, {}, AlignmentPatternFinder);
@@ -4560,7 +4521,7 @@ function $processFinderPatternInfo(this$static, info){
       }
        catch ($e0) {
         $e0 = wrap($e0);
-        if (!instanceOf($e0, 53))
+        if (!instanceOf($e0, 54))
           throw unwrap($e0);
       }
     }
@@ -4882,7 +4843,7 @@ function $find_0(this$static){
   iSkip = ~~(3 * maxI / 228);
   iSkip < 3 && (iSkip = 3);
   done = false;
-  stateCount = initDim(I_classLit, $intern_20, 0, 5, 7, 1);
+  stateCount = initDim(I_classLit, $intern_19, 0, 5, 7, 1);
   for (i = iSkip - 1; i < maxI && !done; i += iSkip) {
     stateCount[0] = 0;
     stateCount[1] = 0;
@@ -5052,7 +5013,7 @@ function $selectBestPatterns(this$static){
     average = totalModuleSize / startSize;
     stdDev = Math.sqrt(square / startSize - average * average);
     sort_0(this$static.possibleCenters, new FinderPatternFinder$FurthestFromAverageComparator(average));
-    limit = $intern_22 * average > stdDev?$intern_22 * average:stdDev;
+    limit = $intern_21 * average > stdDev?$intern_21 * average:stdDev;
     for (i = 0; i < this$static.possibleCenters.array.length && this$static.possibleCenters.array.length > 3; i++) {
       pattern = dynamicCast($get_1(this$static.possibleCenters, i), 16);
       if (abs_0(pattern.estimatedModuleSize - average) > limit) {
@@ -5077,7 +5038,7 @@ function $selectBestPatterns(this$static){
 function FinderPatternFinder(image){
   this.image = image;
   this.possibleCenters = new ArrayList;
-  this.crossCheckStateCount = initDim(I_classLit, $intern_20, 0, 5, 7, 1);
+  this.crossCheckStateCount = initDim(I_classLit, $intern_19, 0, 5, 7, 1);
 }
 
 function foundPatternCross(stateCount){
@@ -5117,7 +5078,7 @@ function FinderPatternFinder$CenterComparator(f){
   this.average = f;
 }
 
-defineClass(136, 1, $intern_18, FinderPatternFinder$CenterComparator);
+defineClass(136, 1, $intern_17, FinderPatternFinder$CenterComparator);
 _.compare = function compare(center1, center2){
   return $compare(this, dynamicCast(center1, 16), dynamicCast(center2, 16));
 }
@@ -5135,7 +5096,7 @@ function FinderPatternFinder$FurthestFromAverageComparator(f){
   this.average = f;
 }
 
-defineClass(135, 1, $intern_18, FinderPatternFinder$FurthestFromAverageComparator);
+defineClass(135, 1, $intern_17, FinderPatternFinder$FurthestFromAverageComparator);
 _.compare = function compare_0(center1, center2){
   return $compare_0(this, dynamicCast(center1, 16), dynamicCast(center2, 16));
 }
@@ -5155,7 +5116,7 @@ function $getMatrix(this$static){
   width_0 = this$static.width_0;
   height = this$static.height_0;
   area = width_0 * height;
-  matrix = initDim(B_classLit, $intern_18, 0, area, 7, 1);
+  matrix = initDim(B_classLit, $intern_17, 0, area, 7, 1);
   for (i = 0; i < width_0; i++)
     for (j = 0; j < height; j++) {
       pixelInt = $getColorAt(this$static.imagedata, this$static.left + i, this$static.top_0 + j, 0);
@@ -5171,7 +5132,7 @@ function $getRow(this$static, y_0, row){
     throw new IllegalArgumentException_0('Requested row is outside the image: ' + y_0);
   }
   width_0 = this$static.width_0;
-  (row == null || row.length < width_0) && (row = initDim(B_classLit, $intern_18, 0, width_0, 7, 1));
+  (row == null || row.length < width_0) && (row = initDim(B_classLit, $intern_17, 0, width_0, 7, 1));
   yoffset = this$static.top_0 + y_0;
   for (i = 0; i < width_0; i++) {
     row[i] = $getColorAt(this$static.imagedata, this$static.left + i, yoffset, 0) << 24 >> 24;
@@ -5428,18 +5389,18 @@ function UnsupportedEncodingException(msg){
   Exception_0.call(this, msg);
 }
 
-defineClass(50, 153, {3:1, 50:1, 10:1, 8:1}, UnsupportedEncodingException);
-var Ljava_io_UnsupportedEncodingException_2_classLit = createForClass('java.io', 'UnsupportedEncodingException', 50);
+defineClass(51, 153, {3:1, 51:1, 10:1, 8:1}, UnsupportedEncodingException);
+var Ljava_io_UnsupportedEncodingException_2_classLit = createForClass('java.io', 'UnsupportedEncodingException', 51);
 function AbstractStringBuilder(string){
   this.string = string;
 }
 
-defineClass(59, 1, {});
+defineClass(60, 1, {});
 _.toString$ = function toString_12(){
   return this.string;
 }
 ;
-var Ljava_lang_AbstractStringBuilder_2_classLit = createForClass('java.lang', 'AbstractStringBuilder', 59);
+var Ljava_lang_AbstractStringBuilder_2_classLit = createForClass('java.lang', 'AbstractStringBuilder', 60);
 function ArithmeticException(){
   RuntimeException.call(this);
 }
@@ -5479,8 +5440,8 @@ defineClass(66, 1, {3:1, 66:1});
 var Ljava_lang_Number_2_classLit = createForClass('java.lang', 'Number', 66);
 function $clinit_Double(){
   $clinit_Double = emptyMethod;
-  powers = initValues(getClassLiteralForArray(D_classLit, 1), $intern_18, 0, 7, [1.3407807929942597E154, 1.157920892373162E77, 3.4028236692093846E38, 1.8446744073709552E19, 4294967296, $intern_11, 256, 16, 4, 2]);
-  invPowers = initValues(getClassLiteralForArray(D_classLit, 1), $intern_18, 0, 7, [7.458340731200207E-155, 8.636168555094445E-78, 2.9387358770557188E-39, 5.421010862427522E-20, 2.3283064365386963E-10, 1.52587890625E-5, 0.00390625, 0.0625, 0.25, 0.5]);
+  powers = initValues(getClassLiteralForArray(D_classLit, 1), $intern_17, 0, 7, [1.3407807929942597E154, 1.157920892373162E77, 3.4028236692093846E38, 1.8446744073709552E19, 4294967296, $intern_11, 256, 16, 4, 2]);
+  invPowers = initValues(getClassLiteralForArray(D_classLit, 1), $intern_17, 0, 7, [7.458340731200207E-155, 8.636168555094445E-78, 2.9387358770557188E-39, 5.421010862427522E-20, 2.3283064365386963E-10, 1.52587890625E-5, 0.00390625, 0.0625, 0.25, 0.5]);
 }
 
 function doubleToLongBits(value_0){
@@ -5524,7 +5485,7 @@ function doubleToLongBits(value_0){
     }
   }
   exp_0 > -1023?(value_0 -= 1):(value_0 *= 0.5);
-  ihi = fromDouble(value_0 * $intern_13);
+  ihi = fromDouble(value_0 * $intern_12);
   value_0 -= toDouble(ihi) * 9.5367431640625E-7;
   ilo = fromDouble(value_0 * 4503599627370496);
   ihi = or(ihi, fromInt(exp_0 + 1023 << 20));
@@ -5558,7 +5519,7 @@ function floatToIntBits(value_0){
   exp_0 = toInt(sub_0(and(shr(l, 52), {l:2047, m:0, h:0}), {l:1023, m:0, h:0}));
   mantissa = toInt(shr(and(l, {l:$intern_5, m:$intern_5, h:255}), 29));
   if (exp_0 <= -127) {
-    mantissa = ($intern_14 | mantissa) >> -127 - exp_0 + 1;
+    mantissa = ($intern_13 | mantissa) >> -127 - exp_0 + 1;
     exp_0 = -127;
   }
   bits = negative?{l:0, m:512, h:0}:{l:0, m:0, h:0};
@@ -5786,7 +5747,7 @@ function compareTo_Ljava_lang_Object__I__devirtual$(this$static, other){
 
 function latin1ToString(bytes, len){
   var chars, i;
-  chars = initDim(C_classLit, $intern_18, 0, len, 7, 1);
+  chars = initDim(C_classLit, $intern_17, 0, len, 7, 1);
   for (i = 0; i < len; ++i) {
     chars[i] = bytes[i] & 255 & 65535;
   }
@@ -5821,7 +5782,7 @@ function utf8ToString(bytes, len){
       throw new IndexOutOfBoundsException_0('Invalid UTF8 sequence');
     }
   }
-  chars = initDim(C_classLit, $intern_18, 0, charCount, 7, 1);
+  chars = initDim(C_classLit, $intern_17, 0, charCount, 7, 1);
   outIdx = 0;
   count = 0;
   for (i = 0; i < len;) {
@@ -5934,7 +5895,7 @@ function StringBuilder_0(s){
   AbstractStringBuilder.call(this, s);
 }
 
-defineClass(27, 59, {179:1}, StringBuilder, StringBuilder_0);
+defineClass(27, 60, {179:1}, StringBuilder, StringBuilder_0);
 var Ljava_lang_StringBuilder_2_classLit = createForClass('java.lang', 'StringBuilder', 27);
 function arraycopy(src_0, srcOfs, dest, destOfs, len){
   var destArray, destComp, destEnd, destType, destlen, srcArray, srcComp, srcType, srclen;
@@ -5993,14 +5954,14 @@ function $containsAll(this$static, c){
   checkNotNull(c);
   for (e$iterator = c.iterator(); e$iterator.hasNext();) {
     e = e$iterator.next();
-    if (!this$static.contains(e)) {
+    if (!this$static.contains_0(e)) {
       return false;
     }
   }
   return true;
 }
 
-function $toString_1(this$static){
+function $toString_0(this$static){
   var comma, e, e$iterator, sb;
   sb = new StringBuilder_0('[');
   comma = false;
@@ -6014,12 +5975,12 @@ function $toString_1(this$static){
 }
 
 defineClass(169, 1, {});
-_.contains = function contains(o){
+_.contains_0 = function contains(o){
   return $advanceToFind(this, o);
 }
 ;
 _.toString$ = function toString_15(){
-  return $toString_1(this);
+  return $toString_0(this);
 }
 ;
 var Ljava_util_AbstractCollection_2_classLit = createForClass('java.util', 'AbstractCollection', 169);
@@ -6049,7 +6010,7 @@ function $implFindEntry(this$static, key){
   return null;
 }
 
-function $toString_2(this$static, o){
+function $toString_1(this$static, o){
   return o === this$static?'(this Map)':'' + o;
 }
 
@@ -6057,7 +6018,7 @@ function getEntryValueOrNull(entry){
   return !entry?null:entry.getValue();
 }
 
-defineClass(168, 1, {57:1});
+defineClass(168, 1, {58:1});
 _.containsKey = function containsKey(key){
   return !!$implFindEntry(this, key);
 }
@@ -6067,10 +6028,10 @@ _.equals$ = function equals_5(obj){
   if (obj === this) {
     return true;
   }
-  if (!instanceOf(obj, 57)) {
+  if (!instanceOf(obj, 58)) {
     return false;
   }
-  otherMap = dynamicCast(obj, 57);
+  otherMap = dynamicCast(obj, 58);
   if (this.size_1() != otherMap.size_1()) {
     return false;
   }
@@ -6102,9 +6063,9 @@ _.toString$ = function toString_16(){
   for (entry$iterator = this.entrySet().iterator(); entry$iterator.hasNext();) {
     entry = dynamicCast(entry$iterator.next(), 17);
     comma?(sb.string += ', ' , sb):(comma = true);
-    $append_2(sb, $toString_2(this, entry.getKey()));
+    $append_2(sb, $toString_1(this, entry.getKey()));
     sb.string += '=';
-    $append_2(sb, $toString_2(this, entry.getValue()));
+    $append_2(sb, $toString_1(this, entry.getValue()));
   }
   sb.string += '}';
   return sb.string;
@@ -6141,7 +6102,7 @@ function $remove_2(this$static, key){
   return $remove_5(this$static.hashCodeMap, key);
 }
 
-defineClass(84, 168, {57:1});
+defineClass(84, 168, {58:1});
 _.containsKey = function containsKey_0(key){
   return $containsKey(this, key);
 }
@@ -6160,7 +6121,7 @@ _.size_1 = function size_2(){
 ;
 _.size_0 = 0;
 var Ljava_util_AbstractHashMap_2_classLit = createForClass('java.util', 'AbstractHashMap', 84);
-defineClass(170, 169, $intern_23);
+defineClass(170, 169, $intern_22);
 _.equals$ = function equals_6(o){
   var other;
   if (o === this) {
@@ -6192,8 +6153,8 @@ function AbstractHashMap$EntrySet(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(68, 170, $intern_23, AbstractHashMap$EntrySet);
-_.contains = function contains_0(o){
+defineClass(68, 170, $intern_22, AbstractHashMap$EntrySet);
+_.contains_0 = function contains_0(o){
   return $contains(this, o);
 }
 ;
@@ -6255,16 +6216,16 @@ function $removeRange(this$static, endIndex){
   }
 }
 
-defineClass(171, 169, {51:1});
+defineClass(171, 169, {52:1});
 _.equals$ = function equals_7(o){
   var elem, elem$iterator, elemOther, iterOther, other;
   if (o === this) {
     return true;
   }
-  if (!instanceOf(o, 51)) {
+  if (!instanceOf(o, 52)) {
     return false;
   }
-  other = dynamicCast(o, 51);
+  other = dynamicCast(o, 52);
   if (this.size_1() != other.size_1()) {
     return false;
   }
@@ -6323,7 +6284,7 @@ function AbstractList$SubList(wrapped, toIndex){
   this.size_0 = toIndex - 3;
 }
 
-defineClass(89, 171, {51:1}, AbstractList$SubList);
+defineClass(89, 171, {52:1}, AbstractList$SubList);
 _.get_1 = function get_2(index_0){
   checkElementIndex(index_0, this.size_0);
   return $get_1(this.wrapped, this.fromIndex + index_0);
@@ -6354,8 +6315,8 @@ function AbstractMap$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(52, 170, $intern_23, AbstractMap$1);
-_.contains = function contains_1(key){
+defineClass(53, 170, $intern_22, AbstractMap$1);
+_.contains_0 = function contains_1(key){
   return $containsKey(this.this$01, key);
 }
 ;
@@ -6367,7 +6328,7 @@ _.size_1 = function size_5(){
   return this.this$01.size_0;
 }
 ;
-var Ljava_util_AbstractMap$1_2_classLit = createForClass('java.util', 'AbstractMap/1', 52);
+var Ljava_util_AbstractMap$1_2_classLit = createForClass('java.util', 'AbstractMap/1', 53);
 function $next_1(this$static){
   var entry;
   entry = $next_0(this$static.val$outerIter2);
@@ -6388,7 +6349,7 @@ _.next = function next_2(){
 }
 ;
 var Ljava_util_AbstractMap$1$1_2_classLit = createForClass('java.util', 'AbstractMap/1/1', 87);
-defineClass(85, 1, $intern_24);
+defineClass(85, 1, $intern_23);
 _.equals$ = function equals_8(other){
   var entry;
   if (!instanceOf(other, 17)) {
@@ -6427,9 +6388,9 @@ function AbstractMap$SimpleEntry(key, value_0){
   this.value_0 = value_0;
 }
 
-defineClass(86, 85, $intern_24, AbstractMap$SimpleEntry);
+defineClass(86, 85, $intern_23, AbstractMap$SimpleEntry);
 var Ljava_util_AbstractMap$SimpleEntry_2_classLit = createForClass('java.util', 'AbstractMap/SimpleEntry', 86);
-defineClass(172, 1, $intern_24);
+defineClass(172, 1, $intern_23);
 _.equals$ = function equals_9(other){
   var entry;
   if (!instanceOf(other, 17)) {
@@ -6498,12 +6459,12 @@ function splice(array, index_0, deleteCount){
   array.splice(index_0, deleteCount);
 }
 
-defineClass(42, 171, $intern_25, ArrayList, ArrayList_0);
+defineClass(42, 171, $intern_24, ArrayList, ArrayList_0);
 _.add_0 = function add_0(o){
   return $add_2(this, o);
 }
 ;
-_.contains = function contains_2(o){
+_.contains_0 = function contains_2(o){
   return $indexOf_0(this, o, 0) != -1;
 }
 ;
@@ -6698,7 +6659,7 @@ function EnumMap(type_0){
   this.values = initDim(Ljava_lang_Object_2_classLit, $intern_2, 1, this.keySet.all.length, 3, 1);
 }
 
-defineClass(138, 168, {57:1}, EnumMap);
+defineClass(138, 168, {58:1}, EnumMap);
 _.containsKey = function containsKey_1(key){
   return $contains_1(this.keySet, key);
 }
@@ -6727,8 +6688,8 @@ function EnumMap$EntrySet(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(139, 170, $intern_23, EnumMap$EntrySet);
-_.contains = function contains_3(o){
+defineClass(139, 170, $intern_22, EnumMap$EntrySet);
+_.contains_0 = function contains_3(o){
   return $contains_0(this, o);
 }
 ;
@@ -6761,7 +6722,7 @@ function EnumMap$MapEntry(this$0, key){
   this.key = key;
 }
 
-defineClass(141, 172, $intern_24, EnumMap$MapEntry);
+defineClass(141, 172, $intern_23, EnumMap$MapEntry);
 _.getKey = function getKey_0(){
   return this.key;
 }
@@ -6775,7 +6736,7 @@ _.setValue = function setValue_0(value_0){
 }
 ;
 var Ljava_util_EnumMap$MapEntry_2_classLit = createForClass('java.util', 'EnumMap/MapEntry', 141);
-defineClass(178, 170, $intern_23);
+defineClass(178, 170, $intern_22);
 var Ljava_util_EnumSet_2_classLit = createForClass('java.util', 'EnumSet', 178);
 function $add_3(this$static, e){
   var ordinal;
@@ -6803,8 +6764,8 @@ function EnumSet$EnumSetImpl(all, set_0){
   this.size_0 = 0;
 }
 
-defineClass(152, 178, $intern_23, EnumSet$EnumSetImpl);
-_.contains = function contains_4(o){
+defineClass(152, 178, $intern_22, EnumSet$EnumSetImpl);
+_.contains_0 = function contains_4(o){
   return $contains_1(this, o);
 }
 ;
@@ -6873,7 +6834,7 @@ function HashMap(){
   structureChanged(this);
 }
 
-defineClass(28, 84, {3:1, 57:1}, HashMap);
+defineClass(28, 84, {3:1, 58:1}, HashMap);
 var Ljava_util_HashMap_2_classLit = createForClass('java.util', 'HashMap', 28);
 function $contains_2(this$static, o){
   return $containsKey(this$static.map_0, o);
@@ -6888,7 +6849,7 @@ function HashSet(){
 }
 
 defineClass(77, 170, {3:1, 40:1}, HashSet);
-_.contains = function contains_5(o){
+_.contains_0 = function contains_5(o){
   return $contains_2(this, o);
 }
 ;
@@ -6901,7 +6862,7 @@ _.size_1 = function size_10(){
 }
 ;
 _.toString$ = function toString_19(){
-  return $toString_1(new AbstractMap$1(this.map_0));
+  return $toString_0(new AbstractMap$1(this.map_0));
 }
 ;
 var Ljava_util_HashSet_2_classLit = createForClass('java.util', 'HashSet', 77);
@@ -7040,7 +7001,7 @@ function InternalJsHashCodeMap$InternalJsHashCodeMapLegacy$1(this$1){
   ArrayList.call(this);
 }
 
-defineClass(99, 42, $intern_25, InternalJsHashCodeMap$InternalJsHashCodeMapLegacy$1);
+defineClass(99, 42, $intern_24, InternalJsHashCodeMap$InternalJsHashCodeMapLegacy$1);
 _.remove = function remove_2(index_0){
   var removed;
   return removed = dynamicCast($remove_3(this, index_0), 17) , $remove_5(this.this$11, removed.getKey()) , removed;
@@ -7143,7 +7104,7 @@ function InternalJsStringMap(){
   this.backingMap = this.createMap_0();
 }
 
-defineClass(60, 1, {}, InternalJsStringMap);
+defineClass(61, 1, {}, InternalJsStringMap);
 _.createMap_0 = function createMap_1(){
   return Object.create(null);
 }
@@ -7170,7 +7131,7 @@ _.put = function put(key, value_0){
   return $put_3(this, key, value_0);
 }
 ;
-var Ljava_util_InternalJsStringMap_2_classLit = createForClass('java.util', 'InternalJsStringMap', 60);
+var Ljava_util_InternalJsStringMap_2_classLit = createForClass('java.util', 'InternalJsStringMap', 61);
 function InternalJsStringMap$1(this$0, val$keys){
   this.this$01 = this$0;
   this.val$keys2 = val$keys;
@@ -7192,7 +7153,7 @@ function InternalJsStringMap$2(this$0, val$key){
   this.val$key2 = val$key;
 }
 
-defineClass(73, 172, $intern_24, InternalJsStringMap$2);
+defineClass(73, 172, $intern_23, InternalJsStringMap$2);
 _.getKey = function getKey_1(){
   return this.val$key2;
 }
@@ -7210,7 +7171,7 @@ function InternalJsStringMap$InternalJsStringMapLegacy(){
   InternalJsStringMap.call(this);
 }
 
-defineClass(90, 60, {}, InternalJsStringMap$InternalJsStringMapLegacy);
+defineClass(90, 61, {}, InternalJsStringMap$InternalJsStringMapLegacy);
 _.createMap_0 = function createMap_2(){
   return {};
 }
@@ -7244,7 +7205,7 @@ function InternalJsStringMap$InternalJsStringMapLegacy$1(this$1){
   ArrayList.call(this);
 }
 
-defineClass(92, 42, $intern_25, InternalJsStringMap$InternalJsStringMapLegacy$1);
+defineClass(92, 42, $intern_24, InternalJsStringMap$InternalJsStringMapLegacy$1);
 _.remove = function remove_3(index_0){
   var removed;
   return removed = dynamicCast($remove_3(this, index_0), 17) , $remove_6(this.this$11, ':' + dynamicCastToString(removed.getKey())) , removed;
@@ -7255,7 +7216,7 @@ function InternalJsStringMap$InternalJsStringMapWithKeysWorkaround(){
   InternalJsStringMap.call(this);
 }
 
-defineClass(91, 60, {}, InternalJsStringMap$InternalJsStringMapWithKeysWorkaround);
+defineClass(91, 61, {}, InternalJsStringMap$InternalJsStringMapWithKeysWorkaround);
 _.keys_1 = function keys_2(){
   var keys_0;
   keys_0 = $keys_0(this);
@@ -7368,11 +7329,15 @@ function removeFrom(htmlElement, scannerElement){
 
 defineClass(105, 104, $intern_1, JSScannerWidget);
 var Ljb_client_JSScannerWidget_2_classLit = createForClass('jb.client', 'JSScannerWidget', 105);
-function JsQRScanner(onSuccess, provideVideoStream){
+function JsQRScanner(onSuccess){
+  JsQRScanner_0.call(this, onSuccess, null);
+}
+
+function JsQRScanner_0(onSuccess, provideVideoStream){
   this.scanner = new JSScannerWidget(onSuccess, provideVideoStream);
 }
 
-defineClass(61, 1, {61:1}, JsQRScanner);
+defineClass(48, 1, {48:1}, JsQRScanner, JsQRScanner_0);
 _.appendTo_0 = function appendTo(htmlElement){
   $appendTo(this.scanner, htmlElement);
 }
@@ -7413,7 +7378,7 @@ _.stopScanning_0 = function stopScanning(){
   this.scanner.active = false;
 }
 ;
-var Ljb_client_JsQRScanner_2_classLit = createForClass('jb.client', 'JsQRScanner', 61);
+var Ljb_client_JsQRScanner_2_classLit = createForClass('jb.client', 'JsQRScanner', 48);
 function $export_0(this$static){
   if (!exported_0) {
     exported_0 = true;
@@ -7428,7 +7393,7 @@ function $export0_0(this$static){
   var __0, __ = this$static;
   $wnd.JsQRScanner = $entry(function(){
     var g, j = this, a = arguments;
-    a.length == 1 && __.isAssignable(a[0])?(g = a[0]):a.length == 2 && (g = ___create(a[0] == null?null:a[0].constructor == $wnd.AsyncQRCallback?a[0].g:new AsyncQRCallback_ExporterImpl_0(a[0]), a[1]));
+    a.length == 1 && __.isAssignable(a[0])?(g = a[0]):a.length == 2?(g = ___create_0(a[0] == null?null:a[0].constructor == $wnd.AsyncQRCallback?a[0].g:new AsyncQRCallback_ExporterImpl_0(a[0]), a[1])):a.length == 1 && (g = ___create(a[0] == null?null:a[0].constructor == $wnd.AsyncQRCallback?a[0].g:new AsyncQRCallback_ExporterImpl_0(a[0])));
     j.g = g;
     setWrapper(g, j);
     return j;
@@ -7484,13 +7449,17 @@ function JsQRScanner_ExporterImpl(){
   $export_0(this);
 }
 
-function ___create(a0, a1){
-  return new JsQRScanner(a0, a1);
+function ___create(a0){
+  return new JsQRScanner(a0);
+}
+
+function ___create_0(a0, a1){
+  return new JsQRScanner_0(a0, a1);
 }
 
 defineClass(102, 1, {}, JsQRScanner_ExporterImpl);
 _.isAssignable = function isAssignable_0(o){
-  return o != null && instanceOf(o, 61);
+  return o != null && instanceOf(o, 48);
 }
 ;
 var exported_0 = false;
@@ -7558,7 +7527,7 @@ var I_classLit = createForPrimitive('int', 'I'), Ljava_lang_StackTraceElement_2_
 var $entry = registerEntry();
 var gwtOnLoad = gwtOnLoad = gwtOnLoad_0;
 addInitFunctions(init);
-setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'gecko1_8']]]);
+setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'safari']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');
 gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);
 $sendStats('moduleStartup', 'end');

@@ -3,7 +3,7 @@ var __gwtModuleFunction = $wnd.jsqrscanner;
 var $sendStats = __gwtModuleFunction.__sendStats;
 $sendStats('moduleStartup', 'moduleEvalStart');
 var $gwt_version = "2.7.0";
-var $strongName = '61FDF3EE355B5CFDDC3880B5ED22C0EB';
+var $strongName = '3550747723E417AFD6746F02411DB464';
 var $gwt = {};
 var $doc = $wnd.document;
 var $moduleName, $moduleBase;
@@ -22,7 +22,7 @@ var $stats = $wnd.__gwtStatsEvent ? function(a) {
 return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);
 } : null;
 var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;
-var $intern_0 = 2147483647, $intern_1 = {33:1, 34:1, 31:1, 30:1, 35:1, 25:1, 20:1}, $intern_2 = {3:1, 5:1}, $intern_3 = {3:1, 8:1}, $intern_4 = {3:1, 10:1, 8:1}, $intern_5 = 65535, $intern_6 = 4194303, $intern_7 = 1048575, $intern_8 = 4194304, $intern_9 = 17592186044416, $intern_10 = -9223372036854775808, $intern_11 = 524288, $intern_12 = 65536, $intern_13 = 1048576, $intern_14 = 8388608, $intern_15 = 16777216, $intern_16 = 33554432, $intern_17 = 67108864, $intern_18 = {3:1}, $intern_19 = {3:1, 22:1, 5:1}, $intern_20 = {7:1, 3:1}, $intern_21 = {14:1, 3:1, 19:1, 13:1}, $intern_22 = 0.20000000298023224, $intern_23 = {40:1}, $intern_24 = {17:1}, $intern_25 = {3:1, 51:1};
+var $intern_0 = 2147483647, $intern_1 = {33:1, 34:1, 31:1, 30:1, 35:1, 25:1, 20:1}, $intern_2 = {3:1, 5:1}, $intern_3 = {3:1, 8:1}, $intern_4 = {3:1, 10:1, 8:1}, $intern_5 = 4194303, $intern_6 = 1048575, $intern_7 = 4194304, $intern_8 = 17592186044416, $intern_9 = -9223372036854775808, $intern_10 = 524288, $intern_11 = 65536, $intern_12 = 131072, $intern_13 = 1048576, $intern_14 = 8388608, $intern_15 = 16777216, $intern_16 = 33554432, $intern_17 = 67108864, $intern_18 = {3:1}, $intern_19 = {3:1, 22:1, 5:1}, $intern_20 = {7:1, 3:1}, $intern_21 = {14:1, 3:1, 19:1, 13:1}, $intern_22 = 0.20000000298023224, $intern_23 = {40:1}, $intern_24 = {17:1}, $intern_25 = {3:1, 52:1};
 var _, initFnList_0, prototypesByTypeId_0 = {}, permutationId = -1;
 function typeMarkerFn(){
 }
@@ -409,7 +409,7 @@ _.toString$ = function toString_1(){
   if (!this.element) {
     return '(null handle)';
   }
-  return ($clinit_DOM() , this.element).outerHTML;
+  return $toString(($clinit_DOM() , this.element));
 }
 ;
 var Lcom_google_gwt_user_client_ui_UIObject_2_classLit = createForClass('com.google.gwt.user.client.ui', 'UIObject', 25);
@@ -490,8 +490,8 @@ _.onBrowserEvent = function onBrowserEvent(event_0){
   switch ($clinit_DOM() , $eventGetTypeInt(event_0.type)) {
     case 16:
     case 32:
-      related = event_0.relatedTarget;
-      if (!!related && isOrHasChildImpl(this.element, related)) {
+      related = $eventGetRelatedTarget(event_0);
+      if (!!related && $isOrHasChild(this.element, related)) {
         return;
       }
 
@@ -509,7 +509,7 @@ var Lcom_google_gwt_user_client_ui_Widget_2_classLit = createForClass('com.googl
 function $onAttach_0(this$static){
   var tabIndex;
   $onAttach(this$static);
-  tabIndex = $getTabIndex(($clinit_DOM() , this$static.element));
+  tabIndex = ($clinit_DOM() , this$static.element).tabIndex;
   -1 == tabIndex && (this$static.element.tabIndex = 0 , undefined);
 }
 
@@ -1020,30 +1020,32 @@ function $setWidth(this$static, width_0){
   this$static.width = width_0;
 }
 
-function $eventGetCurrentTarget(event_0){
-  return event_0.currentTarget || $wnd;
+function $eventGetRelatedTarget(evt){
+  var relatedTarget = evt.relatedTarget;
+  if (!relatedTarget) {
+    return null;
+  }
+  try {
+    var nodeName = relatedTarget.nodeName;
+    return relatedTarget;
+  }
+   catch (e) {
+    return null;
+  }
 }
 
-function $getTabIndex(elem){
-  return elem.tabIndex < $intern_5?elem.tabIndex:-(elem.tabIndex % $intern_5) - 1;
+function $isOrHasChild(parent_0, child){
+  return parent_0 === child || !!(parent_0.compareDocumentPosition(child) & 16);
 }
 
-function isOrHasChildImpl(parent_0, child){
-  if (parent_0.nodeType != 1 && parent_0.nodeType != 9) {
-    return parent_0 == child;
-  }
-  if (child.nodeType != 1) {
-    child = child.parentNode;
-    if (!child) {
-      return false;
-    }
-  }
-  if (parent_0.nodeType == 9) {
-    return parent_0 === child || parent_0.body && parent_0.body.contains(child);
-  }
-   else {
-    return parent_0 === child || parent_0.contains(child);
-  }
+function $toString(elem){
+  var doc = elem.ownerDocument;
+  var temp = elem.cloneNode(true);
+  var tempDiv = doc.createElement('DIV');
+  tempDiv.appendChild(temp);
+  outer = tempDiv.innerHTML;
+  temp.innerHTML = '';
+  return outer;
 }
 
 function fireNativeEvent(){
@@ -1243,9 +1245,9 @@ function wrap(e){
 
 function create(value_0){
   var a0, a1, a2;
-  a0 = value_0 & $intern_6;
-  a1 = value_0 >> 22 & $intern_6;
-  a2 = value_0 < 0?$intern_7:0;
+  a0 = value_0 & $intern_5;
+  a1 = value_0 >> 22 & $intern_5;
+  a2 = value_0 < 0?$intern_6:0;
   return create0(a0, a1, a2);
 }
 
@@ -1254,7 +1256,7 @@ function create0(l, m, h){
 }
 
 function toDoubleHelper(a){
-  return a.l + a.m * $intern_8 + a.h * $intern_9;
+  return a.l + a.m * $intern_7 + a.h * $intern_8;
 }
 
 function and(a, b){
@@ -1270,7 +1272,7 @@ function fromDouble(value_0){
   if (isNaN_0(value_0)) {
     return $clinit_LongLib$Const() , ZERO;
   }
-  if (value_0 < $intern_10) {
+  if (value_0 < $intern_9) {
     return $clinit_LongLib$Const() , MIN_VALUE;
   }
   if (value_0 >= 9223372036854775807) {
@@ -1282,18 +1284,18 @@ function fromDouble(value_0){
     value_0 = -value_0;
   }
   a2 = 0;
-  if (value_0 >= $intern_9) {
-    a2 = round_int(value_0 / $intern_9);
-    value_0 -= a2 * $intern_9;
+  if (value_0 >= $intern_8) {
+    a2 = round_int(value_0 / $intern_8);
+    value_0 -= a2 * $intern_8;
   }
   a1 = 0;
-  if (value_0 >= $intern_8) {
-    a1 = round_int(value_0 / $intern_8);
-    value_0 -= a1 * $intern_8;
+  if (value_0 >= $intern_7) {
+    a1 = round_int(value_0 / $intern_7);
+    value_0 -= a1 * $intern_7;
   }
   a0 = round_int(value_0);
   result = create0(a0, a1, a2);
-  negative && (neg0 = ~result.l + 1 & $intern_6 , neg1 = ~result.m + (neg0 == 0?1:0) & $intern_6 , neg2 = ~result.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_7 , result.l = neg0 , result.m = neg1 , result.h = neg2 , undefined);
+  negative && (neg0 = ~result.l + 1 & $intern_5 , neg1 = ~result.m + (neg0 == 0?1:0) & $intern_5 , neg2 = ~result.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_6 , result.l = neg0 , result.m = neg1 , result.h = neg2 , undefined);
   return result;
 }
 
@@ -1338,14 +1340,14 @@ function shl(a, n){
     res1 = 0;
     res2 = a.l << n - 44;
   }
-  return {l:res0 & $intern_6, m:res1 & $intern_6, h:res2 & $intern_7};
+  return {l:res0 & $intern_5, m:res1 & $intern_5, h:res2 & $intern_6};
 }
 
 function shr(a, n){
   var a2, negative, res0, res1, res2;
   n &= 63;
   a2 = a.h;
-  negative = (a2 & $intern_11) != 0;
+  negative = (a2 & $intern_10) != 0;
   negative && (a2 |= -1048576);
   if (n < 22) {
     res2 = a2 >> n;
@@ -1353,16 +1355,16 @@ function shr(a, n){
     res0 = a.l >> n | a.m << 22 - n;
   }
    else if (n < 44) {
-    res2 = negative?$intern_7:0;
+    res2 = negative?$intern_6:0;
     res1 = a2 >> n - 22;
     res0 = a.m >> n - 22 | a2 << 44 - n;
   }
    else {
-    res2 = negative?$intern_7:0;
-    res1 = negative?$intern_6:0;
+    res2 = negative?$intern_6:0;
+    res1 = negative?$intern_5:0;
     res0 = a2 >> n - 44;
   }
-  return {l:res0 & $intern_6, m:res1 & $intern_6, h:res2 & $intern_7};
+  return {l:res0 & $intern_5, m:res1 & $intern_5, h:res2 & $intern_6};
 }
 
 function sub_0(a, b){
@@ -1370,18 +1372,18 @@ function sub_0(a, b){
   sum0 = a.l - b.l;
   sum1 = a.m - b.m + (sum0 >> 22);
   sum2 = a.h - b.h + (sum1 >> 22);
-  return {l:sum0 & $intern_6, m:sum1 & $intern_6, h:sum2 & $intern_7};
+  return {l:sum0 & $intern_5, m:sum1 & $intern_5, h:sum2 & $intern_6};
 }
 
 function toDouble(a){
   var neg0, neg1, neg2;
   if (eq(a, ($clinit_LongLib$Const() , MIN_VALUE))) {
-    return $intern_10;
+    return $intern_9;
   }
   if (!gte(a, ZERO)) {
-    return -toDoubleHelper((neg0 = ~a.l + 1 & $intern_6 , neg1 = ~a.m + (neg0 == 0?1:0) & $intern_6 , neg2 = ~a.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_7 , create0(neg0, neg1, neg2)));
+    return -toDoubleHelper((neg0 = ~a.l + 1 & $intern_5 , neg1 = ~a.m + (neg0 == 0?1:0) & $intern_5 , neg2 = ~a.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_6 , create0(neg0, neg1, neg2)));
   }
-  return a.l + a.m * $intern_8 + a.h * $intern_9;
+  return a.l + a.m * $intern_7 + a.h * $intern_8;
 }
 
 function toInt(a){
@@ -1391,8 +1393,8 @@ function toInt(a){
 var boxedValues;
 function $clinit_LongLib$Const(){
   $clinit_LongLib$Const = emptyMethod;
-  MAX_VALUE = create0($intern_6, $intern_6, 524287);
-  MIN_VALUE = create0(0, 0, $intern_11);
+  MAX_VALUE = create0($intern_5, $intern_5, 524287);
+  MIN_VALUE = create0(0, 0, $intern_10);
   fromInt(1);
   fromInt(2);
   ZERO = fromInt(0);
@@ -1456,7 +1458,7 @@ defineClass(117, 176, {}, Video$VideoElementSupportDetectedMaybe);
 var Lcom_google_gwt_media_client_Video$VideoElementSupportDetectedMaybe_2_classLit = createForClass('com.google.gwt.media.client', 'Video/VideoElementSupportDetectedMaybe', 117);
 function $clinit_DOM(){
   $clinit_DOM = emptyMethod;
-  $clinit_DOMImplStandard();
+  $clinit_DOMImplMozilla();
 }
 
 function dispatchEvent_0(evt, elem, listener){
@@ -1572,20 +1574,20 @@ function $eventGetTypeInt(eventType){
     case 'scroll':
       return 16384;
     case 'error':
-      return $intern_12;
+      return $intern_11;
     case 'DOMMouseScroll':
     case 'mousewheel':
-      return 131072;
+      return $intern_12;
     case 'contextmenu':
       return 262144;
     case 'paste':
-      return $intern_11;
+      return $intern_10;
     case 'touchstart':
       return $intern_13;
     case 'touchmove':
       return 2097152;
     case 'touchend':
-      return $intern_8;
+      return $intern_7;
     case 'touchcancel':
       return $intern_14;
     case 'gesturestart':
@@ -1601,6 +1603,7 @@ function $eventGetTypeInt(eventType){
 function $maybeInitializeEventSystem(){
   if (!eventSystemIsInitialized) {
     $initEventSystem();
+    $initSyntheticMouseUpEvents();
     eventSystemIsInitialized = true;
   }
 }
@@ -1641,11 +1644,6 @@ function $initEventSystem(){
   );
 }
 
-function $sinkEvents(elem, bits){
-  $maybeInitializeEventSystem();
-  $sinkEventsImpl(elem, bits);
-}
-
 function $sinkEventsImpl(elem, bits){
   var chMask = (elem.__eventBits || 0) ^ bits;
   elem.__eventBits = bits;
@@ -1667,13 +1665,13 @@ function $sinkEventsImpl(elem, bits){
   chMask & 8192 && (elem.onlosecapture = bits & 8192?dispatchEvent_1:null);
   chMask & 16384 && (elem.onscroll = bits & 16384?dispatchEvent_1:null);
   chMask & 32768 && (elem.onload = bits & 32768?dispatchUnhandledEvent:null);
-  chMask & $intern_12 && (elem.onerror = bits & $intern_12?dispatchEvent_1:null);
-  chMask & 131072 && (elem.onmousewheel = bits & 131072?dispatchEvent_1:null);
+  chMask & $intern_11 && (elem.onerror = bits & $intern_11?dispatchEvent_1:null);
+  chMask & $intern_12 && (elem.onmousewheel = bits & $intern_12?dispatchEvent_1:null);
   chMask & 262144 && (elem.oncontextmenu = bits & 262144?dispatchEvent_1:null);
-  chMask & $intern_11 && (elem.onpaste = bits & $intern_11?dispatchEvent_1:null);
+  chMask & $intern_10 && (elem.onpaste = bits & $intern_10?dispatchEvent_1:null);
   chMask & $intern_13 && (elem.ontouchstart = bits & $intern_13?dispatchEvent_1:null);
   chMask & 2097152 && (elem.ontouchmove = bits & 2097152?dispatchEvent_1:null);
-  chMask & $intern_8 && (elem.ontouchend = bits & $intern_8?dispatchEvent_1:null);
+  chMask & $intern_7 && (elem.ontouchend = bits & $intern_7?dispatchEvent_1:null);
   chMask & $intern_14 && (elem.ontouchcancel = bits & $intern_14?dispatchEvent_1:null);
   chMask & $intern_15 && (elem.ongesturestart = bits & $intern_15?dispatchEvent_1:null);
   chMask & $intern_16 && (elem.ongesturechange = bits & $intern_16?dispatchEvent_1:null);
@@ -1685,6 +1683,7 @@ function dispatchCapturedEvent(evt){
 }
 
 function dispatchCapturedMouseEvent(evt){
+  $clinit_DOMImplStandard();
   $clinit_DOM();
   return;
 }
@@ -1705,21 +1704,47 @@ function dispatchEvent_2(evt){
 
 function dispatchUnhandledEvent_0(evt){
   var element;
-  element = $eventGetCurrentTarget(evt);
+  element = evt.currentTarget;
   element['__gwtLastUnhandledEvent'] = evt.type;
   dispatchEvent_2(evt);
 }
 
 function getFirstAncestorWithListener(evt){
   var curElem;
-  curElem = $eventGetCurrentTarget(evt);
+  curElem = evt.currentTarget;
   while (!!curElem && !getEventListener(curElem)) {
     curElem = curElem.parentNode;
   }
   return curElem;
 }
 
-var bitlessEventDispatchers, captureEventDispatchers, dispatchEvent_1, dispatchUnhandledEvent;
+var bitlessEventDispatchers, captureElem, captureEventDispatchers, dispatchEvent_1, dispatchUnhandledEvent;
+function $clinit_DOMImplMozilla(){
+  $clinit_DOMImplMozilla = emptyMethod;
+  $clinit_DOMImplStandard();
+  captureEventDispatchers['DOMMouseScroll'] = dispatchCapturedMouseEvent;
+}
+
+function $initSyntheticMouseUpEvents(){
+  $wnd.addEventListener('mouseout', $entry(function(evt){
+    var cap = ($clinit_DOMImplStandard() , captureElem);
+    if (cap && !evt.relatedTarget) {
+      if ('html' == evt.target.tagName.toLowerCase()) {
+        var muEvent = $doc.createEvent('MouseEvents');
+        muEvent.initMouseEvent('mouseup', true, true, $wnd, 0, evt.screenX, evt.screenY, evt.clientX, evt.clientY, evt.ctrlKey, evt.altKey, evt.shiftKey, evt.metaKey, evt.button, null);
+        cap.dispatchEvent(muEvent);
+      }
+    }
+  }
+  ), true);
+}
+
+function $sinkEvents(elem, bits){
+  $maybeInitializeEventSystem();
+  $sinkEventsImpl(elem, bits);
+  bits & $intern_12 && elem.addEventListener('DOMMouseScroll', ($clinit_DOMImplStandard() , dispatchEvent_1), false);
+}
+
 function foreach_0(map_0, fn){
   for (var e in map_0) {
     map_0.hasOwnProperty(e) && fn(e, map_0[e]);
@@ -1938,7 +1963,7 @@ var Lcom_google_gwt_user_client_ui_WidgetCollection$WidgetIterator_2_classLit = 
 function assertCompileTimeUserAgent(){
   var runtimeValue;
   runtimeValue = $getRuntimeValue();
-  if (!$equals('ie9', runtimeValue)) {
+  if (!$equals('gecko1_8', runtimeValue)) {
     throw new UserAgentAsserter$UserAgentAssertionError(runtimeValue);
   }
 }
@@ -1947,12 +1972,12 @@ function Error_0(message){
   Throwable.call(this, message);
 }
 
-defineClass(58, 8, $intern_3);
-var Ljava_lang_Error_2_classLit = createForClass('java.lang', 'Error', 58);
-defineClass(18, 58, $intern_3);
+defineClass(59, 8, $intern_3);
+var Ljava_lang_Error_2_classLit = createForClass('java.lang', 'Error', 59);
+defineClass(18, 59, $intern_3);
 var Ljava_lang_AssertionError_2_classLit = createForClass('java.lang', 'AssertionError', 18);
 function UserAgentAsserter$UserAgentAssertionError(runtimeValue){
-  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
+  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (gecko1_8) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (gecko1_8) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (gecko1_8) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
 }
 
 defineClass(80, 18, $intern_3, UserAgentAsserter$UserAgentAssertionError);
@@ -1997,11 +2022,11 @@ function BinaryBitmap(binarizer){
 defineClass(124, 1, {}, BinaryBitmap);
 _.toString$ = function toString_3(){
   try {
-    return $toString((!this.matrix && (this.matrix = $getBlackMatrix_0(this.binarizer)) , this.matrix));
+    return $toString_0((!this.matrix && (this.matrix = $getBlackMatrix_0(this.binarizer)) , this.matrix));
   }
    catch ($e0) {
     $e0 = wrap($e0);
-    if (instanceOf($e0, 53)) {
+    if (instanceOf($e0, 54)) {
       return '';
     }
      else 
@@ -2038,9 +2063,9 @@ function ChecksumException(){
   ReaderException.call(this);
 }
 
-defineClass(54, 64, {54:1, 3:1, 10:1, 8:1}, ChecksumException);
+defineClass(55, 64, {55:1, 3:1, 10:1, 8:1}, ChecksumException);
 var INSTANCE_0;
-var Lcom_google_zxing_ChecksumException_2_classLit = createForClass('com.google.zxing', 'ChecksumException', 54);
+var Lcom_google_zxing_ChecksumException_2_classLit = createForClass('com.google.zxing', 'ChecksumException', 55);
 function $clinit_FormatException(){
   $clinit_FormatException = emptyMethod;
   $clinit_ReaderException();
@@ -2052,9 +2077,9 @@ function FormatException(){
   ReaderException.call(this);
 }
 
-defineClass(55, 64, {55:1, 3:1, 10:1, 8:1}, FormatException);
+defineClass(56, 64, {56:1, 3:1, 10:1, 8:1}, FormatException);
 var INSTANCE_1;
-var Lcom_google_zxing_FormatException_2_classLit = createForClass('com.google.zxing', 'FormatException', 55);
+var Lcom_google_zxing_FormatException_2_classLit = createForClass('com.google.zxing', 'FormatException', 56);
 defineClass(125, 1, {});
 _.toString$ = function toString_4(){
   var c, luminance, result, row, x_0, y_0;
@@ -2086,9 +2111,9 @@ function NotFoundException(){
   ReaderException.call(this);
 }
 
-defineClass(53, 64, {53:1, 3:1, 10:1, 8:1}, NotFoundException);
+defineClass(54, 64, {54:1, 3:1, 10:1, 8:1}, NotFoundException);
 var INSTANCE_2;
-var Lcom_google_zxing_NotFoundException_2_classLit = createForClass('com.google.zxing', 'NotFoundException', 53);
+var Lcom_google_zxing_NotFoundException_2_classLit = createForClass('com.google.zxing', 'NotFoundException', 54);
 function $putMetadata(this$static, type_0, value_0){
   !this$static.resultMetadata && (this$static.resultMetadata = new EnumMap(Lcom_google_zxing_ResultMetadataType_2_classLit));
   $put_1(this$static.resultMetadata, type_0, value_0);
@@ -2270,7 +2295,7 @@ function $setRegion(this$static, left, top_0, width_0, height){
   }
 }
 
-function $toString(this$static){
+function $toString_0(this$static){
   var result, x_0, y_0;
   result = new StringBuilder;
   for (y_0 = 0; y_0 < this$static.height_0; y_0++) {
@@ -2317,7 +2342,7 @@ _.hashCode$ = function hashCode_3(){
 }
 ;
 _.toString$ = function toString_8(){
-  return $toString(this);
+  return $toString_0(this);
 }
 ;
 _.height_0 = 0;
@@ -2808,7 +2833,7 @@ function squareToQuadrilateral(x0, y0, x1, y1, x2, y2, x3, y3){
   }
 }
 
-defineClass(56, 1, {}, PerspectiveTransform);
+defineClass(57, 1, {}, PerspectiveTransform);
 _.a11 = 0;
 _.a12 = 0;
 _.a13 = 0;
@@ -2818,7 +2843,7 @@ _.a23 = 0;
 _.a31 = 0;
 _.a32 = 0;
 _.a33 = 0;
-var Lcom_google_zxing_common_PerspectiveTransform_2_classLit = createForClass('com.google.zxing.common', 'PerspectiveTransform', 56);
+var Lcom_google_zxing_common_PerspectiveTransform_2_classLit = createForClass('com.google.zxing.common', 'PerspectiveTransform', 57);
 function guessEncoding(bytes){
   var canBeISO88591, canBeShiftJIS, canBeUTF8, i, isoHighOther, length_0, sjisBytesLeft, sjisCurDoubleBytesWordLength, sjisCurKatakanaWordLength, sjisKatakanaChars, sjisMaxDoubleBytesWordLength, sjisMaxKatakanaWordLength, utf2BytesChars, utf3BytesChars, utf4BytesChars, utf8BytesLeft, utf8bom, value_0;
   length_0 = bytes.length;
@@ -3773,7 +3798,7 @@ function decodeByteSegment(bits, result, count, currentCharacterSetECI, byteSegm
   }
    catch ($e0) {
     $e0 = wrap($e0);
-    if (instanceOf($e0, 50)) {
+    if (instanceOf($e0, 51)) {
       throw $clinit_FormatException() , $clinit_FormatException() , INSTANCE_1;
     }
      else 
@@ -3803,7 +3828,7 @@ function decodeHanziSegment(bits, result, count){
   }
    catch ($e0) {
     $e0 = wrap($e0);
-    if (instanceOf($e0, 50)) {
+    if (instanceOf($e0, 51)) {
       throw $clinit_FormatException() , $clinit_FormatException() , INSTANCE_1;
     }
      else 
@@ -3832,7 +3857,7 @@ function decodeKanjiSegment(bits, result, count){
   }
    catch ($e0) {
     $e0 = wrap($e0);
-    if (instanceOf($e0, 50)) {
+    if (instanceOf($e0, 51)) {
       throw $clinit_FormatException() , $clinit_FormatException() , INSTANCE_1;
     }
      else 
@@ -3937,11 +3962,11 @@ function $decode_1(this$static, bits){
   }
    catch ($e0) {
     $e0 = wrap($e0);
-    if (instanceOf($e0, 55)) {
+    if (instanceOf($e0, 56)) {
       e = $e0;
       fe = e;
     }
-     else if (instanceOf($e0, 54)) {
+     else if (instanceOf($e0, 55)) {
       e = $e0;
       ce = e;
     }
@@ -3962,7 +3987,7 @@ function $decode_1(this$static, bits){
   }
    catch ($e1) {
     $e1 = wrap($e1);
-    if (instanceOf($e1, 55) || instanceOf($e1, 54)) {
+    if (instanceOf($e1, 56) || instanceOf($e1, 55)) {
       e = $e1;
       if (fe) {
         throw fe;
@@ -4086,13 +4111,13 @@ function doDecodeFormatInformation(maskedFormatInfo1, maskedFormatInfo2){
   return null;
 }
 
-defineClass(48, 1, {48:1}, FormatInformation);
+defineClass(49, 1, {49:1}, FormatInformation);
 _.equals$ = function equals_3(o){
   var other;
-  if (!instanceOf(o, 48)) {
+  if (!instanceOf(o, 49)) {
     return false;
   }
-  other = dynamicCast(o, 48);
+  other = dynamicCast(o, 49);
   return this.errorCorrectionLevel == other.errorCorrectionLevel && this.dataMask == other.dataMask;
 }
 ;
@@ -4102,7 +4127,7 @@ _.hashCode$ = function hashCode_4(){
 ;
 _.dataMask = 0;
 var FORMAT_INFO_DECODE_LOOKUP;
-var Lcom_google_zxing_qrcode_decoder_FormatInformation_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'FormatInformation', 48);
+var Lcom_google_zxing_qrcode_decoder_FormatInformation_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'FormatInformation', 49);
 function $clinit_Mode(){
   $clinit_Mode = emptyMethod;
   TERMINATOR = new Mode('TERMINATOR', 0, initValues(getClassLiteralForArray(I_classLit, 1), $intern_20, 0, 7, [0, 0, 0]));
@@ -4316,9 +4341,9 @@ function AlignmentPattern(posX, posY, estimatedModuleSize){
   this.estimatedModuleSize = estimatedModuleSize;
 }
 
-defineClass(49, 29, {29:1, 49:1}, AlignmentPattern);
+defineClass(50, 29, {29:1, 50:1}, AlignmentPattern);
 _.estimatedModuleSize = 0;
-var Lcom_google_zxing_qrcode_detector_AlignmentPattern_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'AlignmentPattern', 49);
+var Lcom_google_zxing_qrcode_detector_AlignmentPattern_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'AlignmentPattern', 50);
 function $crossCheckVertical(this$static, startI, centerJ, maxCount, originalStateCountTotal){
   var i, image, maxI, stateCount, stateCountTotal;
   image = this$static.image;
@@ -4418,7 +4443,7 @@ function $find(this$static){
     }
   }
   if (this$static.possibleCenters.array.length != 0) {
-    return dynamicCast($get_1(this$static.possibleCenters, 0), 49);
+    return dynamicCast($get_1(this$static.possibleCenters, 0), 50);
   }
   throw $clinit_NotFoundException() , $clinit_NotFoundException() , INSTANCE_2;
 }
@@ -4443,7 +4468,7 @@ function $handlePossibleCenter(this$static, stateCount, i, j){
   if (!isNaN(centerI)) {
     estimatedModuleSize = (stateCount[0] + stateCount[1] + stateCount[2]) / 3;
     for (center$iterator = new AbstractList$IteratorImpl(this$static.possibleCenters); center$iterator.i < center$iterator.this$01.size_1();) {
-      center = (checkCriticalElement(center$iterator.i < center$iterator.this$01.size_1()) , dynamicCast(center$iterator.this$01.get_1(center$iterator.last = center$iterator.i++), 49));
+      center = (checkCriticalElement(center$iterator.i < center$iterator.this$01.size_1()) , dynamicCast(center$iterator.this$01.get_1(center$iterator.last = center$iterator.i++), 50));
       if ($aboutEquals(center, estimatedModuleSize, centerI, centerJ)) {
         return combinedX = (center.x_0 + centerJ) / 2 , combinedY = (center.y_0 + centerI) / 2 , combinedModuleSize = (center.estimatedModuleSize + estimatedModuleSize) / 2 , new AlignmentPattern(combinedX, combinedY, combinedModuleSize);
       }
@@ -4535,7 +4560,7 @@ function $processFinderPatternInfo(this$static, info){
       }
        catch ($e0) {
         $e0 = wrap($e0);
-        if (!instanceOf($e0, 53))
+        if (!instanceOf($e0, 54))
           throw unwrap($e0);
       }
     }
@@ -5317,6 +5342,11 @@ function $setWebcam(videoElement, scanner){
     scanner.reportError(msg);
   }
 
+  var vsp = scanner.videoStreamProvider;
+  if (vsp) {
+    vsp().then(success)['catch'](error);
+    return;
+  }
   var n = $wnd.navigator;
   function sourceSelected(videoSource){
     var constraints = {audio:false, video:{optional:[{sourceId:videoSource}]}};
@@ -5345,7 +5375,7 @@ function $stopWebcam(scanner){
   }
 }
 
-function ScannerWidget(callback){
+function ScannerWidget(callback, videoStreamProvider){
   this.children = new WidgetCollection;
   $setElement(this, ($clinit_DOM() , $doc.createElement('div')));
   this.video = createIfSupported_0();
@@ -5356,6 +5386,7 @@ function ScannerWidget(callback){
   this.snapImageMaxSize = -1;
   this.active = true;
   this.callback = callback;
+  this.videoStreamProvider = videoStreamProvider;
   $add_2(this.readers, this.qrReader);
   this.scanTimer = new ScannerWidget$1(this);
   $add_0(this, this.video);
@@ -5397,18 +5428,18 @@ function UnsupportedEncodingException(msg){
   Exception_0.call(this, msg);
 }
 
-defineClass(50, 153, {3:1, 50:1, 10:1, 8:1}, UnsupportedEncodingException);
-var Ljava_io_UnsupportedEncodingException_2_classLit = createForClass('java.io', 'UnsupportedEncodingException', 50);
+defineClass(51, 153, {3:1, 51:1, 10:1, 8:1}, UnsupportedEncodingException);
+var Ljava_io_UnsupportedEncodingException_2_classLit = createForClass('java.io', 'UnsupportedEncodingException', 51);
 function AbstractStringBuilder(string){
   this.string = string;
 }
 
-defineClass(59, 1, {});
+defineClass(60, 1, {});
 _.toString$ = function toString_12(){
   return this.string;
 }
 ;
-var Ljava_lang_AbstractStringBuilder_2_classLit = createForClass('java.lang', 'AbstractStringBuilder', 59);
+var Ljava_lang_AbstractStringBuilder_2_classLit = createForClass('java.lang', 'AbstractStringBuilder', 60);
 function ArithmeticException(){
   RuntimeException.call(this);
 }
@@ -5427,13 +5458,13 @@ defineClass(46, 15, $intern_4, ArrayStoreException, ArrayStoreException_0);
 var Ljava_lang_ArrayStoreException_2_classLit = createForClass('java.lang', 'ArrayStoreException', 46);
 function toChars(codePoint, dst, dstIndex){
   checkCriticalArgument(codePoint >= 0 && codePoint <= 1114111);
-  if (codePoint >= $intern_12) {
-    dst[dstIndex++] = 55296 + (codePoint - $intern_12 >> 10 & 1023) & $intern_5;
-    dst[dstIndex] = 56320 + (codePoint - $intern_12 & 1023) & $intern_5;
+  if (codePoint >= $intern_11) {
+    dst[dstIndex++] = 55296 + (codePoint - $intern_11 >> 10 & 1023) & 65535;
+    dst[dstIndex] = 56320 + (codePoint - $intern_11 & 1023) & 65535;
     return 2;
   }
    else {
-    dst[dstIndex] = codePoint & $intern_5;
+    dst[dstIndex] = codePoint & 65535;
     return 1;
   }
 }
@@ -5448,7 +5479,7 @@ defineClass(66, 1, {3:1, 66:1});
 var Ljava_lang_Number_2_classLit = createForClass('java.lang', 'Number', 66);
 function $clinit_Double(){
   $clinit_Double = emptyMethod;
-  powers = initValues(getClassLiteralForArray(D_classLit, 1), $intern_18, 0, 7, [1.3407807929942597E154, 1.157920892373162E77, 3.4028236692093846E38, 1.8446744073709552E19, 4294967296, $intern_12, 256, 16, 4, 2]);
+  powers = initValues(getClassLiteralForArray(D_classLit, 1), $intern_18, 0, 7, [1.3407807929942597E154, 1.157920892373162E77, 3.4028236692093846E38, 1.8446744073709552E19, 4294967296, $intern_11, 256, 16, 4, 2]);
   invPowers = initValues(getClassLiteralForArray(D_classLit, 1), $intern_18, 0, 7, [7.458340731200207E-155, 8.636168555094445E-78, 2.9387358770557188E-39, 5.421010862427522E-20, 2.3283064365386963E-10, 1.52587890625E-5, 0.00390625, 0.0625, 0.25, 0.5]);
 }
 
@@ -5460,7 +5491,7 @@ function doubleToLongBits(value_0){
   }
   negative = false;
   if (value_0 == 0) {
-    return 1 / value_0 == -Infinity?{l:0, m:0, h:$intern_11}:{l:0, m:0, h:0};
+    return 1 / value_0 == -Infinity?{l:0, m:0, h:$intern_10}:{l:0, m:0, h:0};
   }
   if (value_0 < 0) {
     negative = true;
@@ -5525,7 +5556,7 @@ function floatToIntBits(value_0){
   }
   l = doubleToLongBits(value_0);
   exp_0 = toInt(sub_0(and(shr(l, 52), {l:2047, m:0, h:0}), {l:1023, m:0, h:0}));
-  mantissa = toInt(shr(and(l, {l:$intern_6, m:$intern_6, h:255}), 29));
+  mantissa = toInt(shr(and(l, {l:$intern_5, m:$intern_5, h:255}), 29));
   if (exp_0 <= -127) {
     mantissa = ($intern_14 | mantissa) >> -127 - exp_0 + 1;
     exp_0 = -127;
@@ -5757,7 +5788,7 @@ function latin1ToString(bytes, len){
   var chars, i;
   chars = initDim(C_classLit, $intern_18, 0, len, 7, 1);
   for (i = 0; i < len; ++i) {
-    chars[i] = bytes[i] & 255 & $intern_5;
+    chars[i] = bytes[i] & 255 & 65535;
   }
   return __valueOf(chars, 0, chars.length);
 }
@@ -5903,7 +5934,7 @@ function StringBuilder_0(s){
   AbstractStringBuilder.call(this, s);
 }
 
-defineClass(27, 59, {179:1}, StringBuilder, StringBuilder_0);
+defineClass(27, 60, {179:1}, StringBuilder, StringBuilder_0);
 var Ljava_lang_StringBuilder_2_classLit = createForClass('java.lang', 'StringBuilder', 27);
 function arraycopy(src_0, srcOfs, dest, destOfs, len){
   var destArray, destComp, destEnd, destType, destlen, srcArray, srcComp, srcType, srclen;
@@ -5962,14 +5993,14 @@ function $containsAll(this$static, c){
   checkNotNull(c);
   for (e$iterator = c.iterator(); e$iterator.hasNext();) {
     e = e$iterator.next();
-    if (!this$static.contains_0(e)) {
+    if (!this$static.contains(e)) {
       return false;
     }
   }
   return true;
 }
 
-function $toString_0(this$static){
+function $toString_1(this$static){
   var comma, e, e$iterator, sb;
   sb = new StringBuilder_0('[');
   comma = false;
@@ -5983,12 +6014,12 @@ function $toString_0(this$static){
 }
 
 defineClass(169, 1, {});
-_.contains_0 = function contains(o){
+_.contains = function contains(o){
   return $advanceToFind(this, o);
 }
 ;
 _.toString$ = function toString_15(){
-  return $toString_0(this);
+  return $toString_1(this);
 }
 ;
 var Ljava_util_AbstractCollection_2_classLit = createForClass('java.util', 'AbstractCollection', 169);
@@ -6018,7 +6049,7 @@ function $implFindEntry(this$static, key){
   return null;
 }
 
-function $toString_1(this$static, o){
+function $toString_2(this$static, o){
   return o === this$static?'(this Map)':'' + o;
 }
 
@@ -6026,7 +6057,7 @@ function getEntryValueOrNull(entry){
   return !entry?null:entry.getValue();
 }
 
-defineClass(168, 1, {57:1});
+defineClass(168, 1, {58:1});
 _.containsKey = function containsKey(key){
   return !!$implFindEntry(this, key);
 }
@@ -6036,10 +6067,10 @@ _.equals$ = function equals_5(obj){
   if (obj === this) {
     return true;
   }
-  if (!instanceOf(obj, 57)) {
+  if (!instanceOf(obj, 58)) {
     return false;
   }
-  otherMap = dynamicCast(obj, 57);
+  otherMap = dynamicCast(obj, 58);
   if (this.size_1() != otherMap.size_1()) {
     return false;
   }
@@ -6071,9 +6102,9 @@ _.toString$ = function toString_16(){
   for (entry$iterator = this.entrySet().iterator(); entry$iterator.hasNext();) {
     entry = dynamicCast(entry$iterator.next(), 17);
     comma?(sb.string += ', ' , sb):(comma = true);
-    $append_2(sb, $toString_1(this, entry.getKey()));
+    $append_2(sb, $toString_2(this, entry.getKey()));
     sb.string += '=';
-    $append_2(sb, $toString_1(this, entry.getValue()));
+    $append_2(sb, $toString_2(this, entry.getValue()));
   }
   sb.string += '}';
   return sb.string;
@@ -6110,7 +6141,7 @@ function $remove_2(this$static, key){
   return $remove_5(this$static.hashCodeMap, key);
 }
 
-defineClass(84, 168, {57:1});
+defineClass(84, 168, {58:1});
 _.containsKey = function containsKey_0(key){
   return $containsKey(this, key);
 }
@@ -6162,7 +6193,7 @@ function AbstractHashMap$EntrySet(this$0){
 }
 
 defineClass(68, 170, $intern_23, AbstractHashMap$EntrySet);
-_.contains_0 = function contains_0(o){
+_.contains = function contains_0(o){
   return $contains(this, o);
 }
 ;
@@ -6224,16 +6255,16 @@ function $removeRange(this$static, endIndex){
   }
 }
 
-defineClass(171, 169, {51:1});
+defineClass(171, 169, {52:1});
 _.equals$ = function equals_7(o){
   var elem, elem$iterator, elemOther, iterOther, other;
   if (o === this) {
     return true;
   }
-  if (!instanceOf(o, 51)) {
+  if (!instanceOf(o, 52)) {
     return false;
   }
-  other = dynamicCast(o, 51);
+  other = dynamicCast(o, 52);
   if (this.size_1() != other.size_1()) {
     return false;
   }
@@ -6292,7 +6323,7 @@ function AbstractList$SubList(wrapped, toIndex){
   this.size_0 = toIndex - 3;
 }
 
-defineClass(89, 171, {51:1}, AbstractList$SubList);
+defineClass(89, 171, {52:1}, AbstractList$SubList);
 _.get_1 = function get_2(index_0){
   checkElementIndex(index_0, this.size_0);
   return $get_1(this.wrapped, this.fromIndex + index_0);
@@ -6323,8 +6354,8 @@ function AbstractMap$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(52, 170, $intern_23, AbstractMap$1);
-_.contains_0 = function contains_1(key){
+defineClass(53, 170, $intern_23, AbstractMap$1);
+_.contains = function contains_1(key){
   return $containsKey(this.this$01, key);
 }
 ;
@@ -6336,7 +6367,7 @@ _.size_1 = function size_5(){
   return this.this$01.size_0;
 }
 ;
-var Ljava_util_AbstractMap$1_2_classLit = createForClass('java.util', 'AbstractMap/1', 52);
+var Ljava_util_AbstractMap$1_2_classLit = createForClass('java.util', 'AbstractMap/1', 53);
 function $next_1(this$static){
   var entry;
   entry = $next_0(this$static.val$outerIter2);
@@ -6472,7 +6503,7 @@ _.add_0 = function add_0(o){
   return $add_2(this, o);
 }
 ;
-_.contains_0 = function contains_2(o){
+_.contains = function contains_2(o){
   return $indexOf_0(this, o, 0) != -1;
 }
 ;
@@ -6667,7 +6698,7 @@ function EnumMap(type_0){
   this.values = initDim(Ljava_lang_Object_2_classLit, $intern_2, 1, this.keySet.all.length, 3, 1);
 }
 
-defineClass(138, 168, {57:1}, EnumMap);
+defineClass(138, 168, {58:1}, EnumMap);
 _.containsKey = function containsKey_1(key){
   return $contains_1(this.keySet, key);
 }
@@ -6697,7 +6728,7 @@ function EnumMap$EntrySet(this$0){
 }
 
 defineClass(139, 170, $intern_23, EnumMap$EntrySet);
-_.contains_0 = function contains_3(o){
+_.contains = function contains_3(o){
   return $contains_0(this, o);
 }
 ;
@@ -6773,7 +6804,7 @@ function EnumSet$EnumSetImpl(all, set_0){
 }
 
 defineClass(152, 178, $intern_23, EnumSet$EnumSetImpl);
-_.contains_0 = function contains_4(o){
+_.contains = function contains_4(o){
   return $contains_1(this, o);
 }
 ;
@@ -6842,7 +6873,7 @@ function HashMap(){
   structureChanged(this);
 }
 
-defineClass(28, 84, {3:1, 57:1}, HashMap);
+defineClass(28, 84, {3:1, 58:1}, HashMap);
 var Ljava_util_HashMap_2_classLit = createForClass('java.util', 'HashMap', 28);
 function $contains_2(this$static, o){
   return $containsKey(this$static.map_0, o);
@@ -6857,7 +6888,7 @@ function HashSet(){
 }
 
 defineClass(77, 170, {3:1, 40:1}, HashSet);
-_.contains_0 = function contains_5(o){
+_.contains = function contains_5(o){
   return $contains_2(this, o);
 }
 ;
@@ -6870,7 +6901,7 @@ _.size_1 = function size_10(){
 }
 ;
 _.toString$ = function toString_19(){
-  return $toString_0(new AbstractMap$1(this.map_0));
+  return $toString_1(new AbstractMap$1(this.map_0));
 }
 ;
 var Ljava_util_HashSet_2_classLit = createForClass('java.util', 'HashSet', 77);
@@ -7112,7 +7143,7 @@ function InternalJsStringMap(){
   this.backingMap = this.createMap_0();
 }
 
-defineClass(60, 1, {}, InternalJsStringMap);
+defineClass(61, 1, {}, InternalJsStringMap);
 _.createMap_0 = function createMap_1(){
   return Object.create(null);
 }
@@ -7139,7 +7170,7 @@ _.put = function put(key, value_0){
   return $put_3(this, key, value_0);
 }
 ;
-var Ljava_util_InternalJsStringMap_2_classLit = createForClass('java.util', 'InternalJsStringMap', 60);
+var Ljava_util_InternalJsStringMap_2_classLit = createForClass('java.util', 'InternalJsStringMap', 61);
 function InternalJsStringMap$1(this$0, val$keys){
   this.this$01 = this$0;
   this.val$keys2 = val$keys;
@@ -7179,7 +7210,7 @@ function InternalJsStringMap$InternalJsStringMapLegacy(){
   InternalJsStringMap.call(this);
 }
 
-defineClass(90, 60, {}, InternalJsStringMap$InternalJsStringMapLegacy);
+defineClass(90, 61, {}, InternalJsStringMap$InternalJsStringMapLegacy);
 _.createMap_0 = function createMap_2(){
   return {};
 }
@@ -7224,7 +7255,7 @@ function InternalJsStringMap$InternalJsStringMapWithKeysWorkaround(){
   InternalJsStringMap.call(this);
 }
 
-defineClass(91, 60, {}, InternalJsStringMap$InternalJsStringMapWithKeysWorkaround);
+defineClass(91, 61, {}, InternalJsStringMap$InternalJsStringMapWithKeysWorkaround);
 _.keys_1 = function keys_2(){
   var keys_0;
   keys_0 = $keys_0(this);
@@ -7323,8 +7354,8 @@ function $removeFrom(this$static, htmlElement){
   $stopWebcam(this$static);
 }
 
-function JSScannerWidget(onSuccess){
-  ScannerWidget.call(this, new ScannerCallback(onSuccess));
+function JSScannerWidget(onSuccess, provideVideoStream){
+  ScannerWidget.call(this, new ScannerCallback(onSuccess), provideVideoStream);
 }
 
 function addTo(htmlElement, scannerElement){
@@ -7338,10 +7369,14 @@ function removeFrom(htmlElement, scannerElement){
 defineClass(105, 104, $intern_1, JSScannerWidget);
 var Ljb_client_JSScannerWidget_2_classLit = createForClass('jb.client', 'JSScannerWidget', 105);
 function JsQRScanner(onSuccess){
-  this.scanner = new JSScannerWidget(onSuccess);
+  JsQRScanner_0.call(this, onSuccess, null);
 }
 
-defineClass(61, 1, {61:1}, JsQRScanner);
+function JsQRScanner_0(onSuccess, provideVideoStream){
+  this.scanner = new JSScannerWidget(onSuccess, provideVideoStream);
+}
+
+defineClass(48, 1, {48:1}, JsQRScanner, JsQRScanner_0);
 _.appendTo_0 = function appendTo(htmlElement){
   $appendTo(this.scanner, htmlElement);
 }
@@ -7382,7 +7417,7 @@ _.stopScanning_0 = function stopScanning(){
   this.scanner.active = false;
 }
 ;
-var Ljb_client_JsQRScanner_2_classLit = createForClass('jb.client', 'JsQRScanner', 61);
+var Ljb_client_JsQRScanner_2_classLit = createForClass('jb.client', 'JsQRScanner', 48);
 function $export_0(this$static){
   if (!exported_0) {
     exported_0 = true;
@@ -7397,7 +7432,7 @@ function $export0_0(this$static){
   var __0, __ = this$static;
   $wnd.JsQRScanner = $entry(function(){
     var g, j = this, a = arguments;
-    a.length == 1 && __.isAssignable(a[0])?(g = a[0]):a.length == 1 && (g = ___create(a[0] == null?null:a[0].constructor == $wnd.AsyncQRCallback?a[0].g:new AsyncQRCallback_ExporterImpl_0(a[0])));
+    a.length == 1 && __.isAssignable(a[0])?(g = a[0]):a.length == 2?(g = ___create_0(a[0] == null?null:a[0].constructor == $wnd.AsyncQRCallback?a[0].g:new AsyncQRCallback_ExporterImpl_0(a[0]), a[1])):a.length == 1 && (g = ___create(a[0] == null?null:a[0].constructor == $wnd.AsyncQRCallback?a[0].g:new AsyncQRCallback_ExporterImpl_0(a[0])));
     j.g = g;
     setWrapper(g, j);
     return j;
@@ -7457,9 +7492,13 @@ function ___create(a0){
   return new JsQRScanner(a0);
 }
 
+function ___create_0(a0, a1){
+  return new JsQRScanner_0(a0, a1);
+}
+
 defineClass(102, 1, {}, JsQRScanner_ExporterImpl);
 _.isAssignable = function isAssignable_0(o){
-  return o != null && instanceOf(o, 61);
+  return o != null && instanceOf(o, 48);
 }
 ;
 var exported_0 = false;
@@ -7527,7 +7566,7 @@ var I_classLit = createForPrimitive('int', 'I'), Ljava_lang_StackTraceElement_2_
 var $entry = registerEntry();
 var gwtOnLoad = gwtOnLoad = gwtOnLoad_0;
 addInitFunctions(init);
-setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie9']]]);
+setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'gecko1_8']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');
 gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);
 $sendStats('moduleStartup', 'end');
