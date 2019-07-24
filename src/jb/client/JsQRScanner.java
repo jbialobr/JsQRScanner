@@ -21,6 +21,11 @@ implements Exportable
         scanner = new JSScannerWidget(onSuccess, provideVideoStream);
     }
      
+    public JsQRScanner(AsyncQRCallback onSuccess)
+    {
+        this(onSuccess, null);
+    }
+
     public void appendTo(JavaScriptObject htmlElement)
     {
         scanner.appendTo(htmlElement);
