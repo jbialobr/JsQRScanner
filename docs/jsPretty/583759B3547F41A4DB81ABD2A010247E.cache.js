@@ -3,7 +3,7 @@ var __gwtModuleFunction = $wnd.jsqrscanner;
 var $sendStats = __gwtModuleFunction.__sendStats;
 $sendStats('moduleStartup', 'moduleEvalStart');
 var $gwt_version = "2.7.0";
-var $strongName = '2D6F2AD2D3D18FC660410390D08A44E2';
+var $strongName = '583759B3547F41A4DB81ABD2A010247E';
 var $gwt = {};
 var $doc = $wnd.document;
 var $moduleName, $moduleBase;
@@ -1938,7 +1938,7 @@ var Lcom_google_gwt_user_client_ui_WidgetCollection$WidgetIterator_2_classLit = 
 function assertCompileTimeUserAgent(){
   var runtimeValue;
   runtimeValue = $getRuntimeValue();
-  if (!$equals('ie10', runtimeValue)) {
+  if (!$equals('ie9', runtimeValue)) {
     throw new UserAgentAsserter$UserAgentAssertionError(runtimeValue);
   }
 }
@@ -1952,7 +1952,7 @@ var Ljava_lang_Error_2_classLit = createForClass('java.lang', 'Error', 59);
 defineClass(18, 59, $intern_3);
 var Ljava_lang_AssertionError_2_classLit = createForClass('java.lang', 'AssertionError', 18);
 function UserAgentAsserter$UserAgentAssertionError(runtimeValue){
-  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
+  Error_0.call(this, '' + ('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?dynamicCast('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null);
 }
 
 defineClass(80, 18, $intern_3, UserAgentAsserter$UserAgentAssertionError);
@@ -5323,20 +5323,13 @@ function $setWebcam(videoElement, scanner){
     return;
   }
   var n = $wnd.navigator;
-  function sourceSelected(videoSource){
-    var constraints = {audio:false, video:{optional:[{sourceId:videoSource}]}};
+  if (n.mediaDevices && n.mediaDevices.getUserMedia) {
+    n.mediaDevices.getUserMedia({video:{facingMode:'environment'}, audio:false}).then(success)['catch'](error);
+  }
+   else {
+    var constraints = {audio:false, video:true};
     n.getUserMedia?n.getUserMedia(constraints, success, error):n.webkitGetUserMedia?n.webkitGetUserMedia(constraints, success, error):n.mozGetUserMedia && n.mozGetUserMedia(constraints, success, error);
   }
-
-  n.mediaDevices && n.mediaDevices.getUserMedia?n.mediaDevices.getUserMedia({video:{facingMode:'environment'}, audio:false}).then(success)['catch'](error):MediaStreamTrack.getSources(function(sourceInfos){
-    var videoSource = null;
-    for (var i = 0; i != sourceInfos.length; ++i) {
-      var sourceInfo = sourceInfos[i];
-      sourceInfo.kind === 'video' && sourceInfo.facing === 'environment' && (videoSource = sourceInfo.id);
-    }
-    sourceSelected(videoSource);
-  }
-  );
 }
 
 function $stopWebcam(scanner){
@@ -7541,7 +7534,7 @@ var I_classLit = createForPrimitive('int', 'I'), Ljava_lang_StackTraceElement_2_
 var $entry = registerEntry();
 var gwtOnLoad = gwtOnLoad = gwtOnLoad_0;
 addInitFunctions(init);
-setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie10']]]);
+setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie9']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');
 gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);
 $sendStats('moduleStartup', 'end');
