@@ -3,4 +3,4 @@
 	url = https://github.com/jbialobr/gwt-qrscanner.git
 [submodule "gwt-exporter"]
 	path = gwt-exporter
-	url = https://github.com/manolo/gwt-exporter.git
+	url = https://github.com/jbialobr/gwt-exporter.git
