@@ -13,9 +13,9 @@ https://jbialobr.github.io/JsQRScanner/
 
 # How to use
 
-1) Place all the files from the [js](https://github.com/jbialobr/JsQRScanner/blob/master/war/js/) directory on your server.
+1) Place all the files from the [js](https://github.com/jbialobr/JsQRScanner/blob/master/docs/js/) directory on your server.
 
-2) Add the [js script](https://github.com/jbialobr/JsQRScanner/blob/master/war/js/jsqrscanner.nocache.js) into your page.
+2) Add the [js script](https://github.com/jbialobr/JsQRScanner/blob/master/docs/js/jsqrscanner.nocache.js) into your page.
 ```html
 <script type="text/javascript" src="/js/jsqrscanner.nocache.js"></script>
 ```
