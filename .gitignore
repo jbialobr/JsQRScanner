@@ -7,3 +7,4 @@ war/jsqrscanner/
 war/WEB-INF/deploy/
 /.gwt/.gwt-log
 /war/jsPretty/jsqrscanner.devmode.js
+/war/js/jsqrscanner.devmode.js
