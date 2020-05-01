@@ -63,15 +63,11 @@ function jsqrscanner(){
       return;
     }
     var scriptFrame = $doc_0.createElement('iframe');
-    scriptFrame.src = 'javascript:""';
     scriptFrame.id = 'jsqrscanner';
     scriptFrame.style.cssText = 'position:absolute; width:0; height:0; border:none; left: -1000px;' + ' top: -1000px;';
     scriptFrame.tabIndex = -1;
     $doc_0.body.appendChild(scriptFrame);
-    frameDoc = scriptFrame.contentDocument;
-    if (!frameDoc) {
-      frameDoc = scriptFrame.contentWindow.document;
-    }
+    frameDoc = scriptFrame.contentWindow.document;
     frameDoc.open();
     var doctype = document.compatMode == 'CSS1Compat'?'<!doctype html>':'';
     frameDoc.write(doctype + '<html><head><\/head><body><\/body><\/html>');
@@ -92,12 +88,15 @@ function jsqrscanner(){
         callback();
         return;
       }
-      function onBodyDone(){
+      function checkBodyDone(){
         if (!bodyDone) {
+          if (!isBodyLoaded()) {
+            return;
+          }
           bodyDone = true;
           callback();
           if ($doc_0.removeEventListener) {
-            $doc_0.removeEventListener('DOMContentLoaded', onBodyDone, false);
+            $doc_0.removeEventListener('readystatechange', checkBodyDone, false);
           }
           if (onBodyDoneTimerId) {
             clearInterval(onBodyDoneTimerId);
@@ -106,14 +105,12 @@ function jsqrscanner(){
       }
 
       if ($doc_0.addEventListener) {
-        $doc_0.addEventListener('DOMContentLoaded', onBodyDone, false);
+        $doc_0.addEventListener('readystatechange', checkBodyDone, false);
       }
       var onBodyDoneTimerId = setInterval(function(){
-        if (isBodyLoaded()) {
-          onBodyDone();
-        }
+        checkBodyDone();
       }
-      , 50);
+      , 10);
     }
 
     function installCode(code_0){
@@ -351,7 +348,7 @@ function jsqrscanner(){
       return '';
     }
     ;
-    values['user.agent'] = {gecko1_8:0, ie10:1, ie8:2, ie9:3, safari:4};
+    values['user.agent'] = {'gecko1_8':0, 'ie10':1, 'ie8':2, 'ie9':3, 'safari':4};
     __gwt_isKnownPropertyValue = function(propName, propValue){
       return propValue in values[propName];
     }
@@ -374,11 +371,11 @@ function jsqrscanner(){
     }
     var strongName;
     try {
-      unflattenKeylistIntoAnswers(['ie10'], 'E2DE619934E7B85CBFB9935ADFC149FD');
-      unflattenKeylistIntoAnswers(['gecko1_8'], '9F36F6E596D24028CF2BAC1860F22428');
-      unflattenKeylistIntoAnswers(['safari'], '7336332C96BEE798552E9397E317C8AC');
-      unflattenKeylistIntoAnswers(['ie9'], '583759B3547F41A4DB81ABD2A010247E');
-      unflattenKeylistIntoAnswers(['ie8'], 'B740E7E455C035DF151FA9FBFC08D197');
+      unflattenKeylistIntoAnswers(['gecko1_8'], '48E33559B73BAA8CF460F98EF219976D');
+      unflattenKeylistIntoAnswers(['safari'], '63DB8F30627AF8DB3726CF92466AFCD4');
+      unflattenKeylistIntoAnswers(['ie8'], '871AA969922A0327BF21CCE1897B2755');
+      unflattenKeylistIntoAnswers(['ie9'], '99549A865F05850FF01173B78C74D4C2');
+      unflattenKeylistIntoAnswers(['ie10'], 'B59577AB6860E2EB40EBD2256295FEDF');
       strongName = answers[computePropValue('user.agent')];
       var idx = strongName.indexOf(':');
       if (idx != -1) {
