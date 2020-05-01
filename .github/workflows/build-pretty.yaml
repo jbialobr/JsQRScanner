@@ -28,5 +28,5 @@ jobs:
       run: mkdir js-pretty && cp target/JsQRScanner-1.0/jsqrscanner/*.* js-pretty
     - uses: actions/upload-artifact@v1
       with:
-        name: Package
+        name: js-pretty
         path: js-pretty
