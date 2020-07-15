@@ -9,3 +9,4 @@ war/WEB-INF/deploy/
 /war/jsPretty/jsqrscanner.devmode.js
 /war/js/jsqrscanner.devmode.js
 /target/
+/war/
