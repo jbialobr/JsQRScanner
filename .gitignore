@@ -6,6 +6,7 @@ gwt-unitCache/
 war/jsqrscanner/
 war/WEB-INF/deploy/
 /.gwt/.gwt-log
+/ts/
 /war/jsPretty/jsqrscanner.devmode.js
 /war/js/jsqrscanner.devmode.js
 /target/
