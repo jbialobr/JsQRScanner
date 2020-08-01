@@ -3,7 +3,7 @@ var __gwtModuleFunction = $wnd.jsqrscanner;
 var $sendStats = __gwtModuleFunction.__sendStats;
 $sendStats('moduleStartup', 'moduleEvalStart');
 var $gwt_version = "2.8.2";
-var $strongName = '63DB8F30627AF8DB3726CF92466AFCD4';
+var $strongName = '8EE367121C720156A3988FEB55B1D141';
 var $gwt = {};
 var $doc = $wnd.document;
 var $moduleName, $moduleBase;
@@ -22,7 +22,7 @@ var $stats = $wnd.__gwtStatsEvent ? function(a) {
 return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);
 } : null;
 var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;
-var $intern_0 = 2147483647, $intern_1 = {33:1, 34:1, 29:1, 28:1, 35:1, 24:1, 22:1}, $intern_2 = {3:1}, $intern_3 = {3:1, 8:1}, $intern_4 = {3:1, 10:1, 8:1}, $intern_5 = 4194303, $intern_6 = 1048575, $intern_7 = 4194304, $intern_8 = 17592186044416, $intern_9 = 524288, $intern_10 = -17592186044416, $intern_11 = 65536, $intern_12 = 1048576, $intern_13 = 8388608, $intern_14 = 16777216, $intern_15 = 33554432, $intern_16 = 67108864, $intern_17 = {3:1, 21:1}, $intern_18 = {7:1, 3:1}, $intern_19 = {15:1, 3:1, 14:1, 13:1}, $intern_20 = {3:1, 10:1, 11:1, 8:1}, $intern_21 = {14:1, 30:1}, $intern_22 = {40:1}, $intern_23 = {19:1};
+var $intern_0 = 2147483647, $intern_1 = {33:1, 34:1, 29:1, 28:1, 35:1, 24:1, 22:1}, $intern_2 = {3:1}, $intern_3 = {3:1, 8:1}, $intern_4 = {3:1, 10:1, 8:1}, $intern_5 = 65535, $intern_6 = 4194303, $intern_7 = 1048575, $intern_8 = 4194304, $intern_9 = 17592186044416, $intern_10 = 524288, $intern_11 = -17592186044416, $intern_12 = 65536, $intern_13 = 1048576, $intern_14 = 8388608, $intern_15 = 16777216, $intern_16 = 33554432, $intern_17 = 67108864, $intern_18 = {3:1, 21:1}, $intern_19 = {7:1, 3:1}, $intern_20 = {15:1, 3:1, 14:1, 13:1}, $intern_21 = {3:1, 10:1, 11:1, 8:1}, $intern_22 = {14:1, 30:1}, $intern_23 = {40:1}, $intern_24 = {19:1};
 var _, prototypesByTypeId_0, initFnList_0, permutationId = -1;
 function setGwtProperty(propertyName, propertyValue){
   typeof window === 'object' && typeof window['$gwt'] === 'object' && (window['$gwt'][propertyName] = propertyValue);
@@ -502,7 +502,7 @@ _.onBrowserEvent = function onBrowserEvent(event_0){
     case 16:
     case 32:
       related = event_0.relatedTarget;
-      if (!!related && $isOrHasChild(this.element, related)) {
+      if (!!related && isOrHasChildImpl(this.element, related)) {
         return;
       }
 
@@ -516,11 +516,6 @@ _.onDetach = function onDetach(){
 _.attached = false;
 _.eventsToSink = 0;
 var Lcom_google_gwt_user_client_ui_Widget_2_classLit = createForClass('com.google.gwt.user.client.ui', 'Widget', 22);
-function $clinit_FocusWidget(){
-  $clinit_FocusWidget = emptyMethod;
-  $clinit_FocusImpl();
-}
-
 function $onAttach_0(this$static){
   var tabIndex;
   $onAttach(this$static);
@@ -528,12 +523,12 @@ function $onAttach_0(this$static){
   -1 == tabIndex && (this$static.element.tabIndex = 0 , undefined);
 }
 
-defineClass(184, 22, $intern_1);
+defineClass(182, 22, $intern_1);
 _.onAttach = function onAttach_0(){
   $onAttach_0(this);
 }
 ;
-var Lcom_google_gwt_user_client_ui_FocusWidget_2_classLit = createForClass('com.google.gwt.user.client.ui', 'FocusWidget', 184);
+var Lcom_google_gwt_user_client_ui_FocusWidget_2_classLit = createForClass('com.google.gwt.user.client.ui', 'FocusWidget', 182);
 function $getContext2d(this$static){
   return ($clinit_DOM() , this$static.element).getContext('2d');
 }
@@ -551,7 +546,6 @@ function Canvas_0(element){
 }
 
 function createIfSupported(){
-  $clinit_FocusWidget();
   var element;
   !detector && (detector = new Canvas$CanvasElementSupportDetectedMaybe);
   element = $doc.createElement('canvas');
@@ -561,15 +555,15 @@ function createIfSupported(){
   return new Canvas_0(element);
 }
 
-defineClass(129, 184, $intern_1, Canvas_0);
+defineClass(129, 182, $intern_1, Canvas_0);
 var detector;
 var Lcom_google_gwt_canvas_client_Canvas_2_classLit = createForClass('com.google.gwt.canvas.client', 'Canvas', 129);
-defineClass(186, 1, {});
-var Lcom_google_gwt_canvas_client_Canvas$CanvasElementSupportDetector_2_classLit = createForClass('com.google.gwt.canvas.client', 'Canvas/CanvasElementSupportDetector', 186);
+defineClass(184, 1, {});
+var Lcom_google_gwt_canvas_client_Canvas$CanvasElementSupportDetector_2_classLit = createForClass('com.google.gwt.canvas.client', 'Canvas/CanvasElementSupportDetector', 184);
 function Canvas$CanvasElementSupportDetectedMaybe(){
 }
 
-defineClass(130, 186, {}, Canvas$CanvasElementSupportDetectedMaybe);
+defineClass(130, 184, {}, Canvas$CanvasElementSupportDetectedMaybe);
 var Lcom_google_gwt_canvas_client_Canvas$CanvasElementSupportDetectedMaybe_2_classLit = createForClass('com.google.gwt.canvas.client', 'Canvas/CanvasElementSupportDetectedMaybe', 130);
 function $equals(this$static, other){
   return !!this$static && !!this$static.equals?this$static.equals(other):maskUndefined(this$static) === maskUndefined(other);
@@ -609,7 +603,7 @@ function $setBackingJsObject(this$static, backingJsObject){
 function $setStackTrace(stackTrace){
   var copy, i, length_0;
   length_0 = stackTrace.length;
-  copy = initUnidimensionalArray(Ljava_lang_StackTraceElement_2_classLit, $intern_2, 191, length_0, 0, 1);
+  copy = initUnidimensionalArray(Ljava_lang_StackTraceElement_2_classLit, $intern_2, 188, length_0, 0, 1);
   for (i = 0; i < length_0; ++i) {
     copy[i] = (checkCriticalNotNull(stackTrace[i]) , stackTrace[i]);
   }
@@ -752,8 +746,8 @@ function now_1(){
   return (new Date).getTime();
 }
 
-defineClass(165, 1, {});
-var Lcom_google_gwt_core_client_Scheduler_2_classLit = createForClass('com.google.gwt.core.client', 'Scheduler', 165);
+defineClass(163, 1, {});
+var Lcom_google_gwt_core_client_Scheduler_2_classLit = createForClass('com.google.gwt.core.client', 'Scheduler', 163);
 function $clinit_Impl(){
   $clinit_Impl = emptyMethod;
   !!($clinit_StackTraceCreator() , collector);
@@ -892,7 +886,7 @@ function runScheduledTasks(tasks, rescheduled){
   return rescheduled;
 }
 
-defineClass(103, 165, {}, SchedulerImpl);
+defineClass(103, 163, {}, SchedulerImpl);
 var INSTANCE;
 var Lcom_google_gwt_core_client_impl_SchedulerImpl_2_classLit = createForClass('com.google.gwt.core.client.impl', 'SchedulerImpl', 103);
 function $clinit_StackTraceCreator(){
@@ -923,12 +917,12 @@ function supportsErrorStack(){
 }
 
 var collector;
-defineClass(175, 1, {});
-var Lcom_google_gwt_core_client_impl_StackTraceCreator$Collector_2_classLit = createForClass('com.google.gwt.core.client.impl', 'StackTraceCreator/Collector', 175);
+defineClass(173, 1, {});
+var Lcom_google_gwt_core_client_impl_StackTraceCreator$Collector_2_classLit = createForClass('com.google.gwt.core.client.impl', 'StackTraceCreator/Collector', 173);
 function StackTraceCreator$CollectorLegacy(){
 }
 
-defineClass(97, 175, {}, StackTraceCreator$CollectorLegacy);
+defineClass(97, 173, {}, StackTraceCreator$CollectorLegacy);
 _.collect = function collect(error){
   var seen = {}, name_1;
   var fnStack = [];
@@ -953,15 +947,15 @@ _.collect = function collect(error){
 }
 ;
 var Lcom_google_gwt_core_client_impl_StackTraceCreator$CollectorLegacy_2_classLit = createForClass('com.google.gwt.core.client.impl', 'StackTraceCreator/CollectorLegacy', 97);
-defineClass(176, 175, {});
+defineClass(174, 173, {});
 _.collect = function collect_0(error){
 }
 ;
-var Lcom_google_gwt_core_client_impl_StackTraceCreator$CollectorModern_2_classLit = createForClass('com.google.gwt.core.client.impl', 'StackTraceCreator/CollectorModern', 176);
+var Lcom_google_gwt_core_client_impl_StackTraceCreator$CollectorModern_2_classLit = createForClass('com.google.gwt.core.client.impl', 'StackTraceCreator/CollectorModern', 174);
 function StackTraceCreator$CollectorModernNoSourceMap(){
 }
 
-defineClass(98, 176, {}, StackTraceCreator$CollectorModernNoSourceMap);
+defineClass(98, 174, {}, StackTraceCreator$CollectorModernNoSourceMap);
 var Lcom_google_gwt_core_client_impl_StackTraceCreator$CollectorModernNoSourceMap_2_classLit = createForClass('com.google.gwt.core.client.impl', 'StackTraceCreator/CollectorModernNoSourceMap', 98);
 function $appendChild(this$static, newChild){
   return this$static.appendChild(newChild);
@@ -979,12 +973,26 @@ function $setWidth(this$static, width_0){
   this$static.width = width_0;
 }
 
-function $isOrHasChild(parent_0, child){
-  return parent_0.contains(child);
+function $getTabIndex(elem){
+  return elem.tabIndex < $intern_5?elem.tabIndex:-(elem.tabIndex % $intern_5) - 1;
 }
 
-function $getTabIndex(elem){
-  return typeof elem.tabIndex != 'undefined'?elem.tabIndex:-1;
+function isOrHasChildImpl(parent_0, child){
+  if (parent_0.nodeType != 1 && parent_0.nodeType != 9) {
+    return parent_0 == child;
+  }
+  if (child.nodeType != 1) {
+    child = child.parentNode;
+    if (!child) {
+      return false;
+    }
+  }
+  if (parent_0.nodeType == 9) {
+    return parent_0 === child || parent_0.body && parent_0.body.contains(child);
+  }
+   else {
+    return parent_0 === child || parent_0.contains(child);
+  }
 }
 
 function UmbrellaException(causes){
@@ -1119,9 +1127,9 @@ function stampJavaTypeInfo(arrayClass, castableTypeMap, elementTypeId, elementTy
 
 function create(value_0){
   var a0, a1, a2;
-  a0 = value_0 & $intern_5;
-  a1 = value_0 >> 22 & $intern_5;
-  a2 = value_0 < 0?$intern_6:0;
+  a0 = value_0 & $intern_6;
+  a1 = value_0 >> 22 & $intern_6;
+  a2 = value_0 < 0?$intern_7:0;
   return create0(a0, a1, a2);
 }
 
@@ -1130,7 +1138,7 @@ function create0(l, m, h){
 }
 
 function toDoubleHelper(a){
-  return a.l + a.m * $intern_7 + a.h * $intern_8;
+  return a.l + a.m * $intern_8 + a.h * $intern_9;
 }
 
 function and(a, b){
@@ -1176,18 +1184,18 @@ function fromDouble(value_0){
     value_0 = -value_0;
   }
   a2 = 0;
-  if (value_0 >= $intern_8) {
-    a2 = round_int(value_0 / $intern_8);
-    value_0 -= a2 * $intern_8;
+  if (value_0 >= $intern_9) {
+    a2 = round_int(value_0 / $intern_9);
+    value_0 -= a2 * $intern_9;
   }
   a1 = 0;
-  if (value_0 >= $intern_7) {
-    a1 = round_int(value_0 / $intern_7);
-    value_0 -= a1 * $intern_7;
+  if (value_0 >= $intern_8) {
+    a1 = round_int(value_0 / $intern_8);
+    value_0 -= a1 * $intern_8;
   }
   a0 = round_int(value_0);
   result = create0(a0, a1, a2);
-  negative && (neg0 = ~result.l + 1 & $intern_5 , neg1 = ~result.m + (neg0 == 0?1:0) & $intern_5 , neg2 = ~result.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_6 , result.l = neg0 , result.m = neg1 , result.h = neg2 , undefined);
+  negative && (neg0 = ~result.l + 1 & $intern_6 , neg1 = ~result.m + (neg0 == 0?1:0) & $intern_6 , neg2 = ~result.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_7 , result.l = neg0 , result.m = neg1 , result.h = neg2 , undefined);
   return result;
 }
 
@@ -1213,14 +1221,14 @@ function shl(a, n){
     res1 = 0;
     res2 = a.l << n - 44;
   }
-  return create0(res0 & $intern_5, res1 & $intern_5, res2 & $intern_6);
+  return create0(res0 & $intern_6, res1 & $intern_6, res2 & $intern_7);
 }
 
 function shr(a, n){
   var a2, negative, res0, res1, res2;
   n &= 63;
   a2 = a.h;
-  negative = (a2 & $intern_9) != 0;
+  negative = (a2 & $intern_10) != 0;
   negative && (a2 |= -1048576);
   if (n < 22) {
     res2 = a2 >> n;
@@ -1228,16 +1236,16 @@ function shr(a, n){
     res0 = a.l >> n | a.m << 22 - n;
   }
    else if (n < 44) {
-    res2 = negative?$intern_6:0;
+    res2 = negative?$intern_7:0;
     res1 = a2 >> n - 22;
     res0 = a.m >> n - 22 | a2 << 44 - n;
   }
    else {
-    res2 = negative?$intern_6:0;
-    res1 = negative?$intern_5:0;
+    res2 = negative?$intern_7:0;
+    res1 = negative?$intern_6:0;
     res0 = a2 >> n - 44;
   }
-  return create0(res0 & $intern_5, res1 & $intern_5, res2 & $intern_6);
+  return create0(res0 & $intern_6, res1 & $intern_6, res2 & $intern_7);
 }
 
 function sub_0(a, b){
@@ -1245,21 +1253,21 @@ function sub_0(a, b){
   sum0 = a.l - b.l;
   sum1 = a.m - b.m + (sum0 >> 22);
   sum2 = a.h - b.h + (sum1 >> 22);
-  return create0(sum0 & $intern_5, sum1 & $intern_5, sum2 & $intern_6);
+  return create0(sum0 & $intern_6, sum1 & $intern_6, sum2 & $intern_7);
 }
 
 function toDouble(a){
   var neg0, neg1, neg2;
   if (compare(a, ($clinit_BigLongLib$Const() , ZERO)) < 0) {
-    return -toDoubleHelper((neg0 = ~a.l + 1 & $intern_5 , neg1 = ~a.m + (neg0 == 0?1:0) & $intern_5 , neg2 = ~a.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_6 , create0(neg0, neg1, neg2)));
+    return -toDoubleHelper((neg0 = ~a.l + 1 & $intern_6 , neg1 = ~a.m + (neg0 == 0?1:0) & $intern_6 , neg2 = ~a.h + (neg0 == 0 && neg1 == 0?1:0) & $intern_7 , create0(neg0, neg1, neg2)));
   }
-  return a.l + a.m * $intern_7 + a.h * $intern_8;
+  return a.l + a.m * $intern_8 + a.h * $intern_9;
 }
 
 function $clinit_BigLongLib$Const(){
   $clinit_BigLongLib$Const = emptyMethod;
-  MAX_VALUE = create0($intern_5, $intern_5, 524287);
-  MIN_VALUE = create0(0, 0, $intern_9);
+  MAX_VALUE = create0($intern_6, $intern_6, 524287);
+  MIN_VALUE = create0(0, 0, $intern_10);
   create(1);
   create(2);
   ZERO = create(0);
@@ -1291,16 +1299,16 @@ function createLongEmul(big_0){
   var a2;
   a2 = big_0.h;
   if (a2 == 0) {
-    return big_0.l + big_0.m * $intern_7;
+    return big_0.l + big_0.m * $intern_8;
   }
-  if (a2 == $intern_6) {
-    return big_0.l + big_0.m * $intern_7 - $intern_8;
+  if (a2 == $intern_7) {
+    return big_0.l + big_0.m * $intern_8 - $intern_9;
   }
   return big_0;
 }
 
 function fromDouble_0(value_0){
-  if ($intern_10 < value_0 && value_0 < $intern_8) {
+  if ($intern_11 < value_0 && value_0 < $intern_9) {
     return value_0 < 0?$wnd.Math.ceil(value_0):$wnd.Math.floor(value_0);
   }
   return createLongEmul(fromDouble(value_0));
@@ -1322,7 +1330,7 @@ function sub_1(a, b){
   var result;
   if (isSmallLong0(a) && isSmallLong0(b)) {
     result = a - b;
-    if ($intern_10 < result && result < $intern_8) {
+    if ($intern_11 < result && result < $intern_9) {
       return result;
     }
   }
@@ -1334,11 +1342,11 @@ function toBigLong(longValue){
   value_0 = longValue;
   a3 = 0;
   if (value_0 < 0) {
-    value_0 += $intern_8;
-    a3 = $intern_6;
+    value_0 += $intern_9;
+    a3 = $intern_7;
   }
-  a1 = round_int(value_0 / $intern_7);
-  a0 = round_int(value_0 - a1 * $intern_7);
+  a1 = round_int(value_0 / $intern_8);
+  a0 = round_int(value_0 - a1 * $intern_8);
   return create0(a0, a1, a3);
 }
 
@@ -1375,14 +1383,13 @@ function $setSrc(this$static){
   ($clinit_DOM() , this$static.element).src = '';
 }
 
-defineClass(124, 184, $intern_1);
+defineClass(124, 182, $intern_1);
 var Lcom_google_gwt_media_client_MediaBase_2_classLit = createForClass('com.google.gwt.media.client', 'MediaBase', 124);
 function Video(element){
   $setElement_0(this, ($clinit_DOM() , element));
 }
 
 function createIfSupported_0(){
-  $clinit_FocusWidget();
   var element;
   !detector_0 && (detector_0 = new Video$VideoElementSupportDetectedMaybe);
   element = $doc.createElement('video');
@@ -1395,12 +1402,12 @@ function createIfSupported_0(){
 defineClass(125, 124, $intern_1, Video);
 var detector_0;
 var Lcom_google_gwt_media_client_Video_2_classLit = createForClass('com.google.gwt.media.client', 'Video', 125);
-defineClass(185, 1, {});
-var Lcom_google_gwt_media_client_Video$VideoElementSupportDetector_2_classLit = createForClass('com.google.gwt.media.client', 'Video/VideoElementSupportDetector', 185);
+defineClass(183, 1, {});
+var Lcom_google_gwt_media_client_Video$VideoElementSupportDetector_2_classLit = createForClass('com.google.gwt.media.client', 'Video/VideoElementSupportDetector', 183);
 function Video$VideoElementSupportDetectedMaybe(){
 }
 
-defineClass(126, 185, {}, Video$VideoElementSupportDetectedMaybe);
+defineClass(126, 183, {}, Video$VideoElementSupportDetectedMaybe);
 var Lcom_google_gwt_media_client_Video$VideoElementSupportDetectedMaybe_2_classLit = createForClass('com.google.gwt.media.client', 'Video/VideoElementSupportDetectedMaybe', 126);
 function $clinit_DOM(){
   $clinit_DOM = emptyMethod;
@@ -1526,28 +1533,28 @@ function $eventGetTypeInt(eventType){
     case 'scroll':
       return 16384;
     case 'error':
-      return $intern_11;
+      return $intern_12;
     case 'DOMMouseScroll':
     case 'mousewheel':
       return 131072;
     case 'contextmenu':
       return 262144;
     case 'paste':
-      return $intern_9;
+      return $intern_10;
     case 'touchstart':
-      return $intern_12;
+      return $intern_13;
     case 'touchmove':
       return 2097152;
     case 'touchend':
-      return $intern_7;
+      return $intern_8;
     case 'touchcancel':
-      return $intern_13;
-    case 'gesturestart':
       return $intern_14;
-    case 'gesturechange':
+    case 'gesturestart':
       return $intern_15;
-    case 'gestureend':
+    case 'gesturechange':
       return $intern_16;
+    case 'gestureend':
+      return $intern_17;
     default:return -1;
   }
 }
@@ -1616,17 +1623,17 @@ function $sinkEventsImpl(elem, bits){
   chMask & 8192 && (elem.onlosecapture = bits & 8192?dispatchEvent_1:null);
   chMask & 16384 && (elem.onscroll = bits & 16384?dispatchEvent_1:null);
   chMask & 32768 && (elem.onload = bits & 32768?dispatchUnhandledEvent:null);
-  chMask & $intern_11 && (elem.onerror = bits & $intern_11?dispatchEvent_1:null);
+  chMask & $intern_12 && (elem.onerror = bits & $intern_12?dispatchEvent_1:null);
   chMask & 131072 && (elem.onmousewheel = bits & 131072?dispatchEvent_1:null);
   chMask & 262144 && (elem.oncontextmenu = bits & 262144?dispatchEvent_1:null);
-  chMask & $intern_9 && (elem.onpaste = bits & $intern_9?dispatchEvent_1:null);
-  chMask & $intern_12 && (elem.ontouchstart = bits & $intern_12?dispatchEvent_1:null);
+  chMask & $intern_10 && (elem.onpaste = bits & $intern_10?dispatchEvent_1:null);
+  chMask & $intern_13 && (elem.ontouchstart = bits & $intern_13?dispatchEvent_1:null);
   chMask & 2097152 && (elem.ontouchmove = bits & 2097152?dispatchEvent_1:null);
-  chMask & $intern_7 && (elem.ontouchend = bits & $intern_7?dispatchEvent_1:null);
-  chMask & $intern_13 && (elem.ontouchcancel = bits & $intern_13?dispatchEvent_1:null);
-  chMask & $intern_14 && (elem.ongesturestart = bits & $intern_14?dispatchEvent_1:null);
-  chMask & $intern_15 && (elem.ongesturechange = bits & $intern_15?dispatchEvent_1:null);
-  chMask & $intern_16 && (elem.ongestureend = bits & $intern_16?dispatchEvent_1:null);
+  chMask & $intern_8 && (elem.ontouchend = bits & $intern_8?dispatchEvent_1:null);
+  chMask & $intern_14 && (elem.ontouchcancel = bits & $intern_14?dispatchEvent_1:null);
+  chMask & $intern_15 && (elem.ongesturestart = bits & $intern_15?dispatchEvent_1:null);
+  chMask & $intern_16 && (elem.ongesturechange = bits & $intern_16?dispatchEvent_1:null);
+  chMask & $intern_17 && (elem.ongestureend = bits & $intern_17?dispatchEvent_1:null);
 }
 
 function dispatchCapturedEvent(evt){
@@ -1675,7 +1682,7 @@ function foreach_0(map_0, fn){
   }
 }
 
-defineClass(183, 22, $intern_1);
+defineClass(181, 22, $intern_1);
 _.doAttachChildren = function doAttachChildren_0(){
   tryCommand(this, ($clinit_AttachDetachException() , attachCommand));
 }
@@ -1684,7 +1691,7 @@ _.doDetachChildren = function doDetachChildren_0(){
   tryCommand(this, ($clinit_AttachDetachException() , detachCommand));
 }
 ;
-var Lcom_google_gwt_user_client_ui_Panel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'Panel', 183);
+var Lcom_google_gwt_user_client_ui_Panel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'Panel', 181);
 function $add(this$static, child, container){
   $removeFromParent(child);
   $add_1(this$static.children, child);
@@ -1709,7 +1716,7 @@ function $remove(this$static, w){
   return true;
 }
 
-defineClass(112, 183, $intern_1);
+defineClass(112, 181, $intern_1);
 _.iterator = function iterator_0(){
   return new WidgetCollection$WidgetIterator(this.children);
 }
@@ -1883,29 +1890,10 @@ _.hasNext_0 = function hasNext(){
 ;
 _.index_0 = 0;
 var Lcom_google_gwt_user_client_ui_WidgetCollection$WidgetIterator_2_classLit = createForClass('com.google.gwt.user.client.ui', 'WidgetCollection/WidgetIterator', 84);
-function $clinit_FocusImpl(){
-  $clinit_FocusImpl = emptyMethod;
-  implPanel = new FocusImplSafari;
-  implPanel?new FocusImpl:implPanel;
-}
-
-function FocusImpl(){
-}
-
-defineClass(131, 1, {}, FocusImpl);
-var implPanel;
-var Lcom_google_gwt_user_client_ui_impl_FocusImpl_2_classLit = createForClass('com.google.gwt.user.client.ui.impl', 'FocusImpl', 131);
-defineClass(187, 131, {});
-var Lcom_google_gwt_user_client_ui_impl_FocusImplStandard_2_classLit = createForClass('com.google.gwt.user.client.ui.impl', 'FocusImplStandard', 187);
-function FocusImplSafari(){
-}
-
-defineClass(132, 187, {}, FocusImplSafari);
-var Lcom_google_gwt_user_client_ui_impl_FocusImplSafari_2_classLit = createForClass('com.google.gwt.user.client.ui.impl', 'FocusImplSafari', 132);
 function assertCompileTimeUserAgent(){
   var runtimeValue;
   runtimeValue = $getRuntimeValue();
-  if (!$equals_0('safari', runtimeValue)) {
+  if (!$equals_0('ie10', runtimeValue)) {
     throw toJs(new UserAgentAsserter$UserAgentAssertionError(runtimeValue));
   }
 }
@@ -1920,7 +1908,7 @@ defineClass(18, 60, $intern_3);
 var Ljava_lang_AssertionError_2_classLit = createForClass('java.lang', 'AssertionError', 18);
 function UserAgentAsserter$UserAgentAssertionError(runtimeValue){
   var lastArg;
-  Error_0.call(this, (lastArg = 'Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (safari) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.' == null?'null':toString_3('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (safari) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.') , instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (safari) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?castTo('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (safari) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null , lastArg));
+  Error_0.call(this, (lastArg = 'Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.' == null?'null':toString_3('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.') , instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?castTo('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null , lastArg));
 }
 
 defineClass(88, 18, $intern_3, UserAgentAsserter$UserAgentAssertionError);
@@ -1956,13 +1944,13 @@ function $getRuntimeValue(){
   return 'unknown';
 }
 
-defineClass(137, 1, {});
-var Lcom_google_zxing_Binarizer_2_classLit = createForClass('com.google.zxing', 'Binarizer', 137);
+defineClass(135, 1, {});
+var Lcom_google_zxing_Binarizer_2_classLit = createForClass('com.google.zxing', 'Binarizer', 135);
 function BinaryBitmap(binarizer){
   this.binarizer = binarizer;
 }
 
-defineClass(135, 1, {}, BinaryBitmap);
+defineClass(133, 1, {}, BinaryBitmap);
 _.toString_0 = function toString_4(){
   try {
     return $toString_0((!this.matrix && (this.matrix = $getBlackMatrix_0(this.binarizer)) , this.matrix));
@@ -1977,10 +1965,10 @@ _.toString_0 = function toString_4(){
   }
 }
 ;
-var Lcom_google_zxing_BinaryBitmap_2_classLit = createForClass('com.google.zxing', 'BinaryBitmap', 135);
+var Lcom_google_zxing_BinaryBitmap_2_classLit = createForClass('com.google.zxing', 'BinaryBitmap', 133);
 function $clinit_ReaderException(){
   $clinit_ReaderException = emptyMethod;
-  NO_TRACE = initUnidimensionalArray(Ljava_lang_StackTraceElement_2_classLit, $intern_2, 191, 0, 0, 1);
+  NO_TRACE = initUnidimensionalArray(Ljava_lang_StackTraceElement_2_classLit, $intern_2, 188, 0, 0, 1);
 }
 
 function ReaderException(){
@@ -2023,7 +2011,7 @@ function FormatException(){
 defineClass(57, 66, {57:1, 3:1, 10:1, 8:1}, FormatException);
 var INSTANCE_1;
 var Lcom_google_zxing_FormatException_2_classLit = createForClass('com.google.zxing', 'FormatException', 57);
-defineClass(136, 1, {});
+defineClass(134, 1, {});
 _.toString_0 = function toString_5(){
   var c, luminance, result, row, x_0, y_0;
   row = initUnidimensionalArray(B_classLit, $intern_2, 6, this.width_0, 15, 1);
@@ -2042,7 +2030,7 @@ _.toString_0 = function toString_5(){
 ;
 _.height_0 = 0;
 _.width_0 = 0;
-var Lcom_google_zxing_LuminanceSource_2_classLit = createForClass('com.google.zxing', 'LuminanceSource', 136);
+var Lcom_google_zxing_LuminanceSource_2_classLit = createForClass('com.google.zxing', 'LuminanceSource', 134);
 function $clinit_NotFoundException(){
   $clinit_NotFoundException = emptyMethod;
   $clinit_ReaderException();
@@ -2126,7 +2114,7 @@ function ResultMetadataType(enum$name, enum$ordinal){
 
 function values_0(){
   $clinit_ResultMetadataType();
-  return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_ResultMetadataType_2_classLit, 1), $intern_17, 20, 0, [OTHER, ORIENTATION, BYTE_SEGMENTS, ERROR_CORRECTION_LEVEL, ISSUE_NUMBER, SUGGESTED_PRICE, POSSIBLE_COUNTRY, UPC_EAN_EXTENSION, PDF417_EXTRA_METADATA, STRUCTURED_APPEND_SEQUENCE, STRUCTURED_APPEND_PARITY]);
+  return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_ResultMetadataType_2_classLit, 1), $intern_18, 20, 0, [OTHER, ORIENTATION, BYTE_SEGMENTS, ERROR_CORRECTION_LEVEL, ISSUE_NUMBER, SUGGESTED_PRICE, POSSIBLE_COUNTRY, UPC_EAN_EXTENSION, PDF417_EXTRA_METADATA, STRUCTURED_APPEND_SEQUENCE, STRUCTURED_APPEND_PARITY]);
 }
 
 defineClass(20, 13, {20:1, 3:1, 14:1, 13:1}, ResultMetadataType);
@@ -2255,7 +2243,7 @@ function BitMatrix_0(width_0, height){
   this.width_0 = width_0;
   this.height_0 = height;
   this.rowSize = (width_0 + 31) / 32 | 0;
-  this.bits = initUnidimensionalArray(I_classLit, $intern_18, 6, this.rowSize * height, 15, 1);
+  this.bits = initUnidimensionalArray(I_classLit, $intern_19, 6, this.rowSize * height, 15, 1);
 }
 
 defineClass(32, 1, {32:1}, BitMatrix, BitMatrix_0);
@@ -2325,15 +2313,15 @@ function BitSource(bytes){
   this.bytes = bytes;
 }
 
-defineClass(161, 1, {}, BitSource);
+defineClass(159, 1, {}, BitSource);
 _.bitOffset = 0;
 _.byteOffset = 0;
-var Lcom_google_zxing_common_BitSource_2_classLit = createForClass('com.google.zxing.common', 'BitSource', 161);
+var Lcom_google_zxing_common_BitSource_2_classLit = createForClass('com.google.zxing.common', 'BitSource', 159);
 function $clinit_CharacterSetECI(){
   $clinit_CharacterSetECI = emptyMethod;
   var eci, eci$array, eci$index, eci$max, name_0, name$array, name$index, name$max, value_0, value$array, value$index, value$max;
-  Cp437 = new CharacterSetECI_1('Cp437', 0, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [0, 2]), stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, []));
-  ISO8859_1 = new CharacterSetECI_1('ISO8859_1', 1, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [1, 3]), stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['ISO-8859-1']));
+  Cp437 = new CharacterSetECI_1('Cp437', 0, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [0, 2]), stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, []));
+  ISO8859_1 = new CharacterSetECI_1('ISO8859_1', 1, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [1, 3]), stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['ISO-8859-1']));
   ISO8859_2 = new CharacterSetECI_0('ISO8859_2', 2, 4, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['ISO-8859-2']));
   ISO8859_3 = new CharacterSetECI_0('ISO8859_3', 3, 5, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['ISO-8859-3']));
   ISO8859_4 = new CharacterSetECI_0('ISO8859_4', 4, 6, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['ISO-8859-4']));
@@ -2355,7 +2343,7 @@ function $clinit_CharacterSetECI(){
   Cp1256 = new CharacterSetECI_0('Cp1256', 20, 24, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['windows-1256']));
   UnicodeBigUnmarked = new CharacterSetECI_0('UnicodeBigUnmarked', 21, 25, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['UTF-16BE', 'UnicodeBig']));
   UTF8 = new CharacterSetECI_0('UTF8', 22, 26, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['UTF-8']));
-  ASCII = new CharacterSetECI_1('ASCII', 23, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [27, 170]), stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['US-ASCII']));
+  ASCII = new CharacterSetECI_1('ASCII', 23, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [27, 170]), stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['US-ASCII']));
   Big5 = new CharacterSetECI;
   GB18030 = new CharacterSetECI_0('GB18030', 25, 29, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['GB2312', 'EUC_CN', 'GBK']));
   EUC_KR = new CharacterSetECI_0('EUC_KR', 26, 30, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, ['EUC-KR']));
@@ -2376,12 +2364,12 @@ function $clinit_CharacterSetECI(){
 }
 
 function CharacterSetECI(){
-  CharacterSetECI_1.call(this, 'Big5', 24, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [28]), stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, []));
+  CharacterSetECI_1.call(this, 'Big5', 24, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [28]), stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_2, 2, 6, []));
 }
 
 function CharacterSetECI_0(enum$name, enum$ordinal, value_0, otherEncodingNames){
   Enum.call(this, enum$name, enum$ordinal);
-  this.values = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [value_0]);
+  this.values = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [value_0]);
   this.otherEncodingNames = otherEncodingNames;
 }
 
@@ -2401,7 +2389,7 @@ function getCharacterSetECIByValue(value_0){
 
 function values_1(){
   $clinit_CharacterSetECI();
-  return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_common_CharacterSetECI_2_classLit, 1), $intern_17, 12, 0, [Cp437, ISO8859_1, ISO8859_2, ISO8859_3, ISO8859_4, ISO8859_5, ISO8859_6, ISO8859_7, ISO8859_8, ISO8859_9, ISO8859_10, ISO8859_11, ISO8859_13, ISO8859_14, ISO8859_15, ISO8859_16, SJIS, Cp1250, Cp1251, Cp1252, Cp1256, UnicodeBigUnmarked, UTF8, ASCII, Big5, GB18030, EUC_KR]);
+  return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_common_CharacterSetECI_2_classLit, 1), $intern_18, 12, 0, [Cp437, ISO8859_1, ISO8859_2, ISO8859_3, ISO8859_4, ISO8859_5, ISO8859_6, ISO8859_7, ISO8859_8, ISO8859_9, ISO8859_10, ISO8859_11, ISO8859_13, ISO8859_14, ISO8859_15, ISO8859_16, SJIS, Cp1250, Cp1251, Cp1252, Cp1256, UnicodeBigUnmarked, UTF8, ASCII, Big5, GB18030, EUC_KR]);
 }
 
 defineClass(12, 13, {12:1, 3:1, 14:1, 13:1}, CharacterSetECI, CharacterSetECI_0, CharacterSetECI_1);
@@ -2419,10 +2407,10 @@ function DecoderResult(text_0, byteSegments, ecLevel, saSequence, saParity){
   this.structuredAppendSequenceNumber = saSequence;
 }
 
-defineClass(140, 1, {}, DecoderResult);
+defineClass(138, 1, {}, DecoderResult);
 _.structuredAppendParity = 0;
 _.structuredAppendSequenceNumber = 0;
-var Lcom_google_zxing_common_DecoderResult_2_classLit = createForClass('com.google.zxing.common', 'DecoderResult', 140);
+var Lcom_google_zxing_common_DecoderResult_2_classLit = createForClass('com.google.zxing.common', 'DecoderResult', 138);
 function checkAndNudgePoints(image, points){
   var height, nudged, offset, offset0, width_0, x_0, y_0;
   width_0 = image.width_0;
@@ -2517,8 +2505,8 @@ function DetectorResult(bits, points){
   this.points = points;
 }
 
-defineClass(141, 1, {}, DetectorResult);
-var Lcom_google_zxing_common_DetectorResult_2_classLit = createForClass('com.google.zxing.common', 'DetectorResult', 141);
+defineClass(139, 1, {}, DetectorResult);
+var Lcom_google_zxing_common_DetectorResult_2_classLit = createForClass('com.google.zxing.common', 'DetectorResult', 139);
 function $clinit_GlobalHistogramBinarizer(){
   $clinit_GlobalHistogramBinarizer = emptyMethod;
   EMPTY = initUnidimensionalArray(B_classLit, $intern_2, 6, 0, 15, 1);
@@ -2605,9 +2593,9 @@ function estimateBlackPoint(buckets){
   return bestValley << 3;
 }
 
-defineClass(138, 137, {});
+defineClass(136, 135, {});
 var EMPTY;
-var Lcom_google_zxing_common_GlobalHistogramBinarizer_2_classLit = createForClass('com.google.zxing.common', 'GlobalHistogramBinarizer', 138);
+var Lcom_google_zxing_common_GlobalHistogramBinarizer_2_classLit = createForClass('com.google.zxing.common', 'GlobalHistogramBinarizer', 136);
 function $getBlackMatrix_0(this$static){
   var blackPoints, height, luminances, newMatrix, source, subHeight, subWidth, width_0;
   if (this$static.matrix) {
@@ -2637,12 +2625,12 @@ function HybridBinarizer(source){
   $clinit_GlobalHistogramBinarizer();
   this.source = source;
   this.luminances = EMPTY;
-  this.buckets = initUnidimensionalArray(I_classLit, $intern_18, 6, 32, 15, 1);
+  this.buckets = initUnidimensionalArray(I_classLit, $intern_19, 6, 32, 15, 1);
 }
 
 function calculateBlackPoints(luminances, subWidth, subHeight, width_0, height){
   var average, averageNeighborBlackPoint, blackPoints, max_0, maxXOffset, maxYOffset, min_0, offset, pixel, sum, x_0, xoffset, xx, xx0, y_0, yoffset, yy;
-  blackPoints = initMultidimensionalArray(I_classLit, [$intern_2, $intern_18], [7, 6], 15, [subHeight, subWidth], 2);
+  blackPoints = initMultidimensionalArray(I_classLit, [$intern_2, $intern_19], [7, 6], 15, [subHeight, subWidth], 2);
   for (y_0 = 0; y_0 < subHeight; y_0++) {
     yoffset = y_0 << 3;
     maxYOffset = height - 8;
@@ -2715,8 +2703,8 @@ function thresholdBlock(luminances, xoffset, yoffset, threshold, stride, matrix)
   }
 }
 
-defineClass(139, 138, {}, HybridBinarizer);
-var Lcom_google_zxing_common_HybridBinarizer_2_classLit = createForClass('com.google.zxing.common', 'HybridBinarizer', 139);
+defineClass(137, 136, {}, HybridBinarizer);
+var Lcom_google_zxing_common_HybridBinarizer_2_classLit = createForClass('com.google.zxing.common', 'HybridBinarizer', 137);
 function $buildAdjoint(this$static){
   return new PerspectiveTransform(this$static.a22 * this$static.a33 - this$static.a23 * this$static.a32, this$static.a23 * this$static.a31 - this$static.a21 * this$static.a33, this$static.a21 * this$static.a32 - this$static.a22 * this$static.a31, this$static.a13 * this$static.a32 - this$static.a12 * this$static.a33, this$static.a11 * this$static.a33 - this$static.a13 * this$static.a31, this$static.a12 * this$static.a31 - this$static.a11 * this$static.a32, this$static.a12 * this$static.a23 - this$static.a13 * this$static.a22, this$static.a13 * this$static.a21 - this$static.a11 * this$static.a23, this$static.a11 * this$static.a22 - this$static.a12 * this$static.a21);
 }
@@ -2922,7 +2910,7 @@ function $buildMonomial(this$static, degree, coefficient){
   if (coefficient == 0) {
     return this$static.zero;
   }
-  coefficients = initUnidimensionalArray(I_classLit, $intern_18, 6, degree + 1, 15, 1);
+  coefficients = initUnidimensionalArray(I_classLit, $intern_19, 6, degree + 1, 15, 1);
   coefficients[0] = coefficient;
   return new GenericGFPoly(this$static, coefficients);
 }
@@ -2957,8 +2945,8 @@ function GenericGF(primitive, size_0, b){
   this.primitive = primitive;
   this.size_0 = size_0;
   this.generatorBase = b;
-  this.expTable = initUnidimensionalArray(I_classLit, $intern_18, 6, size_0, 15, 1);
-  this.logTable = initUnidimensionalArray(I_classLit, $intern_18, 6, size_0, 15, 1);
+  this.expTable = initUnidimensionalArray(I_classLit, $intern_19, 6, size_0, 15, 1);
+  this.logTable = initUnidimensionalArray(I_classLit, $intern_19, 6, size_0, 15, 1);
   x_0 = 1;
   for (i0 = 0; i0 < size_0; i0++) {
     this.expTable[i0] = x_0;
@@ -2971,8 +2959,8 @@ function GenericGF(primitive, size_0, b){
   for (i = 0; i < size_0 - 1; i++) {
     this.logTable[this.expTable[i]] = i;
   }
-  this.zero = new GenericGFPoly(this, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [0]));
-  this.one = new GenericGFPoly(this, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [1]));
+  this.zero = new GenericGFPoly(this, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [0]));
+  this.one = new GenericGFPoly(this, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [1]));
 }
 
 defineClass(45, 1, {}, GenericGF);
@@ -3004,7 +2992,7 @@ function $addOrSubtract(this$static, other){
     smallerCoefficients = largerCoefficients;
     largerCoefficients = temp;
   }
-  sumDiff = initUnidimensionalArray(I_classLit, $intern_18, 6, largerCoefficients.length, 15, 1);
+  sumDiff = initUnidimensionalArray(I_classLit, $intern_19, 6, largerCoefficients.length, 15, 1);
   lengthDiff = largerCoefficients.length - smallerCoefficients.length;
   arraycopy(largerCoefficients, 0, sumDiff, 0, lengthDiff);
   for (i = lengthDiff; i < largerCoefficients.length; i++) {
@@ -3047,7 +3035,7 @@ function $multiply_0(this$static, scalar){
     return this$static;
   }
   size_0 = this$static.coefficients.length;
-  product = initUnidimensionalArray(I_classLit, $intern_18, 6, size_0, 15, 1);
+  product = initUnidimensionalArray(I_classLit, $intern_19, 6, size_0, 15, 1);
   for (i = 0; i < size_0; i++) {
     product[i] = $multiply(this$static.field, this$static.coefficients[i], scalar);
   }
@@ -3066,7 +3054,7 @@ function $multiply_1(this$static, other){
   aLength = aCoefficients.length;
   bCoefficients = other.coefficients;
   bLength = bCoefficients.length;
-  product = initUnidimensionalArray(I_classLit, $intern_18, 6, aLength + bLength - 1, 15, 1);
+  product = initUnidimensionalArray(I_classLit, $intern_19, 6, aLength + bLength - 1, 15, 1);
   for (i = 0; i < aLength; i++) {
     aCoeff = aCoefficients[i];
     for (j = 0; j < bLength; j++) {
@@ -3085,7 +3073,7 @@ function $multiplyByMonomial(this$static, degree, coefficient){
     return this$static.field.zero;
   }
   size_0 = this$static.coefficients.length;
-  product = initUnidimensionalArray(I_classLit, $intern_18, 6, size_0 + degree, 15, 1);
+  product = initUnidimensionalArray(I_classLit, $intern_19, 6, size_0 + degree, 15, 1);
   for (i = 0; i < size_0; i++) {
     product[i] = $multiply(this$static.field, this$static.coefficients[i], coefficient);
   }
@@ -3105,10 +3093,10 @@ function GenericGFPoly(field, coefficients){
       ++firstNonZero;
     }
     if (firstNonZero == coefficientsLength) {
-      this.coefficients = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [0]);
+      this.coefficients = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [0]);
     }
      else {
-      this.coefficients = initUnidimensionalArray(I_classLit, $intern_18, 6, coefficientsLength - firstNonZero, 15, 1);
+      this.coefficients = initUnidimensionalArray(I_classLit, $intern_19, 6, coefficientsLength - firstNonZero, 15, 1);
       arraycopy(coefficients, firstNonZero, this.coefficients, 0, this.coefficients.length);
     }
   }
@@ -3162,7 +3150,7 @@ var Lcom_google_zxing_common_reedsolomon_GenericGFPoly_2_classLit = createForCla
 function $decode(this$static, received, twoS){
   var errorLocations, errorMagnitudes, eval_0, i, i0, noError, omega, poly, position, sigma, sigmaOmega, syndrome, syndromeCoefficients;
   poly = new GenericGFPoly(this$static.field, received);
-  syndromeCoefficients = initUnidimensionalArray(I_classLit, $intern_18, 6, twoS, 15, 1);
+  syndromeCoefficients = initUnidimensionalArray(I_classLit, $intern_19, 6, twoS, 15, 1);
   noError = true;
   for (i0 = 0; i0 < twoS; i0++) {
     eval_0 = $evaluateAt(poly, $exp(this$static.field, i0 + this$static.field.generatorBase));
@@ -3191,9 +3179,9 @@ function $findErrorLocations(this$static, errorLocator){
   var e, i, numErrors, result;
   numErrors = errorLocator.coefficients.length - 1;
   if (numErrors == 1) {
-    return stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [errorLocator.coefficients[errorLocator.coefficients.length - 1 - 1]]);
+    return stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [errorLocator.coefficients[errorLocator.coefficients.length - 1 - 1]]);
   }
-  result = initUnidimensionalArray(I_classLit, $intern_18, 6, numErrors, 15, 1);
+  result = initUnidimensionalArray(I_classLit, $intern_19, 6, numErrors, 15, 1);
   e = 0;
   for (i = 1; i < this$static.field.size_0 && e < numErrors; i++) {
     if ($evaluateAt(errorLocator, i) == 0) {
@@ -3210,7 +3198,7 @@ function $findErrorLocations(this$static, errorLocator){
 function $findErrorMagnitudes(this$static, errorEvaluator, errorLocations){
   var denominator, i, j, result, s, term, termPlus1, xiInverse;
   s = errorLocations.length;
-  result = initUnidimensionalArray(I_classLit, $intern_18, 6, s, 15, 1);
+  result = initUnidimensionalArray(I_classLit, $intern_19, 6, s, 15, 1);
   for (i = 0; i < s; i++) {
     xiInverse = $inverse(this$static.field, errorLocations[i]);
     denominator = 1;
@@ -3275,8 +3263,8 @@ function ReedSolomonDecoder(field){
   this.field = field;
 }
 
-defineClass(134, 1, {}, ReedSolomonDecoder);
-var Lcom_google_zxing_common_reedsolomon_ReedSolomonDecoder_2_classLit = createForClass('com.google.zxing.common.reedsolomon', 'ReedSolomonDecoder', 134);
+defineClass(132, 1, {}, ReedSolomonDecoder);
+var Lcom_google_zxing_common_reedsolomon_ReedSolomonDecoder_2_classLit = createForClass('com.google.zxing.common.reedsolomon', 'ReedSolomonDecoder', 132);
 function ReedSolomonException(message){
   Exception_0.call(this, message);
 }
@@ -3305,7 +3293,7 @@ function QRCodeReader(){
   this.decoder = new Decoder;
 }
 
-defineClass(127, 1, {189:1}, QRCodeReader);
+defineClass(127, 1, {186:1}, QRCodeReader);
 var Lcom_google_zxing_qrcode_QRCodeReader_2_classLit = createForClass('com.google.zxing.qrcode', 'QRCodeReader', 127);
 function $mirror(this$static){
   var x_0, y_0;
@@ -3323,7 +3311,7 @@ function $readCodewords(this$static){
   var bitsRead, col, count, currentByte, dataMask, dimension, formatInfo, functionPattern, i, j, offset, readingUp, result, resultOffset, version;
   formatInfo = $readFormatInformation(this$static);
   version = $readVersion(this$static);
-  dataMask = ($clinit_DataMask() , stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_17, 15, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]))[formatInfo.dataMask];
+  dataMask = ($clinit_DataMask() , stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_18, 15, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]))[formatInfo.dataMask];
   dimension = this$static.bitMatrix.height_0;
   $unmaskBitMatrix(dataMask, this$static.bitMatrix, dimension);
   functionPattern = $buildFunctionPattern(version);
@@ -3430,7 +3418,7 @@ function $remask(this$static){
   if (!this$static.parsedFormatInfo) {
     return;
   }
-  dataMask = ($clinit_DataMask() , stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_17, 15, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]))[this$static.parsedFormatInfo.dataMask];
+  dataMask = ($clinit_DataMask() , stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_18, 15, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]))[this$static.parsedFormatInfo.dataMask];
   dimension = this$static.bitMatrix.height_0;
   $unmaskBitMatrix(dataMask, this$static.bitMatrix, dimension);
 }
@@ -3444,9 +3432,9 @@ function BitMatrixParser(bitMatrix){
   this.bitMatrix = bitMatrix;
 }
 
-defineClass(144, 1, {}, BitMatrixParser);
+defineClass(142, 1, {}, BitMatrixParser);
 _.mirror = false;
-var Lcom_google_zxing_qrcode_decoder_BitMatrixParser_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'BitMatrixParser', 144);
+var Lcom_google_zxing_qrcode_decoder_BitMatrixParser_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'BitMatrixParser', 142);
 function DataBlock(numDataCodewords, codewords){
   this.numDataCodewords = numDataCodewords;
   this.codewords = codewords;
@@ -3534,96 +3522,96 @@ function DataMask(enum$name, enum$ordinal){
 
 function values_2(){
   $clinit_DataMask();
-  return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_17, 15, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]);
+  return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit, 1), $intern_18, 15, 0, [DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111]);
 }
 
-defineClass(15, 13, $intern_19);
+defineClass(15, 13, $intern_20);
 var DATA_MASK_000, DATA_MASK_001, DATA_MASK_010, DATA_MASK_011, DATA_MASK_100, DATA_MASK_101, DATA_MASK_110, DATA_MASK_111;
 var Lcom_google_zxing_qrcode_decoder_DataMask_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask', 15, values_2);
 function DataMask$1(){
   DataMask.call(this, 'DATA_MASK_000', 0);
 }
 
-defineClass(153, 15, $intern_19, DataMask$1);
+defineClass(151, 15, $intern_20, DataMask$1);
 _.isMasked = function isMasked(i, j){
   return (i + j & 1) == 0;
 }
 ;
-var Lcom_google_zxing_qrcode_decoder_DataMask$1_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/1', 153, null);
+var Lcom_google_zxing_qrcode_decoder_DataMask$1_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/1', 151, null);
 function DataMask$2(){
   DataMask.call(this, 'DATA_MASK_001', 1);
 }
 
-defineClass(154, 15, $intern_19, DataMask$2);
+defineClass(152, 15, $intern_20, DataMask$2);
 _.isMasked = function isMasked_0(i, j){
   return (i & 1) == 0;
 }
 ;
-var Lcom_google_zxing_qrcode_decoder_DataMask$2_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/2', 154, null);
+var Lcom_google_zxing_qrcode_decoder_DataMask$2_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/2', 152, null);
 function DataMask$3(){
   DataMask.call(this, 'DATA_MASK_010', 2);
 }
 
-defineClass(155, 15, $intern_19, DataMask$3);
+defineClass(153, 15, $intern_20, DataMask$3);
 _.isMasked = function isMasked_1(i, j){
   return j % 3 == 0;
 }
 ;
-var Lcom_google_zxing_qrcode_decoder_DataMask$3_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/3', 155, null);
+var Lcom_google_zxing_qrcode_decoder_DataMask$3_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/3', 153, null);
 function DataMask$4(){
   DataMask.call(this, 'DATA_MASK_011', 3);
 }
 
-defineClass(156, 15, $intern_19, DataMask$4);
+defineClass(154, 15, $intern_20, DataMask$4);
 _.isMasked = function isMasked_2(i, j){
   return (i + j) % 3 == 0;
 }
 ;
-var Lcom_google_zxing_qrcode_decoder_DataMask$4_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/4', 156, null);
+var Lcom_google_zxing_qrcode_decoder_DataMask$4_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/4', 154, null);
 function DataMask$5(){
   DataMask.call(this, 'DATA_MASK_100', 4);
 }
 
-defineClass(157, 15, $intern_19, DataMask$5);
+defineClass(155, 15, $intern_20, DataMask$5);
 _.isMasked = function isMasked_3(i, j){
   return ((i / 2 | 0) + (j / 3 | 0) & 1) == 0;
 }
 ;
-var Lcom_google_zxing_qrcode_decoder_DataMask$5_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/5', 157, null);
+var Lcom_google_zxing_qrcode_decoder_DataMask$5_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/5', 155, null);
 function DataMask$6(){
   DataMask.call(this, 'DATA_MASK_101', 5);
 }
 
-defineClass(158, 15, $intern_19, DataMask$6);
+defineClass(156, 15, $intern_20, DataMask$6);
 _.isMasked = function isMasked_4(i, j){
   var temp;
   temp = i * j;
   return (temp & 1) + temp % 3 == 0;
 }
 ;
-var Lcom_google_zxing_qrcode_decoder_DataMask$6_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/6', 158, null);
+var Lcom_google_zxing_qrcode_decoder_DataMask$6_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/6', 156, null);
 function DataMask$7(){
   DataMask.call(this, 'DATA_MASK_110', 6);
 }
 
-defineClass(159, 15, $intern_19, DataMask$7);
+defineClass(157, 15, $intern_20, DataMask$7);
 _.isMasked = function isMasked_5(i, j){
   var temp;
   temp = i * j;
   return ((temp & 1) + temp % 3 & 1) == 0;
 }
 ;
-var Lcom_google_zxing_qrcode_decoder_DataMask$7_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/7', 159, null);
+var Lcom_google_zxing_qrcode_decoder_DataMask$7_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/7', 157, null);
 function DataMask$8(){
   DataMask.call(this, 'DATA_MASK_111', 7);
 }
 
-defineClass(160, 15, $intern_19, DataMask$8);
+defineClass(158, 15, $intern_20, DataMask$8);
 _.isMasked = function isMasked_6(i, j){
   return ((i + j & 1) + i * j % 3 & 1) == 0;
 }
 ;
-var Lcom_google_zxing_qrcode_decoder_DataMask$8_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/8', 160, null);
+var Lcom_google_zxing_qrcode_decoder_DataMask$8_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'DataMask/8', 158, null);
 function $clinit_DecodedBitStreamParser(){
   var n, charArr;
   $clinit_DecodedBitStreamParser = emptyMethod;
@@ -3874,7 +3862,7 @@ var ALPHANUMERIC_CHARS;
 function $correctErrors(this$static, codewordBytes, numDataCodewords){
   var codewordsInts, i, i0, numCodewords, numECCodewords;
   numCodewords = codewordBytes.length;
-  codewordsInts = initUnidimensionalArray(I_classLit, $intern_18, 6, numCodewords, 15, 1);
+  codewordsInts = initUnidimensionalArray(I_classLit, $intern_19, 6, numCodewords, 15, 1);
   for (i0 = 0; i0 < numCodewords; i0++) {
     codewordsInts[i0] = codewordBytes[i0] & 255;
   }
@@ -3974,15 +3962,15 @@ function Decoder(){
   this.rsDecoder = new ReedSolomonDecoder(($clinit_GenericGF() , QR_CODE_FIELD_256));
 }
 
-defineClass(133, 1, {}, Decoder);
-var Lcom_google_zxing_qrcode_decoder_Decoder_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'Decoder', 133);
+defineClass(131, 1, {}, Decoder);
+var Lcom_google_zxing_qrcode_decoder_Decoder_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'Decoder', 131);
 function $clinit_ErrorCorrectionLevel(){
   $clinit_ErrorCorrectionLevel = emptyMethod;
   L = new ErrorCorrectionLevel('L', 0);
   M = new ErrorCorrectionLevel('M', 1);
   Q = new ErrorCorrectionLevel('Q', 2);
   H = new ErrorCorrectionLevel('H', 3);
-  FOR_BITS = stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_ErrorCorrectionLevel_2_classLit, 1), $intern_17, 39, 0, [M, L, H, Q]);
+  FOR_BITS = stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_ErrorCorrectionLevel_2_classLit, 1), $intern_18, 39, 0, [M, L, H, Q]);
 }
 
 function ErrorCorrectionLevel(enum$name, enum$ordinal){
@@ -3999,7 +3987,7 @@ function forBits(bits){
 
 function values_3(){
   $clinit_ErrorCorrectionLevel();
-  return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_ErrorCorrectionLevel_2_classLit, 1), $intern_17, 39, 0, [L, M, Q, H]);
+  return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_ErrorCorrectionLevel_2_classLit, 1), $intern_18, 39, 0, [L, M, Q, H]);
 }
 
 defineClass(39, 13, {39:1, 3:1, 14:1, 13:1}, ErrorCorrectionLevel);
@@ -4007,7 +3995,7 @@ var FOR_BITS, H, L, M, Q;
 var Lcom_google_zxing_qrcode_decoder_ErrorCorrectionLevel_2_classLit = createForEnum('com.google.zxing.qrcode.decoder', 'ErrorCorrectionLevel', 39, values_3);
 function $clinit_FormatInformation(){
   $clinit_FormatInformation = emptyMethod;
-  FORMAT_INFO_DECODE_LOOKUP = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 2), $intern_2, 7, 0, [stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [21522, 0]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [20773, 1]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [24188, 2]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [23371, 3]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [17913, 4]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [16590, 5]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [20375, 6]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [19104, 7]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [30660, 8]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [29427, 9]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [32170, 10]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [30877, 11]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [26159, 12]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [25368, 13]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [27713, 14]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [26998, 15]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [5769, 16]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [5054, 17]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [7399, 18]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6608, 19]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [1890, 20]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [597, 21]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [3340, 22]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [2107, 23]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [13663, 24]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [12392, 25]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [16177, 26]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [14854, 27]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [9396, 28]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [8579, 29]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [11994, 30]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [11245, 31])]);
+  FORMAT_INFO_DECODE_LOOKUP = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 2), $intern_2, 7, 0, [stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [21522, 0]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [20773, 1]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [24188, 2]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [23371, 3]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [17913, 4]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [16590, 5]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [20375, 6]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [19104, 7]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [30660, 8]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [29427, 9]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [32170, 10]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [30877, 11]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [26159, 12]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [25368, 13]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [27713, 14]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [26998, 15]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [5769, 16]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [5054, 17]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [7399, 18]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6608, 19]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [1890, 20]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [597, 21]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [3340, 22]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [2107, 23]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [13663, 24]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [12392, 25]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [16177, 26]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [14854, 27]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [9396, 28]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [8579, 29]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [11994, 30]), stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [11245, 31])]);
 }
 
 function FormatInformation(formatInfo){
@@ -4073,16 +4061,16 @@ var FORMAT_INFO_DECODE_LOOKUP;
 var Lcom_google_zxing_qrcode_decoder_FormatInformation_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'FormatInformation', 51);
 function $clinit_Mode(){
   $clinit_Mode = emptyMethod;
-  TERMINATOR = new Mode('TERMINATOR', 0, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [0, 0, 0]));
-  NUMERIC = new Mode('NUMERIC', 1, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [10, 12, 14]));
-  ALPHANUMERIC = new Mode('ALPHANUMERIC', 2, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [9, 11, 13]));
-  STRUCTURED_APPEND = new Mode('STRUCTURED_APPEND', 3, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [0, 0, 0]));
-  BYTE = new Mode('BYTE', 4, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [8, 16, 16]));
-  ECI = new Mode('ECI', 5, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [0, 0, 0]));
-  KANJI = new Mode('KANJI', 6, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [8, 10, 12]));
-  FNC1_FIRST_POSITION = new Mode('FNC1_FIRST_POSITION', 7, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [0, 0, 0]));
-  FNC1_SECOND_POSITION = new Mode('FNC1_SECOND_POSITION', 8, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [0, 0, 0]));
-  HANZI = new Mode('HANZI', 9, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [8, 10, 12]));
+  TERMINATOR = new Mode('TERMINATOR', 0, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [0, 0, 0]));
+  NUMERIC = new Mode('NUMERIC', 1, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [10, 12, 14]));
+  ALPHANUMERIC = new Mode('ALPHANUMERIC', 2, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [9, 11, 13]));
+  STRUCTURED_APPEND = new Mode('STRUCTURED_APPEND', 3, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [0, 0, 0]));
+  BYTE = new Mode('BYTE', 4, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [8, 16, 16]));
+  ECI = new Mode('ECI', 5, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [0, 0, 0]));
+  KANJI = new Mode('KANJI', 6, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [8, 10, 12]));
+  FNC1_FIRST_POSITION = new Mode('FNC1_FIRST_POSITION', 7, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [0, 0, 0]));
+  FNC1_SECOND_POSITION = new Mode('FNC1_SECOND_POSITION', 8, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [0, 0, 0]));
+  HANZI = new Mode('HANZI', 9, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [8, 10, 12]));
 }
 
 function $getCharacterCountBits(this$static, version){
@@ -4126,7 +4114,7 @@ function forBits_0(bits){
 
 function values_4(){
   $clinit_Mode();
-  return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Mode_2_classLit, 1), $intern_17, 23, 0, [TERMINATOR, NUMERIC, ALPHANUMERIC, STRUCTURED_APPEND, BYTE, ECI, KANJI, FNC1_FIRST_POSITION, FNC1_SECOND_POSITION, HANZI]);
+  return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Mode_2_classLit, 1), $intern_18, 23, 0, [TERMINATOR, NUMERIC, ALPHANUMERIC, STRUCTURED_APPEND, BYTE, ECI, KANJI, FNC1_FIRST_POSITION, FNC1_SECOND_POSITION, HANZI]);
 }
 
 defineClass(23, 13, {23:1, 3:1, 14:1, 13:1}, Mode);
@@ -4146,13 +4134,13 @@ function QRCodeDecoderMetaData(){
   this.mirrored = true;
 }
 
-defineClass(143, 1, {}, QRCodeDecoderMetaData);
+defineClass(141, 1, {}, QRCodeDecoderMetaData);
 _.mirrored = false;
-var Lcom_google_zxing_qrcode_decoder_QRCodeDecoderMetaData_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'QRCodeDecoderMetaData', 143);
+var Lcom_google_zxing_qrcode_decoder_QRCodeDecoderMetaData_2_classLit = createForClass('com.google.zxing.qrcode.decoder', 'QRCodeDecoderMetaData', 141);
 function $clinit_Version(){
   $clinit_Version = emptyMethod;
-  VERSION_DECODE_INFO = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [31892, 34236, 39577, 42195, 48118, 51042, 55367, 58893, 63784, 68472, 70749, 76311, 79154, 84390, 87683, 92361, 96236, 102084, 102881, 110507, 110734, 117786, 119615, 126325, 127568, 133589, 136944, 141498, 145311, 150283, 152622, 158308, 161089, 167017]);
-  VERSIONS = stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version_2_classLit, 1), $intern_2, 9, 0, [new Version(1, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, []), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(7, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 19)])), new Version$ECBlocks(10, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 16)])), new Version$ECBlocks(13, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 13)])), new Version$ECBlocks(17, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 9)]))])), new Version(2, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 18]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(10, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 34)])), new Version$ECBlocks(16, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 28)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 22)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 16)]))])), new Version(3, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 22]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(15, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 55)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 44)])), new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 17)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 13)]))])), new Version(4, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 26]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(20, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 80)])), new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 32)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 24)])), new Version$ECBlocks(16, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 9)]))])), new Version(5, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 108)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 43)])), new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 15), new Version$ECB(2, 16)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 11), new Version$ECB(2, 12)]))])), new Version(6, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 34]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 68)])), new Version$ECBlocks(16, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 27)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 19)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 15)]))])), new Version(7, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 22, 38]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(20, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 78)])), new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 31)])), new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(4, 15)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 13), new Version$ECB(1, 14)]))])), new Version(8, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 24, 42]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 97)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 38), new Version$ECB(2, 39)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 18), new Version$ECB(2, 19)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 14), new Version$ECB(2, 15)]))])), new Version(9, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 26, 46]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 116)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 36), new Version$ECB(2, 37)])), new Version$ECBlocks(20, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 16), new Version$ECB(4, 17)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 12), new Version$ECB(4, 13)]))])), new Version(10, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 28, 50]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 68), new Version$ECB(2, 69)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 43), new Version$ECB(1, 44)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 19), new Version$ECB(2, 20)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 15), new Version$ECB(2, 16)]))])), new Version(11, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30, 54]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(20, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 81)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 50), new Version$ECB(4, 51)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 22), new Version$ECB(4, 23)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 12), new Version$ECB(8, 13)]))])), new Version(12, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 32, 58]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 92), new Version$ECB(2, 93)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 36), new Version$ECB(2, 37)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 20), new Version$ECB(6, 21)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 14), new Version$ECB(4, 15)]))])), new Version(13, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 34, 62]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 107)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 37), new Version$ECB(1, 38)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 20), new Version$ECB(4, 21)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 11), new Version$ECB(4, 12)]))])), new Version(14, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 26, 46, 66]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 115), new Version$ECB(1, 116)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 40), new Version$ECB(5, 41)])), new Version$ECBlocks(20, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 16), new Version$ECB(5, 17)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 12), new Version$ECB(5, 13)]))])), new Version(15, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 26, 48, 70]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 87), new Version$ECB(1, 88)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 41), new Version$ECB(5, 42)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 24), new Version$ECB(7, 25)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 12), new Version$ECB(7, 13)]))])), new Version(16, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 26, 50, 74]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 98), new Version$ECB(1, 99)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 45), new Version$ECB(3, 46)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 19), new Version$ECB(2, 20)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 15), new Version$ECB(13, 16)]))])), new Version(17, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30, 54, 78]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 107), new Version$ECB(5, 108)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 46), new Version$ECB(1, 47)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 22), new Version$ECB(15, 23)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(17, 15)]))])), new Version(18, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30, 56, 82]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 120), new Version$ECB(1, 121)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(9, 43), new Version$ECB(4, 44)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 22), new Version$ECB(1, 23)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(19, 15)]))])), new Version(19, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30, 58, 86]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 113), new Version$ECB(4, 114)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 44), new Version$ECB(11, 45)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 21), new Version$ECB(4, 22)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(9, 13), new Version$ECB(16, 14)]))])), new Version(20, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 34, 62, 90]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 107), new Version$ECB(5, 108)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 41), new Version$ECB(13, 42)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 24), new Version$ECB(5, 25)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 15), new Version$ECB(10, 16)]))])), new Version(21, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 28, 50, 72, 94]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 116), new Version$ECB(4, 117)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 42)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 22), new Version$ECB(6, 23)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 16), new Version$ECB(6, 17)]))])), new Version(22, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 26, 50, 74, 98]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 111), new Version$ECB(7, 112)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 46)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 24), new Version$ECB(16, 25)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(34, 13)]))])), new Version(23, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30, 54, 78, 102]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 121), new Version$ECB(5, 122)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 47), new Version$ECB(14, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(16, 15), new Version$ECB(14, 16)]))])), new Version(24, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 28, 54, 80, 106]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 117), new Version$ECB(4, 118)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 45), new Version$ECB(14, 46)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 24), new Version$ECB(16, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(30, 16), new Version$ECB(2, 17)]))])), new Version(25, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 32, 58, 84, 110]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 106), new Version$ECB(4, 107)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 47), new Version$ECB(13, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 24), new Version$ECB(22, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 15), new Version$ECB(13, 16)]))])), new Version(26, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30, 58, 86, 114]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 114), new Version$ECB(2, 115)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 46), new Version$ECB(4, 47)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(28, 22), new Version$ECB(6, 23)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(33, 16), new Version$ECB(4, 17)]))])), new Version(27, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 34, 62, 90, 118]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 122), new Version$ECB(4, 123)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 45), new Version$ECB(3, 46)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 23), new Version$ECB(26, 24)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 15), new Version$ECB(28, 16)]))])), new Version(28, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 26, 50, 74, 98, 122]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 117), new Version$ECB(10, 118)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 45), new Version$ECB(23, 46)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 24), new Version$ECB(31, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 15), new Version$ECB(31, 16)]))])), new Version(29, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30, 54, 78, 102, 126]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 116), new Version$ECB(7, 117)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(21, 45), new Version$ECB(7, 46)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 23), new Version$ECB(37, 24)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 15), new Version$ECB(26, 16)]))])), new Version(30, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 26, 52, 78, 104, 130]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 115), new Version$ECB(10, 116)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 47), new Version$ECB(10, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 24), new Version$ECB(25, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(23, 15), new Version$ECB(25, 16)]))])), new Version(31, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30, 56, 82, 108, 134]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 115), new Version$ECB(3, 116)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 46), new Version$ECB(29, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(42, 24), new Version$ECB(1, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(23, 15), new Version$ECB(28, 16)]))])), new Version(32, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 34, 60, 86, 112, 138]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 115)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 46), new Version$ECB(23, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 24), new Version$ECB(35, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 15), new Version$ECB(35, 16)]))])), new Version(33, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30, 58, 86, 114, 142]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 115), new Version$ECB(1, 116)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(14, 46), new Version$ECB(21, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(29, 24), new Version$ECB(19, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 15), new Version$ECB(46, 16)]))])), new Version(34, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 34, 62, 90, 118, 146]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 115), new Version$ECB(6, 116)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(14, 46), new Version$ECB(23, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(44, 24), new Version$ECB(7, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(59, 16), new Version$ECB(1, 17)]))])), new Version(35, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30, 54, 78, 102, 126, 150]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 121), new Version$ECB(7, 122)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 47), new Version$ECB(26, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(39, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 15), new Version$ECB(41, 16)]))])), new Version(36, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 24, 50, 76, 102, 128, 154]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 121), new Version$ECB(14, 122)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 47), new Version$ECB(34, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(46, 24), new Version$ECB(10, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 15), new Version$ECB(64, 16)]))])), new Version(37, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 28, 54, 80, 106, 132, 158]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 122), new Version$ECB(4, 123)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(29, 46), new Version$ECB(14, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(49, 24), new Version$ECB(10, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(24, 15), new Version$ECB(46, 16)]))])), new Version(38, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 32, 58, 84, 110, 136, 162]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 122), new Version$ECB(18, 123)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 46), new Version$ECB(32, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(48, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(42, 15), new Version$ECB(32, 16)]))])), new Version(39, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 26, 54, 82, 110, 138, 166]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(20, 117), new Version$ECB(4, 118)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(40, 47), new Version$ECB(7, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(43, 24), new Version$ECB(22, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 15), new Version$ECB(67, 16)]))])), new Version(40, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_18, 6, 15, [6, 30, 58, 86, 114, 142, 170]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 118), new Version$ECB(6, 119)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(18, 47), new Version$ECB(31, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(34, 24), new Version$ECB(34, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(20, 15), new Version$ECB(61, 16)]))]))]);
+  VERSION_DECODE_INFO = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [31892, 34236, 39577, 42195, 48118, 51042, 55367, 58893, 63784, 68472, 70749, 76311, 79154, 84390, 87683, 92361, 96236, 102084, 102881, 110507, 110734, 117786, 119615, 126325, 127568, 133589, 136944, 141498, 145311, 150283, 152622, 158308, 161089, 167017]);
+  VERSIONS = stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version_2_classLit, 1), $intern_2, 9, 0, [new Version(1, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, []), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(7, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 19)])), new Version$ECBlocks(10, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 16)])), new Version$ECBlocks(13, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 13)])), new Version$ECBlocks(17, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 9)]))])), new Version(2, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 18]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(10, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 34)])), new Version$ECBlocks(16, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 28)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 22)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 16)]))])), new Version(3, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 22]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(15, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 55)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 44)])), new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 17)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 13)]))])), new Version(4, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 26]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(20, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 80)])), new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 32)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 24)])), new Version$ECBlocks(16, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 9)]))])), new Version(5, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 108)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 43)])), new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 15), new Version$ECB(2, 16)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 11), new Version$ECB(2, 12)]))])), new Version(6, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 34]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 68)])), new Version$ECBlocks(16, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 27)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 19)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 15)]))])), new Version(7, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 22, 38]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(20, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 78)])), new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 31)])), new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(4, 15)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 13), new Version$ECB(1, 14)]))])), new Version(8, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 24, 42]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 97)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 38), new Version$ECB(2, 39)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 18), new Version$ECB(2, 19)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 14), new Version$ECB(2, 15)]))])), new Version(9, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 26, 46]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 116)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 36), new Version$ECB(2, 37)])), new Version$ECBlocks(20, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 16), new Version$ECB(4, 17)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 12), new Version$ECB(4, 13)]))])), new Version(10, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 28, 50]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(18, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 68), new Version$ECB(2, 69)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 43), new Version$ECB(1, 44)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 19), new Version$ECB(2, 20)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 15), new Version$ECB(2, 16)]))])), new Version(11, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30, 54]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(20, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 81)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 50), new Version$ECB(4, 51)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 22), new Version$ECB(4, 23)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 12), new Version$ECB(8, 13)]))])), new Version(12, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 32, 58]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 92), new Version$ECB(2, 93)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 36), new Version$ECB(2, 37)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 20), new Version$ECB(6, 21)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 14), new Version$ECB(4, 15)]))])), new Version(13, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 34, 62]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 107)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 37), new Version$ECB(1, 38)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 20), new Version$ECB(4, 21)])), new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 11), new Version$ECB(4, 12)]))])), new Version(14, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 26, 46, 66]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 115), new Version$ECB(1, 116)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 40), new Version$ECB(5, 41)])), new Version$ECBlocks(20, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 16), new Version$ECB(5, 17)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 12), new Version$ECB(5, 13)]))])), new Version(15, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 26, 48, 70]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(22, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 87), new Version$ECB(1, 88)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 41), new Version$ECB(5, 42)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 24), new Version$ECB(7, 25)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 12), new Version$ECB(7, 13)]))])), new Version(16, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 26, 50, 74]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 98), new Version$ECB(1, 99)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 45), new Version$ECB(3, 46)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 19), new Version$ECB(2, 20)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 15), new Version$ECB(13, 16)]))])), new Version(17, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30, 54, 78]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 107), new Version$ECB(5, 108)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 46), new Version$ECB(1, 47)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 22), new Version$ECB(15, 23)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(17, 15)]))])), new Version(18, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30, 56, 82]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 120), new Version$ECB(1, 121)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(9, 43), new Version$ECB(4, 44)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 22), new Version$ECB(1, 23)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 14), new Version$ECB(19, 15)]))])), new Version(19, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30, 58, 86]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 113), new Version$ECB(4, 114)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 44), new Version$ECB(11, 45)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 21), new Version$ECB(4, 22)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(9, 13), new Version$ECB(16, 14)]))])), new Version(20, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 34, 62, 90]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 107), new Version$ECB(5, 108)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 41), new Version$ECB(13, 42)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 24), new Version$ECB(5, 25)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 15), new Version$ECB(10, 16)]))])), new Version(21, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 28, 50, 72, 94]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 116), new Version$ECB(4, 117)])), new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 42)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 22), new Version$ECB(6, 23)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 16), new Version$ECB(6, 17)]))])), new Version(22, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 26, 50, 74, 98]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 111), new Version$ECB(7, 112)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 46)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 24), new Version$ECB(16, 25)])), new Version$ECBlocks(24, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(34, 13)]))])), new Version(23, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30, 54, 78, 102]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 121), new Version$ECB(5, 122)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 47), new Version$ECB(14, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(16, 15), new Version$ECB(14, 16)]))])), new Version(24, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 28, 54, 80, 106]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 117), new Version$ECB(4, 118)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 45), new Version$ECB(14, 46)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 24), new Version$ECB(16, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(30, 16), new Version$ECB(2, 17)]))])), new Version(25, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 32, 58, 84, 110]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(26, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 106), new Version$ECB(4, 107)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 47), new Version$ECB(13, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 24), new Version$ECB(22, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 15), new Version$ECB(13, 16)]))])), new Version(26, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30, 58, 86, 114]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 114), new Version$ECB(2, 115)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 46), new Version$ECB(4, 47)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(28, 22), new Version$ECB(6, 23)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(33, 16), new Version$ECB(4, 17)]))])), new Version(27, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 34, 62, 90, 118]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 122), new Version$ECB(4, 123)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 45), new Version$ECB(3, 46)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(8, 23), new Version$ECB(26, 24)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 15), new Version$ECB(28, 16)]))])), new Version(28, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 26, 50, 74, 98, 122]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 117), new Version$ECB(10, 118)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(3, 45), new Version$ECB(23, 46)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 24), new Version$ECB(31, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 15), new Version$ECB(31, 16)]))])), new Version(29, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30, 54, 78, 102, 126]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(7, 116), new Version$ECB(7, 117)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(21, 45), new Version$ECB(7, 46)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(1, 23), new Version$ECB(37, 24)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 15), new Version$ECB(26, 16)]))])), new Version(30, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 26, 52, 78, 104, 130]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(5, 115), new Version$ECB(10, 116)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 47), new Version$ECB(10, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(15, 24), new Version$ECB(25, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(23, 15), new Version$ECB(25, 16)]))])), new Version(31, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30, 56, 82, 108, 134]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 115), new Version$ECB(3, 116)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 46), new Version$ECB(29, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(42, 24), new Version$ECB(1, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(23, 15), new Version$ECB(28, 16)]))])), new Version(32, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 34, 60, 86, 112, 138]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 115)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 46), new Version$ECB(23, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 24), new Version$ECB(35, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 15), new Version$ECB(35, 16)]))])), new Version(33, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30, 58, 86, 114, 142]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 115), new Version$ECB(1, 116)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(14, 46), new Version$ECB(21, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(29, 24), new Version$ECB(19, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(11, 15), new Version$ECB(46, 16)]))])), new Version(34, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 34, 62, 90, 118, 146]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 115), new Version$ECB(6, 116)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(14, 46), new Version$ECB(23, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(44, 24), new Version$ECB(7, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(59, 16), new Version$ECB(1, 17)]))])), new Version(35, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30, 54, 78, 102, 126, 150]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 121), new Version$ECB(7, 122)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(12, 47), new Version$ECB(26, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(39, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(22, 15), new Version$ECB(41, 16)]))])), new Version(36, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 24, 50, 76, 102, 128, 154]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 121), new Version$ECB(14, 122)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(6, 47), new Version$ECB(34, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(46, 24), new Version$ECB(10, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(2, 15), new Version$ECB(64, 16)]))])), new Version(37, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 28, 54, 80, 106, 132, 158]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(17, 122), new Version$ECB(4, 123)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(29, 46), new Version$ECB(14, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(49, 24), new Version$ECB(10, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(24, 15), new Version$ECB(46, 16)]))])), new Version(38, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 32, 58, 84, 110, 136, 162]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(4, 122), new Version$ECB(18, 123)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(13, 46), new Version$ECB(32, 47)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(48, 24), new Version$ECB(14, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(42, 15), new Version$ECB(32, 16)]))])), new Version(39, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 26, 54, 82, 110, 138, 166]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(20, 117), new Version$ECB(4, 118)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(40, 47), new Version$ECB(7, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(43, 24), new Version$ECB(22, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(10, 15), new Version$ECB(67, 16)]))])), new Version(40, stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_19, 6, 15, [6, 30, 58, 86, 114, 142, 170]), stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECBlocks_2_classLit, 1), $intern_2, 5, 0, [new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(19, 118), new Version$ECB(6, 119)])), new Version$ECBlocks(28, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(18, 47), new Version$ECB(31, 48)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(34, 24), new Version$ECB(34, 25)])), new Version$ECBlocks(30, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_zxing_qrcode_decoder_Version$ECB_2_classLit, 1), $intern_2, 4, 0, [new Version$ECB(20, 15), new Version$ECB(61, 16)]))]))]);
 }
 
 function $buildFunctionPattern(this$static){
@@ -4338,7 +4326,7 @@ function $find(this$static){
   height = this$static.height_0;
   maxJ = startX + this$static.width_0;
   middleI = this$static.startY + (height / 2 | 0);
-  stateCount = initUnidimensionalArray(I_classLit, $intern_18, 6, 3, 15, 1);
+  stateCount = initUnidimensionalArray(I_classLit, $intern_19, 6, 3, 15, 1);
   for (iGen = 0; iGen < height; iGen++) {
     i = middleI + ((iGen & 1) == 0?(iGen + 1) / 2 | 0:-((iGen + 1) / 2 | 0));
     stateCount[0] = 0;
@@ -4430,16 +4418,16 @@ function AlignmentPatternFinder(image, startX, startY, width_0, height, moduleSi
   this.width_0 = width_0;
   this.height_0 = height;
   this.moduleSize = moduleSize;
-  this.crossCheckStateCount = initUnidimensionalArray(I_classLit, $intern_18, 6, 3, 15, 1);
+  this.crossCheckStateCount = initUnidimensionalArray(I_classLit, $intern_19, 6, 3, 15, 1);
 }
 
-defineClass(162, 1, {}, AlignmentPatternFinder);
+defineClass(160, 1, {}, AlignmentPatternFinder);
 _.height_0 = 0;
 _.moduleSize = 0;
 _.startX = 0;
 _.startY = 0;
 _.width_0 = 0;
-var Lcom_google_zxing_qrcode_detector_AlignmentPatternFinder_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'AlignmentPatternFinder', 162);
+var Lcom_google_zxing_qrcode_detector_AlignmentPatternFinder_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'AlignmentPatternFinder', 160);
 function $calculateModuleSizeOneWay(this$static, pattern, otherPattern){
   var moduleSizeEst1, moduleSizeEst2;
   moduleSizeEst1 = $sizeOfBlackWhiteBlackRunBothWays(this$static, round_int(pattern.x_0), round_int(pattern.y_0), round_int(otherPattern.x_0), round_int(otherPattern.y_0));
@@ -4628,8 +4616,8 @@ function sampleGrid(image, transform, dimension){
   return $sampleGrid(image, dimension, dimension, transform);
 }
 
-defineClass(142, 1, {}, Detector);
-var Lcom_google_zxing_qrcode_detector_Detector_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'Detector', 142);
+defineClass(140, 1, {}, Detector);
+var Lcom_google_zxing_qrcode_detector_Detector_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'Detector', 140);
 function $aboutEquals_0(this$static, moduleSize, i, j){
   var moduleSizeDiff;
   if ($wnd.Math.abs(i - this$static.y_0) <= moduleSize && $wnd.Math.abs(j - this$static.x_0) <= moduleSize) {
@@ -4825,7 +4813,7 @@ function $find_0(this$static){
   iSkip = 3 * maxI / 228 | 0;
   iSkip < 3 && (iSkip = 3);
   done = false;
-  stateCount = initUnidimensionalArray(I_classLit, $intern_18, 6, 5, 15, 1);
+  stateCount = initUnidimensionalArray(I_classLit, $intern_19, 6, 5, 15, 1);
   for (i = iSkip - 1; i < maxI && !done; i += iSkip) {
     stateCount[0] = 0;
     stateCount[1] = 0;
@@ -5029,7 +5017,7 @@ function $selectBestPatterns(this$static){
 function FinderPatternFinder(image){
   this.image = image;
   this.possibleCenters = new ArrayList;
-  this.crossCheckStateCount = initUnidimensionalArray(I_classLit, $intern_18, 6, 5, 15, 1);
+  this.crossCheckStateCount = initUnidimensionalArray(I_classLit, $intern_19, 6, 5, 15, 1);
 }
 
 function foundPatternCross(stateCount){
@@ -5050,9 +5038,9 @@ function foundPatternCross(stateCount){
   return $wnd.Math.abs(moduleSize - stateCount[0]) < maxVariance && $wnd.Math.abs(moduleSize - stateCount[1]) < maxVariance && $wnd.Math.abs(3 * moduleSize - stateCount[2]) < 3 * maxVariance && $wnd.Math.abs(moduleSize - stateCount[3]) < maxVariance && $wnd.Math.abs(moduleSize - stateCount[4]) < maxVariance;
 }
 
-defineClass(145, 1, {}, FinderPatternFinder);
+defineClass(143, 1, {}, FinderPatternFinder);
 _.hasSkipped = false;
-var Lcom_google_zxing_qrcode_detector_FinderPatternFinder_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'FinderPatternFinder', 145);
+var Lcom_google_zxing_qrcode_detector_FinderPatternFinder_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'FinderPatternFinder', 143);
 function $compare(this$static, center1, center2){
   var dA, dB;
   if (center2.count == center1.count) {
@@ -5069,7 +5057,7 @@ function FinderPatternFinder$CenterComparator(f){
   this.average = f;
 }
 
-defineClass(147, 1, $intern_2, FinderPatternFinder$CenterComparator);
+defineClass(145, 1, $intern_2, FinderPatternFinder$CenterComparator);
 _.compare = function compare_0(center1, center2){
   return $compare(this, castTo(center1, 16), castTo(center2, 16));
 }
@@ -5079,7 +5067,7 @@ _.equals_0 = function equals_4(other){
 }
 ;
 _.average = 0;
-var Lcom_google_zxing_qrcode_detector_FinderPatternFinder$CenterComparator_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'FinderPatternFinder/CenterComparator', 147);
+var Lcom_google_zxing_qrcode_detector_FinderPatternFinder$CenterComparator_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'FinderPatternFinder/CenterComparator', 145);
 function $compare_0(this$static, center1, center2){
   var dA, dB;
   dA = $wnd.Math.abs(center2.estimatedModuleSize - this$static.average);
@@ -5091,7 +5079,7 @@ function FinderPatternFinder$FurthestFromAverageComparator(f){
   this.average = f;
 }
 
-defineClass(146, 1, $intern_2, FinderPatternFinder$FurthestFromAverageComparator);
+defineClass(144, 1, $intern_2, FinderPatternFinder$FurthestFromAverageComparator);
 _.compare = function compare_1(center1, center2){
   return $compare_0(this, castTo(center1, 16), castTo(center2, 16));
 }
@@ -5101,15 +5089,15 @@ _.equals_0 = function equals_5(other){
 }
 ;
 _.average = 0;
-var Lcom_google_zxing_qrcode_detector_FinderPatternFinder$FurthestFromAverageComparator_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'FinderPatternFinder/FurthestFromAverageComparator', 146);
+var Lcom_google_zxing_qrcode_detector_FinderPatternFinder$FurthestFromAverageComparator_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'FinderPatternFinder/FurthestFromAverageComparator', 144);
 function FinderPatternInfo(patternCenters){
   this.bottomLeft = patternCenters[0];
   this.topLeft = patternCenters[1];
   this.topRight = patternCenters[2];
 }
 
-defineClass(148, 1, {}, FinderPatternInfo);
-var Lcom_google_zxing_qrcode_detector_FinderPatternInfo_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'FinderPatternInfo', 148);
+defineClass(146, 1, {}, FinderPatternInfo);
+var Lcom_google_zxing_qrcode_detector_FinderPatternInfo_2_classLit = createForClass('com.google.zxing.qrcode.detector', 'FinderPatternInfo', 146);
 function $getMatrix(this$static){
   var area, height, i, j, matrix, pixelByte, pixelInt, width_0;
   width_0 = this$static.width_0;
@@ -5139,11 +5127,7 @@ function $getRow(this$static, y_0, row){
   return row;
 }
 
-function CanvasLuminanceSource(image){
-  CanvasLuminanceSource_0.call(this, image, ($clinit_DOM() , image.element).width, image.element.height);
-}
-
-function CanvasLuminanceSource_0(aImage, width_0, height){
+function CanvasLuminanceSource(aImage, width_0, height, inverse){
   var avg, data_0, i, sourceHeight, sourceWidth;
   this.width_0 = width_0;
   this.height_0 = height;
@@ -5160,13 +5144,16 @@ function CanvasLuminanceSource_0(aImage, width_0, height){
   data_0 = this.imagedata.data;
   for (i = 0; i < data_0.length; i += 4) {
     if (((data_0[i + 3] || 0) & 255) == 0) {
-      data_0[i] = 255;
-      data_0[i + 1] = 255;
-      data_0[i + 2] = 255;
-      data_0[i + 3] = 255;
+      avg = 255;
+      inverse && (avg = 0);
+      data_0[i] = avg;
+      data_0[i + 1] = avg;
+      data_0[i + 2] = avg;
+      data_0[i + 3] = avg;
     }
      else {
       avg = ((data_0[i] || 0) + (data_0[i + 1] || 0) + (data_0[i + 2] || 0)) / 3 | 0;
+      inverse && (avg = 255 - avg);
       data_0[i] = avg;
       data_0[i + 1] = avg;
       data_0[i + 2] = avg;
@@ -5177,11 +5164,15 @@ function CanvasLuminanceSource_0(aImage, width_0, height){
   this.top_0 = 0;
 }
 
-defineClass(86, 136, {}, CanvasLuminanceSource);
+function CanvasLuminanceSource_0(image, inverse){
+  CanvasLuminanceSource.call(this, image, ($clinit_DOM() , image.element).width, image.element.height, inverse);
+}
+
+defineClass(86, 134, {}, CanvasLuminanceSource_0);
 _.left = 0;
 _.top_0 = 0;
 var Lcom_google_zxing_web_CanvasLuminanceSource_2_classLit = createForClass('com.google.zxing.web', 'CanvasLuminanceSource', 86);
-function $createSnapImage(this$static){
+function $createSnapImage(this$static, inverse){
   var binarizer, h, lsource, snapImage, w;
   w = $getElement(this$static.video_0).videoWidth;
   h = $getElement(this$static.video_0).videoHeight;
@@ -5203,7 +5194,7 @@ function $createSnapImage(this$static){
     $setCoordinateSpaceWidth(this$static.canvas, w);
     $setCoordinateSpaceHeight(this$static.canvas, h);
     $drawImage($getContext2d(this$static.canvas), $getElement(this$static.video_0), 0, 0, w, h);
-    lsource = new CanvasLuminanceSource(this$static.canvas);
+    lsource = new CanvasLuminanceSource_0(this$static.canvas, inverse);
     binarizer = new HybridBinarizer(lsource);
     snapImage = new BinaryBitmap(binarizer);
     return snapImage;
@@ -5243,26 +5234,10 @@ function $resumeScanning(this$static){
 }
 
 function $scan(this$static){
-  var bitmap, reader, reader$iterator, result;
   if (!(this$static.active && this$static.attached))
     return;
   try {
-    bitmap = $createSnapImage(this$static);
-    if (bitmap) {
-      for (reader$iterator = new ArrayList$1(this$static.readers); reader$iterator.i < reader$iterator.this$01.array.length;) {
-        reader = castTo($next_1(reader$iterator), 189);
-        try {
-          result = $decode_0(reader, bitmap);
-          $onSuccess(this$static.callback, result);
-          return;
-        }
-         catch ($e0) {
-          $e0 = toJava($e0);
-          if (!instanceOf($e0, 10))
-            throw toJs($e0);
-        }
-      }
-    }
+    $tryDecode(this$static, false) || $tryDecode(this$static, true);
   }
    finally {
     this$static.active && this$static.attached && $schedule(this$static.scanTimer, this$static.scanInterval);
@@ -5326,6 +5301,27 @@ function $stopWebcam(scanner){
     );
     scanner.videoStream = null;
   }
+}
+
+function $tryDecode(this$static, inverse){
+  var bitmap, reader, reader$iterator, result;
+  bitmap = $createSnapImage(this$static, inverse);
+  if (bitmap) {
+    for (reader$iterator = new ArrayList$1(this$static.readers); reader$iterator.i < reader$iterator.this$01.array.length;) {
+      reader = castTo($next_1(reader$iterator), 186);
+      try {
+        result = $decode_0(reader, bitmap);
+        $onSuccess(this$static.callback, result);
+        return true;
+      }
+       catch ($e0) {
+        $e0 = toJava($e0);
+        if (!instanceOf($e0, 10))
+          throw toJs($e0);
+      }
+    }
+  }
+  return false;
 }
 
 function ScannerWidget(callback, videoStreamProvider){
@@ -5451,13 +5447,13 @@ booleanCastMap = {3:1, 92:1, 14:1};
 var Ljava_lang_Boolean_2_classLit = createForClass('java.lang', 'Boolean', 92);
 function toChars(codePoint, dst, dstIndex){
   checkCriticalArgument(codePoint >= 0 && codePoint <= 1114111);
-  if (codePoint >= $intern_11) {
-    dst[dstIndex++] = 55296 + (codePoint - $intern_11 >> 10 & 1023) & 65535;
-    dst[dstIndex] = 56320 + (codePoint - $intern_11 & 1023) & 65535;
+  if (codePoint >= $intern_12) {
+    dst[dstIndex++] = 55296 + (codePoint - $intern_12 >> 10 & 1023) & $intern_5;
+    dst[dstIndex] = 56320 + (codePoint - $intern_12 & 1023) & $intern_5;
     return 2;
   }
    else {
-    dst[dstIndex] = codePoint & 65535;
+    dst[dstIndex] = codePoint & $intern_5;
     return 1;
   }
 }
@@ -5494,7 +5490,7 @@ function doubleToLongBits(value_0){
   }
   negative = false;
   if (value_0 == 0) {
-    return 1 / value_0 == -Infinity?{l:0, m:0, h:$intern_9}:0;
+    return 1 / value_0 == -Infinity?{l:0, m:0, h:$intern_10}:0;
   }
   if (value_0 < 0) {
     negative = true;
@@ -5527,7 +5523,7 @@ function doubleToLongBits(value_0){
     }
   }
   exp_0 > -1023?(value_0 -= 1):(value_0 *= 0.5);
-  ihi = fromDouble_0(value_0 * $intern_12);
+  ihi = fromDouble_0(value_0 * $intern_13);
   value_0 -= toDouble_0(ihi) * 9.5367431640625E-7;
   ilo = fromDouble_0(value_0 * 4503599627370496);
   ihi = or_0(ihi, exp_0 + 1023 << 20);
@@ -5539,7 +5535,7 @@ doubleCastMap = {3:1, 14:1, 93:1, 62:1};
 var Ljava_lang_Double_2_classLit = createForClass('java.lang', 'Double', 93);
 function $clinit_Double$PowersTable(){
   $clinit_Double$PowersTable = emptyMethod;
-  powers = stampJavaTypeInfo(getClassLiteralForArray(D_classLit, 1), $intern_2, 6, 15, [1.3407807929942597E154, 1.157920892373162E77, 3.4028236692093846E38, 1.8446744073709552E19, 4294967296, $intern_11, 256, 16, 4, 2]);
+  powers = stampJavaTypeInfo(getClassLiteralForArray(D_classLit, 1), $intern_2, 6, 15, [1.3407807929942597E154, 1.157920892373162E77, 3.4028236692093846E38, 1.8446744073709552E19, 4294967296, $intern_12, 256, 16, 4, 2]);
   invPowers = stampJavaTypeInfo(getClassLiteralForArray(D_classLit, 1), $intern_2, 6, 15, [7.458340731200207E-155, 8.636168555094445E-78, 2.9387358770557188E-39, 5.421010862427522E-20, 2.3283064365386963E-10, 1.52587890625E-5, 0.00390625, 0.0625, 0.25, 0.5]);
 }
 
@@ -5562,9 +5558,9 @@ function floatToIntBits(value_0){
   }
   l = doubleToLongBits(value_0);
   exp_0 = toInt(sub_1(and_0(shr_0(l, 52), 2047), 1023));
-  mantissa = toInt(shr_0(and_0(l, {l:$intern_5, m:$intern_5, h:255}), 29));
+  mantissa = toInt(shr_0(and_0(l, {l:$intern_6, m:$intern_6, h:255}), 29));
   if (exp_0 <= -127) {
-    mantissa = ($intern_13 | mantissa) >> -127 - exp_0 + 1;
+    mantissa = ($intern_14 | mantissa) >> -127 - exp_0 + 1;
     exp_0 = -127;
   }
   bits = negative?2147483648:0;
@@ -5581,7 +5577,7 @@ function IllegalArgumentException_0(message){
   RuntimeException_0.call(this, message);
 }
 
-defineClass(11, 17, $intern_20, IllegalArgumentException, IllegalArgumentException_0);
+defineClass(11, 17, $intern_21, IllegalArgumentException, IllegalArgumentException_0);
 var Ljava_lang_IllegalArgumentException_2_classLit = createForClass('java.lang', 'IllegalArgumentException', 11);
 function IllegalStateException(){
   RuntimeException.call(this);
@@ -5650,7 +5646,7 @@ function $clinit_Integer$BoxedValues(){
 }
 
 var boxedValues;
-defineClass(206, 1, {});
+defineClass(203, 1, {});
 function NullPointerException(){
   RuntimeException.call(this);
 }
@@ -5846,7 +5842,7 @@ function arraycopy(src_0, srcOfs, dest, destOfs, len){
     len > 0 && copy_0(src_0, srcOfs, dest, destOfs, len);
 }
 
-defineClass(210, 1, {});
+defineClass(207, 1, {});
 function UnsupportedOperationException(){
   RuntimeException_0.call(this, 'Remove not supported on this list');
 }
@@ -5877,7 +5873,7 @@ function forName(charsetName){
   }
 }
 
-defineClass(30, 1, $intern_21);
+defineClass(30, 1, $intern_22);
 _.compareTo = function compareTo_1(that){
   return $compareTo_4(this, castTo(that, 30));
 }
@@ -5907,7 +5903,7 @@ function IllegalCharsetNameException(charsetName){
   IllegalArgumentException_0.call(this, charsetName == null?'null':(checkCriticalNotNull(charsetName) , charsetName));
 }
 
-defineClass(100, 11, $intern_20, IllegalCharsetNameException);
+defineClass(100, 11, $intern_21, IllegalCharsetNameException);
 var Ljava_nio_charset_IllegalCharsetNameException_2_classLit = createForClass('java.nio.charset', 'IllegalCharsetNameException', 100);
 function UnsupportedCharsetException(charsetName){
   IllegalArgumentException_0.call(this, charsetName == null?'null':(checkCriticalNotNull(charsetName) , charsetName));
@@ -5938,7 +5934,7 @@ function $containsAll(this$static, c){
   return true;
 }
 
-defineClass(179, 1, {});
+defineClass(177, 1, {});
 _.contains_0 = function contains(o){
   return $advanceToFind(this, o);
 }
@@ -5953,7 +5949,7 @@ _.toString_0 = function toString_17(){
   return !joiner.builder?joiner.emptyValue:joiner.suffix.length == 0?joiner.builder.string:joiner.builder.string + ('' + joiner.suffix);
 }
 ;
-var Ljava_util_AbstractCollection_2_classLit = createForClass('java.util', 'AbstractCollection', 179);
+var Ljava_util_AbstractCollection_2_classLit = createForClass('java.util', 'AbstractCollection', 177);
 function $containsEntry(this$static, entry){
   var key, ourValue, value_0;
   key = entry.getKey();
@@ -5988,7 +5984,7 @@ function getEntryValueOrNull(entry){
   return !entry?null:entry.getValue();
 }
 
-defineClass(178, 1, {59:1});
+defineClass(176, 1, {59:1});
 _.containsKey = function containsKey(key){
   return !!$implFindEntry(this, key);
 }
@@ -6036,7 +6032,7 @@ _.toString_0 = function toString_18(){
   return !joiner.builder?joiner.emptyValue:joiner.suffix.length == 0?joiner.builder.string:joiner.builder.string + ('' + joiner.suffix);
 }
 ;
-var Ljava_util_AbstractMap_2_classLit = createForClass('java.util', 'AbstractMap', 178);
+var Ljava_util_AbstractMap_2_classLit = createForClass('java.util', 'AbstractMap', 176);
 function $containsKey(this$static, key){
   return instanceOfString(key)?key == null?!!$getEntry(this$static.hashCodeMap, null):$contains_3(this$static.stringMap, key):!!$getEntry(this$static.hashCodeMap, key);
 }
@@ -6061,7 +6057,7 @@ function $size(this$static){
   return this$static.hashCodeMap.size_0 + this$static.stringMap.size_0;
 }
 
-defineClass(104, 178, {59:1});
+defineClass(104, 176, {59:1});
 _.containsKey = function containsKey_0(key){
   return $containsKey(this, key);
 }
@@ -6079,7 +6075,7 @@ _.size_1 = function size_2(){
 }
 ;
 var Ljava_util_AbstractHashMap_2_classLit = createForClass('java.util', 'AbstractHashMap', 104);
-defineClass(180, 179, $intern_22);
+defineClass(178, 177, $intern_23);
 _.equals_0 = function equals_9(o){
   var other;
   if (o === this) {
@@ -6099,7 +6095,7 @@ _.hashCode_0 = function hashCode_8(){
   return hashCode_13(this);
 }
 ;
-var Ljava_util_AbstractSet_2_classLit = createForClass('java.util', 'AbstractSet', 180);
+var Ljava_util_AbstractSet_2_classLit = createForClass('java.util', 'AbstractSet', 178);
 function $contains(this$static, o){
   if (instanceOf(o, 19)) {
     return $containsEntry(this$static.this$01, castTo(o, 19));
@@ -6111,7 +6107,7 @@ function AbstractHashMap$EntrySet(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(43, 180, $intern_22, AbstractHashMap$EntrySet);
+defineClass(43, 178, $intern_23, AbstractHashMap$EntrySet);
 _.contains_0 = function contains_0(o){
   return $contains(this, o);
 }
@@ -6182,7 +6178,7 @@ function $removeRange(this$static, endIndex){
   }
 }
 
-defineClass(181, 179, {70:1});
+defineClass(179, 177, {70:1});
 _.equals_0 = function equals_10(o){
   var elem, elem$iterator, elemOther, iterOther, other;
   if (o === this) {
@@ -6218,7 +6214,7 @@ _.remove = function remove(index_0){
   throw toJs(new UnsupportedOperationException);
 }
 ;
-var Ljava_util_AbstractList_2_classLit = createForClass('java.util', 'AbstractList', 181);
+var Ljava_util_AbstractList_2_classLit = createForClass('java.util', 'AbstractList', 179);
 function AbstractList$IteratorImpl(this$0){
   this.this$01 = this$0;
 }
@@ -6250,7 +6246,7 @@ function AbstractList$SubList(wrapped, toIndex){
   this.size_0 = toIndex - 3;
 }
 
-defineClass(108, 181, {70:1}, AbstractList$SubList);
+defineClass(108, 179, {70:1}, AbstractList$SubList);
 _.get_1 = function get_2(index_0){
   checkCriticalElementIndex(index_0, this.size_0);
   return $get_1(this.wrapped, this.fromIndex + index_0);
@@ -6275,7 +6271,7 @@ function AbstractMap$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(53, 180, $intern_22, AbstractMap$1);
+defineClass(53, 178, $intern_23, AbstractMap$1);
 _.contains_0 = function contains_1(key){
   return $containsKey(this.this$01, key);
 }
@@ -6305,7 +6301,7 @@ _.next_0 = function next_2(){
 }
 ;
 var Ljava_util_AbstractMap$1$1_2_classLit = createForClass('java.util', 'AbstractMap/1/1', 49);
-defineClass(105, 1, $intern_23);
+defineClass(105, 1, $intern_24);
 _.equals_0 = function equals_11(other){
   var entry;
   if (!instanceOf(other, 19)) {
@@ -6344,9 +6340,9 @@ function AbstractMap$SimpleEntry(key, value_0){
   this.value_0 = value_0;
 }
 
-defineClass(106, 105, $intern_23, AbstractMap$SimpleEntry);
+defineClass(106, 105, $intern_24, AbstractMap$SimpleEntry);
 var Ljava_util_AbstractMap$SimpleEntry_2_classLit = createForClass('java.util', 'AbstractMap/SimpleEntry', 106);
-defineClass(182, 1, $intern_23);
+defineClass(180, 1, $intern_24);
 _.equals_0 = function equals_12(other){
   var entry;
   if (!instanceOf(other, 19)) {
@@ -6364,7 +6360,7 @@ _.toString_0 = function toString_20(){
   return this.getKey() + '=' + this.getValue();
 }
 ;
-var Ljava_util_AbstractMapEntry_2_classLit = createForClass('java.util', 'AbstractMapEntry', 182);
+var Ljava_util_AbstractMapEntry_2_classLit = createForClass('java.util', 'AbstractMapEntry', 180);
 function $$init(this$static){
   this$static.array = initUnidimensionalArray(Ljava_lang_Object_2_classLit, $intern_2, 1, 0, 5, 1);
 }
@@ -6415,7 +6411,7 @@ function ArrayList_0(initialCapacity){
   checkCriticalArgument_0(initialCapacity >= 0, 'Initial capacity must not be negative');
 }
 
-defineClass(54, 181, {3:1, 70:1}, ArrayList, ArrayList_0);
+defineClass(54, 179, {3:1, 70:1}, ArrayList, ArrayList_0);
 _.contains_0 = function contains_2(o){
   return $indexOf_0(this, o, 0) != -1;
 }
@@ -6579,7 +6575,7 @@ function $compare_1(a, b){
 function Comparators$NaturalOrderComparator(){
 }
 
-defineClass(164, 1, $intern_2, Comparators$NaturalOrderComparator);
+defineClass(162, 1, $intern_2, Comparators$NaturalOrderComparator);
 _.compare = function compare_5(a, b){
   return $compare_1(castTo(a, 14), castTo(b, 14));
 }
@@ -6588,7 +6584,7 @@ _.equals_0 = function equals_14(other){
   return this === other;
 }
 ;
-var Ljava_util_Comparators$NaturalOrderComparator_2_classLit = createForClass('java.util', 'Comparators/NaturalOrderComparator', 164);
+var Ljava_util_Comparators$NaturalOrderComparator_2_classLit = createForClass('java.util', 'Comparators/NaturalOrderComparator', 162);
 function checkStructuralChange(host, iterator){
   if (iterator.$modCount != host.$modCount) {
     throw toJs(new ConcurrentModificationException);
@@ -6626,7 +6622,7 @@ function EnumMap(type_0){
   this.values = initUnidimensionalArray(Ljava_lang_Object_2_classLit, $intern_2, 1, this.keySet.all.length, 5, 1);
 }
 
-defineClass(149, 178, {59:1}, EnumMap);
+defineClass(147, 176, {59:1}, EnumMap);
 _.containsKey = function containsKey_1(key){
   return $contains_1(this.keySet, key);
 }
@@ -6643,7 +6639,7 @@ _.size_1 = function size_7(){
   return this.keySet.size_0;
 }
 ;
-var Ljava_util_EnumMap_2_classLit = createForClass('java.util', 'EnumMap', 149);
+var Ljava_util_EnumMap_2_classLit = createForClass('java.util', 'EnumMap', 147);
 function $contains_0(this$static, o){
   if (instanceOf(o, 19)) {
     return $containsEntry(this$static.this$01, castTo(o, 19));
@@ -6655,7 +6651,7 @@ function EnumMap$EntrySet(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(150, 180, $intern_22, EnumMap$EntrySet);
+defineClass(148, 178, $intern_23, EnumMap$EntrySet);
 _.contains_0 = function contains_3(o){
   return $contains_0(this, o);
 }
@@ -6668,13 +6664,13 @@ _.size_1 = function size_8(){
   return this.this$01.keySet.size_0;
 }
 ;
-var Ljava_util_EnumMap$EntrySet_2_classLit = createForClass('java.util', 'EnumMap/EntrySet', 150);
+var Ljava_util_EnumMap$EntrySet_2_classLit = createForClass('java.util', 'EnumMap/EntrySet', 148);
 function EnumMap$EntrySetIterator(this$0){
   this.this$01 = this$0;
   this.it = new EnumSet$EnumSetImpl$IteratorImpl(this.this$01.keySet);
 }
 
-defineClass(151, 1, {}, EnumMap$EntrySetIterator);
+defineClass(149, 1, {}, EnumMap$EntrySetIterator);
 _.next_0 = function next_4(){
   return this.key = $next_2(this.it) , new EnumMap$MapEntry(this.this$01, this.key);
 }
@@ -6683,13 +6679,13 @@ _.hasNext_0 = function hasNext_4(){
   return $hasNext(this.it);
 }
 ;
-var Ljava_util_EnumMap$EntrySetIterator_2_classLit = createForClass('java.util', 'EnumMap/EntrySetIterator', 151);
+var Ljava_util_EnumMap$EntrySetIterator_2_classLit = createForClass('java.util', 'EnumMap/EntrySetIterator', 149);
 function EnumMap$MapEntry(this$0, key){
   this.this$01 = this$0;
   this.key = key;
 }
 
-defineClass(152, 182, $intern_23, EnumMap$MapEntry);
+defineClass(150, 180, $intern_24, EnumMap$MapEntry);
 _.getKey = function getKey_0(){
   return this.key;
 }
@@ -6702,9 +6698,9 @@ _.setValue = function setValue_0(value_0){
   return $set_0(this.this$01, this.key.ordinal, value_0);
 }
 ;
-var Ljava_util_EnumMap$MapEntry_2_classLit = createForClass('java.util', 'EnumMap/MapEntry', 152);
-defineClass(188, 180, $intern_22);
-var Ljava_util_EnumSet_2_classLit = createForClass('java.util', 'EnumSet', 188);
+var Ljava_util_EnumMap$MapEntry_2_classLit = createForClass('java.util', 'EnumMap/MapEntry', 150);
+defineClass(185, 178, $intern_23);
+var Ljava_util_EnumSet_2_classLit = createForClass('java.util', 'EnumSet', 185);
 function $add_3(this$static, e){
   var ordinal;
   checkCriticalNotNull(e);
@@ -6731,7 +6727,7 @@ function EnumSet$EnumSetImpl(all, set_0){
   this.size_0 = 0;
 }
 
-defineClass(163, 188, $intern_22, EnumSet$EnumSetImpl);
+defineClass(161, 185, $intern_23, EnumSet$EnumSetImpl);
 _.contains_0 = function contains_4(o){
   return $contains_1(this, o);
 }
@@ -6745,7 +6741,7 @@ _.size_1 = function size_9(){
 }
 ;
 _.size_0 = 0;
-var Ljava_util_EnumSet$EnumSetImpl_2_classLit = createForClass('java.util', 'EnumSet/EnumSetImpl', 163);
+var Ljava_util_EnumSet$EnumSetImpl_2_classLit = createForClass('java.util', 'EnumSet/EnumSetImpl', 161);
 function $findNext(this$static){
   var c;
   ++this$static.i;
@@ -6808,7 +6804,7 @@ function HashSet(){
   this.map_0 = new HashMap;
 }
 
-defineClass(85, 180, {3:1, 40:1}, HashSet);
+defineClass(85, 178, {3:1, 40:1}, HashSet);
 _.contains_0 = function contains_5(o){
   return $contains_2(this, o);
 }
@@ -7109,7 +7105,7 @@ function InternalStringMap$2(this$0, val$entry, val$lastValueMod){
   this.val$lastValueMod3 = val$lastValueMod;
 }
 
-defineClass(111, 182, $intern_23, InternalStringMap$2);
+defineClass(111, 180, $intern_24, InternalStringMap$2);
 _.getKey = function getKey_1(){
   return this.val$entry2.value[0];
 }
@@ -7186,7 +7182,7 @@ function removeFrom(array, index_0){
   array.splice(index_0, 1);
 }
 
-defineClass(208, 1, {});
+defineClass(205, 1, {});
 function stampJavaTypeInfo_0(array, referenceType){
   return getElementTypeCategory(referenceType) != 10 && stampJavaTypeInfo(getClass__Ljava_lang_Class___devirtual$(referenceType), referenceType.castableTypeMap, referenceType.__elementTypeId$, getElementTypeCategory(referenceType), array) , array;
 }
@@ -7202,19 +7198,19 @@ function EmulatedCharset(name_0){
   this.name_0 = name_0;
 }
 
-defineClass(74, 30, $intern_21);
+defineClass(74, 30, $intern_22);
 var ISO_8859_1, ISO_LATIN_1, UTF_8;
 var Ljavaemul_internal_EmulatedCharset_2_classLit = createForClass('javaemul.internal', 'EmulatedCharset', 74);
 function EmulatedCharset$LatinCharset(name_0){
   EmulatedCharset.call(this, name_0);
 }
 
-defineClass(75, 74, $intern_21, EmulatedCharset$LatinCharset);
+defineClass(75, 74, $intern_22, EmulatedCharset$LatinCharset);
 _.decodeString = function decodeString(bytes, ofs, len){
   var chars, i;
   chars = initUnidimensionalArray(C_classLit, $intern_2, 6, len, 15, 1);
   for (i = 0; i < len; ++i) {
-    chars[i] = bytes[ofs + i] & 255 & 65535;
+    chars[i] = bytes[ofs + i] & 255 & $intern_5;
   }
   return chars;
 }
@@ -7224,7 +7220,7 @@ function EmulatedCharset$UtfCharset(){
   EmulatedCharset.call(this, 'UTF-8');
 }
 
-defineClass(99, 74, $intern_21, EmulatedCharset$UtfCharset);
+defineClass(99, 74, $intern_22, EmulatedCharset$UtfCharset);
 _.decodeString = function decodeString_0(bytes, ofs, len){
   var b, ch_0, charCount, chars, count, i, i0, number, outIdx;
   charCount = 0;
@@ -7396,7 +7392,7 @@ function setPropertySafe(map_0, key, value_0){
   }
 }
 
-defineClass(205, 1, {});
+defineClass(202, 1, {});
 function getHashCode(o){
   return o.$H || (o.$H = ++nextHashId);
 }
@@ -7684,8 +7680,8 @@ function ScannerCallback(qrCallback){
 
 defineClass(115, 1, {}, ScannerCallback);
 var Ljb_client_ScannerCallback_2_classLit = createForClass('jb.client', 'ScannerCallback', 115);
-defineClass(177, 1, {});
-var Lorg_timepedia_exporter_client_ExporterBaseImpl_2_classLit = createForClass('org.timepedia.exporter.client', 'ExporterBaseImpl', 177);
+defineClass(175, 1, {});
+var Lorg_timepedia_exporter_client_ExporterBaseImpl_2_classLit = createForClass('org.timepedia.exporter.client', 'ExporterBaseImpl', 175);
 function $addExporter(this$static, c, o){
   $put(this$static.exporterMap, c, o);
 }
@@ -7715,7 +7711,7 @@ function getProp(jso, key){
   return jso != null?jso[key]:null;
 }
 
-defineClass(102, 177, {}, ExporterBaseActual);
+defineClass(102, 175, {}, ExporterBaseActual);
 var Lorg_timepedia_exporter_client_ExporterBaseActual_2_classLit = createForClass('org.timepedia.exporter.client', 'ExporterBaseActual', 102);
 function $clinit_ExporterUtil(){
   $clinit_ExporterUtil = emptyMethod;
@@ -7737,7 +7733,7 @@ var F_classLit = createForPrimitive('float', 'F');
 var $entry = ($clinit_Impl() , entry_0);
 var gwtOnLoad = gwtOnLoad = gwtOnLoad_0;
 addInitFunctions(init);
-setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'safari']]]);
+setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie10']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');
 gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);
 $sendStats('moduleStartup', 'end');
