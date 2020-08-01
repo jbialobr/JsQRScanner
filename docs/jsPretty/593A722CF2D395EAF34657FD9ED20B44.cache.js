@@ -3,7 +3,7 @@ var __gwtModuleFunction = $wnd.jsqrscanner;
 var $sendStats = __gwtModuleFunction.__sendStats;
 $sendStats('moduleStartup', 'moduleEvalStart');
 var $gwt_version = "2.8.2";
-var $strongName = 'B59577AB6860E2EB40EBD2256295FEDF';
+var $strongName = '593A722CF2D395EAF34657FD9ED20B44';
 var $gwt = {};
 var $doc = $wnd.document;
 var $moduleName, $moduleBase;
@@ -1893,7 +1893,7 @@ var Lcom_google_gwt_user_client_ui_WidgetCollection$WidgetIterator_2_classLit = 
 function assertCompileTimeUserAgent(){
   var runtimeValue;
   runtimeValue = $getRuntimeValue();
-  if (!$equals_0('ie10', runtimeValue)) {
+  if (!$equals_0('ie9', runtimeValue)) {
     throw toJs(new UserAgentAsserter$UserAgentAssertionError(runtimeValue));
   }
 }
@@ -1908,7 +1908,7 @@ defineClass(18, 60, $intern_3);
 var Ljava_lang_AssertionError_2_classLit = createForClass('java.lang', 'AssertionError', 18);
 function UserAgentAsserter$UserAgentAssertionError(runtimeValue){
   var lastArg;
-  Error_0.call(this, (lastArg = 'Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.' == null?'null':toString_3('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.') , instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?castTo('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null , lastArg));
+  Error_0.call(this, (lastArg = 'Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.' == null?'null':toString_3('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.') , instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8)?castTo('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 8):null , lastArg));
 }
 
 defineClass(88, 18, $intern_3, UserAgentAsserter$UserAgentAssertionError);
@@ -5127,11 +5127,7 @@ function $getRow(this$static, y_0, row){
   return row;
 }
 
-function CanvasLuminanceSource(image){
-  CanvasLuminanceSource_0.call(this, image, ($clinit_DOM() , image.element).width, image.element.height);
-}
-
-function CanvasLuminanceSource_0(aImage, width_0, height){
+function CanvasLuminanceSource(aImage, width_0, height, inverse){
   var avg, data_0, i, sourceHeight, sourceWidth;
   this.width_0 = width_0;
   this.height_0 = height;
@@ -5148,13 +5144,16 @@ function CanvasLuminanceSource_0(aImage, width_0, height){
   data_0 = this.imagedata.data;
   for (i = 0; i < data_0.length; i += 4) {
     if (((data_0[i + 3] || 0) & 255) == 0) {
-      data_0[i] = 255;
-      data_0[i + 1] = 255;
-      data_0[i + 2] = 255;
-      data_0[i + 3] = 255;
+      avg = 255;
+      inverse && (avg = 0);
+      data_0[i] = avg;
+      data_0[i + 1] = avg;
+      data_0[i + 2] = avg;
+      data_0[i + 3] = avg;
     }
      else {
       avg = ((data_0[i] || 0) + (data_0[i + 1] || 0) + (data_0[i + 2] || 0)) / 3 | 0;
+      inverse && (avg = 255 - avg);
       data_0[i] = avg;
       data_0[i + 1] = avg;
       data_0[i + 2] = avg;
@@ -5165,11 +5164,15 @@ function CanvasLuminanceSource_0(aImage, width_0, height){
   this.top_0 = 0;
 }
 
-defineClass(86, 134, {}, CanvasLuminanceSource);
+function CanvasLuminanceSource_0(image, inverse){
+  CanvasLuminanceSource.call(this, image, ($clinit_DOM() , image.element).width, image.element.height, inverse);
+}
+
+defineClass(86, 134, {}, CanvasLuminanceSource_0);
 _.left = 0;
 _.top_0 = 0;
 var Lcom_google_zxing_web_CanvasLuminanceSource_2_classLit = createForClass('com.google.zxing.web', 'CanvasLuminanceSource', 86);
-function $createSnapImage(this$static){
+function $createSnapImage(this$static, inverse){
   var binarizer, h, lsource, snapImage, w;
   w = $getElement(this$static.video_0).videoWidth;
   h = $getElement(this$static.video_0).videoHeight;
@@ -5191,7 +5194,7 @@ function $createSnapImage(this$static){
     $setCoordinateSpaceWidth(this$static.canvas, w);
     $setCoordinateSpaceHeight(this$static.canvas, h);
     $drawImage($getContext2d(this$static.canvas), $getElement(this$static.video_0), 0, 0, w, h);
-    lsource = new CanvasLuminanceSource(this$static.canvas);
+    lsource = new CanvasLuminanceSource_0(this$static.canvas, inverse);
     binarizer = new HybridBinarizer(lsource);
     snapImage = new BinaryBitmap(binarizer);
     return snapImage;
@@ -5231,26 +5234,10 @@ function $resumeScanning(this$static){
 }
 
 function $scan(this$static){
-  var bitmap, reader, reader$iterator, result;
   if (!(this$static.active && this$static.attached))
     return;
   try {
-    bitmap = $createSnapImage(this$static);
-    if (bitmap) {
-      for (reader$iterator = new ArrayList$1(this$static.readers); reader$iterator.i < reader$iterator.this$01.array.length;) {
-        reader = castTo($next_1(reader$iterator), 186);
-        try {
-          result = $decode_0(reader, bitmap);
-          $onSuccess(this$static.callback, result);
-          return;
-        }
-         catch ($e0) {
-          $e0 = toJava($e0);
-          if (!instanceOf($e0, 10))
-            throw toJs($e0);
-        }
-      }
-    }
+    $tryDecode(this$static, false) || $tryDecode(this$static, true);
   }
    finally {
     this$static.active && this$static.attached && $schedule(this$static.scanTimer, this$static.scanInterval);
@@ -5314,6 +5301,27 @@ function $stopWebcam(scanner){
     );
     scanner.videoStream = null;
   }
+}
+
+function $tryDecode(this$static, inverse){
+  var bitmap, reader, reader$iterator, result;
+  bitmap = $createSnapImage(this$static, inverse);
+  if (bitmap) {
+    for (reader$iterator = new ArrayList$1(this$static.readers); reader$iterator.i < reader$iterator.this$01.array.length;) {
+      reader = castTo($next_1(reader$iterator), 186);
+      try {
+        result = $decode_0(reader, bitmap);
+        $onSuccess(this$static.callback, result);
+        return true;
+      }
+       catch ($e0) {
+        $e0 = toJava($e0);
+        if (!instanceOf($e0, 10))
+          throw toJs($e0);
+      }
+    }
+  }
+  return false;
 }
 
 function ScannerWidget(callback, videoStreamProvider){
@@ -7725,7 +7733,7 @@ var F_classLit = createForPrimitive('float', 'F');
 var $entry = ($clinit_Impl() , entry_0);
 var gwtOnLoad = gwtOnLoad = gwtOnLoad_0;
 addInitFunctions(init);
-setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie10']]]);
+setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie9']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');
 gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);
 $sendStats('moduleStartup', 'end');
