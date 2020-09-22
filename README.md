@@ -151,7 +151,7 @@ Returns the SnapImageMaxSize in pixels.
 
 **.isActive()**
 
-Returns false if scanner was stoped, true otherwise.
+Returns false if scanner was stopped, true otherwise.
 
 **.isScanning()**
 
