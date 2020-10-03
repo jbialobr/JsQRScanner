@@ -32,3 +32,11 @@ body
 {
  width: 100%; 
 }
+
+    .error_message {
+       color: red; 
+       background-color: white; 
+       border: 1px solid red; 
+       padding: 4px; 
+       font-family: sans-serif 
+    }

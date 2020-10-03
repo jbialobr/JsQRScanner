@@ -23,18 +23,25 @@
     <!-- This script loads your compiled module.   -->
     <script type="text/javascript" src="/JsQRScanner/jsPretty/jsqrscanner.nocache.js"></script>
   </head>
-
   <body>
 
+    <div class="row-element-set row-element-set-QRScanner">
     <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
     <noscript>
-      <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+      <div class="row-element-set error_message">
         Your web browser must have JavaScript enabled
         in order for this application to display correctly.
       </div>
     </noscript>
+    <div class="row-element-set error_message" id="secure-connection-message" style="display: none;" hidden >
+      You may need to serve this page over a secure connection (https) to run JsQRScanner correctly.
+    </div>
+    <script> 
+    if (location.protocol != 'https:') { 
+      document.getElementById('secure-connection-message').style='display: block';
+      }
+      </script>  
 
-    <div class="row-element-set row-element-set-QRScanner">
       <h1>JsQRScanner example</h1>
       <div class="row-element">
         <div class="FlexPanel detailsPanel QRScannerShort">
