@@ -157,3 +157,7 @@ Returns false if scanner was stopped, true otherwise.
 
 Returns true if scanner is actively scanning.
 That is the scanner is active and is attached to the DOM.
+
+# Known Issues
+
+[List of known issues](https://github.com/jbialobr/JsQRScanner/issues?q=is%3Aissue+is%3Aopen+label%3A%22known+issue%22)
